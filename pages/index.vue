@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="hero-foot">
-        <nav class="tabs is-boxed is-fullwidth">
+        <nav class="tabs is-boxed is-medium is-fullwidth">
           <div class="container">
             <ul>
               <li :class="{ 'is-active': activeTab === 'vision' }" @click="tabs('vision')"><a>Notre vision</a></li>
