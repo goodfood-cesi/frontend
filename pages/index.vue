@@ -51,20 +51,20 @@
     </section>
     <section>
       <div v-if="activeTab === 'vision'">
-        <section class="blog-posts mt-2">
+        <section class="infos mt-2">
           <div class="container">
             <div class="columns">
               <div class="column is-12">
-                <div class="columns featured-post is-multiline">
-                  <div class="column is-12 post">
+                <div class="columns is-multiline">
+                  <div class="column is-12 info">
                     <article class="columns">
-                      <div class="column is-7 post-img">
+                      <div class="column is-7 info-img">
                         <img src="http://source.unsplash.com/random/750x300/?food" alt="">
                       </div>
                       <div class="column is-5 featured-content va">
                         <div>
-                          <h1 class="title post-title">Une cuisine attentionnée</h1>
-                          <p class="post-excerpt">Chez GoodFood, le fer de lance c'est la satisfaction client. C'est pour cela que nous élaborons nos plats en relation directe avec les consommateurs. Cela se traduit en sondages, avis...</p>
+                          <h1 class="title">Une cuisine attentionnée</h1>
+                          <p class="info-excerpt">Chez GoodFood, le fer de lance c'est la satisfaction client. C'est pour cela que nous élaborons nos plats en relation directe avec les consommateurs. Cela se traduit en sondages, avis...</p>
                           <br>
                           <button class="button is-medium is-primary mt-2">
                             <span>
@@ -82,41 +82,41 @@
                 </div>
                 <hr>
                 <div class="columns is-multiline">
-                  <div class="column post is-4">
+                  <div class="column info is-4">
                     <article class="columns is-multiline">
-                      <div class="column is-12 post-img">
+                      <div class="column is-12">
                         <img src="http://source.unsplash.com/random/500x300/?food" alt="Featured Image">
                       </div>
                       <div class="column is-12 featured-content ">
-                        <h3 class="heading post-category">CATEGORIE</h3>
-                        <h1 class="title post-title">Argument #1</h1>
-                        <p class="post-excerpt">Description.</p>
+                        <h3 class="heading">CATEGORIE</h3>
+                        <h1 class="title">Argument #1</h1>
+                        <p class="info-excerpt">Description.</p>
                         <br>
                       </div>
                     </article>
                   </div>
-                  <div class="column post is-4">
+                  <div class="column info is-4">
                     <article class="columns is-multiline">
-                      <div class="column is-12 post-img">
+                      <div class="column is-12">
                         <img src="http://source.unsplash.com/random/500x300/?food" alt="Featured Image">
                       </div>
                       <div class="column is-12 featured-content ">
-                        <h3 class="heading post-category">CATEGORIE</h3>
-                        <h1 class="title post-title">Argument #2</h1>
-                        <p class="post-excerpt">Description.</p>
+                        <h3 class="heading">CATEGORIE</h3>
+                        <h1 class="title">Argument #2</h1>
+                        <p class="info-excerpt">Description.</p>
                         <br>
                       </div>
                     </article>
                   </div>
-                  <div class="column post is-4">
+                  <div class="column info is-4">
                     <article class="columns is-multiline">
-                      <div class="column is-12 post-img">
+                      <div class="column is-12">
                         <img src="http://source.unsplash.com/random/500x300/?food" alt="Featured Image">
                       </div>
                       <div class="column is-12 featured-content ">
-                        <h3 class="heading post-category">CATEGORIE</h3>
-                        <h1 class="title post-title">Argument #3</h1>
-                        <p class="post-excerpt">Description.</p>
+                        <h3 class="heading">CATEGORIE</h3>
+                        <h1 class="title">Argument #3</h1>
+                        <p class="info-excerpt">Description.</p>
                         <br>
                       </div>
                     </article>
@@ -160,20 +160,20 @@ export default {
   color: #e4e2ff;
 }
 
-.blog-posts {
+.infos {
   padding-top: 4rem;
   padding-bottom: 10rem;
 }
 
-.blog-posts article {
+.infos article {
   padding: 1.5rem;
 }
 
-.blog-posts .post img {
+.infos .info img {
   border-radius: 6px;
 }
 
-.blog-posts .post .post-excerpt {
+.infos .info .info-excerpt {
   line-height: 1.5rem;
   letter-spacing: .03rem;
   font-size: 1.2rem;
