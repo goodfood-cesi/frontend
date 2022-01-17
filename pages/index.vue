@@ -5,24 +5,8 @@
         <nav class="navbar">
           <div class="container">
             <div class="navbar-brand">
-              <div class="navbar-item"><img src="https://bulma.io/images/bulma-type-white.png" alt="Logo"></div>
-              <span class="navbar-burger is-white" data-target="navbarMenuHeroA">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </div>
-            <div id="navbarMenuHeroA" class="navbar-menu">
-              <div class="navbar-end">
-                <a class="navbar-item is-active"> Accueil </a> <a class="navbar-item"> Commander ! </a>
-                <span class="navbar-item">
-              <a class="button is-primary is-inverted">
-                <span class="icon">
-                 <b-icon icon="account" size="is-small"></b-icon>
-                </span>
-                <span>Mon compte</span>
-              </a>
-            </span>
+              <div class="navbar-item">
+                <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
               </div>
             </div>
           </div>
