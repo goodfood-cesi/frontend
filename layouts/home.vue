@@ -1,6 +1,5 @@
 <template>
   <div>
-  <AppNavbar></AppNavbar>
     <section>
       <Nuxt/>
     </section>
@@ -9,6 +8,6 @@
 
 <script>
 export default {
-  name: 'DefaultLayout',
+  name: 'HomeLayout',
 }
 </script>
