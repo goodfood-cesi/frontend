@@ -18,7 +18,7 @@
             Une petite faim ?
           </p>
           <p class="subtitle">
-            <b-button class="mt-2" size="is-large" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/shop" inverted>
+            <b-button class="mt-2" size="is-large" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/restaurants" inverted>
               Commander !
             </b-button>
           </p>
@@ -62,7 +62,7 @@
                           <h1 class="title">Une cuisine attentionnée</h1>
                           <p class="info-excerpt">Chez GoodFood, le fer de lance c'est la satisfaction client. C'est pour cela que nous élaborons nos plats en relation directe avec les consommateurs. Cela se traduit en sondages, avis...</p>
                           <br>
-                          <b-button class="mt-2" size="is-medium" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/shop">
+                          <b-button class="mt-2" size="is-medium" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/restaurants">
                             Commander !
                           </b-button >
                         </div>
@@ -163,7 +163,7 @@
                 </article>
               </div>
             </div>
-            <b-button size="is-large" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/shop" expanded>
+            <b-button size="is-large" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/restaurants" expanded>
               Commandez dès maintenant !
             </b-button >
           </div>
