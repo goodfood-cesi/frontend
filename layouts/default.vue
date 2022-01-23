@@ -4,6 +4,7 @@
     <section>
       <Nuxt/>
     </section>
+    <AppFooter/>
   </div>
 </template>
 
