@@ -2,7 +2,7 @@
   <b-navbar class="is-primary">
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        <img src="~/assets/logo_light.svg" alt="Logo GoodFood" class="image is-128x128"/>
+        <img src="~/assets/logo_light_simple.svg" alt="Logo GoodFood" class="image is-128x128"/>
       </b-navbar-item>
     </template>
     <template #start>

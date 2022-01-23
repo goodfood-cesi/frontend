@@ -6,7 +6,7 @@
           <div class="container">
             <div class="navbar-brand">
               <div class="navbar-item">
-                <img src="~/assets/logo_light.svg" alt="Logo GoodFood" class="image is-128x128"/>
+                <img src="~/assets/logo_light_simple.svg" alt="Logo GoodFood" class="image is-128x128"/>
               </div>
             </div>
           </div>
