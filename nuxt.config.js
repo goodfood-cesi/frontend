@@ -49,6 +49,19 @@ export default {
     },
   },
 
+  loading: {
+    color: 'white',
+    height: '2px',
+    throttle: 0,
+    duration: 5000,
+  },
+
+  loadingIndicator: {
+    name: 'circle',
+    color: '#3B8070',
+    background: 'white'
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }
