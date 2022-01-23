@@ -18,13 +18,9 @@
             Une petite faim ?
           </p>
           <p class="subtitle">
-            <button class="button is-large is-primary is-inverted mt-2">
-              <span>
-                Commander !
-              </span> <span class="icon">
-                <b-icon icon="arrow-right-thin-circle-outline" size="is-small"></b-icon>
-              </span>
-            </button>
+            <b-button class="mt-2" size="is-large" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/shop" inverted>
+              Commander !
+            </b-button>
           </p>
         </div>
       </div>
@@ -66,13 +62,9 @@
                           <h1 class="title">Une cuisine attentionnée</h1>
                           <p class="info-excerpt">Chez GoodFood, le fer de lance c'est la satisfaction client. C'est pour cela que nous élaborons nos plats en relation directe avec les consommateurs. Cela se traduit en sondages, avis...</p>
                           <br>
-                          <button class="button is-medium is-primary mt-2">
-                            <span>
-                              Commander !
-                            </span> <span class="icon">
-                              <b-icon icon="arrow-right-thin-circle-outline" size="is-small"></b-icon>
-                            </span>
-                          </button>
+                          <b-button class="mt-2" size="is-medium" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/shop">
+                            Commander !
+                          </b-button >
                         </div>
 
                       </div>
@@ -146,14 +138,6 @@
                     <div>
                       <h1 class="title">Sur place</h1>
                       <p class="info-excerpt">Déjeunez sur place dans nos restaurants en réservant dès maintenant en ligne.</p>
-                      <br>
-                      <button class="button is-medium is-primary mt-2">
-                            <span>
-                              Réservez !
-                            </span> <span class="icon">
-                              <b-icon icon="arrow-right-thin-circle-outline" size="is-small"></b-icon>
-                            </span>
-                      </button>
                     </div>
 
                   </div>
@@ -174,20 +158,14 @@
                     <div>
                       <h1 class="title">A emporter</h1>
                       <p class="info-excerpt">Commandez dès maintenant en ligne et retirez en Click & Collect dans le restaurant de votre choix !</p>
-                      <br>
-                      <button class="button is-medium is-primary mt-2">
-                            <span>
-                              Commander !
-                            </span> <span class="icon">
-                              <b-icon icon="arrow-right-thin-circle-outline" size="is-small"></b-icon>
-                            </span>
-                      </button>
                     </div>
-
                   </div>
                 </article>
               </div>
             </div>
+            <b-button size="is-large" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/shop" expanded>
+              Commandez dès maintenant !
+            </b-button >
           </div>
         </section>
       </div>
