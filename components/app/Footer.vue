@@ -1,8 +1,10 @@
 <template>
-  <footer class="footer">
+  <footer class="footer py-5">
     <div class="content has-text-centered">
+      <img src="~/assets/logo_dark.svg" alt="Logo GoodFood" width="256" class="image is-inline-block"/>
+
       <p>
-        <strong>GoodFood</strong> &copy; 2022 | Développé par LORNET &copy;.
+         &copy; LORNET
       </p>
       <p>
         <RouterLink to="/about">A propos</RouterLink> | <RouterLink to="/contact">Contactez-nous</RouterLink>

@@ -2,7 +2,7 @@
   <b-navbar class="is-primary">
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        <img src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png" alt="Lightweight UI components for Vue.js based on Bulma">
+        <img src="~/assets/logo_light.svg" alt="Logo GoodFood" class="image is-128x128"/>
       </b-navbar-item>
     </template>
     <template #start>

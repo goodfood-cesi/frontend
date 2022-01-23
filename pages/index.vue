@@ -6,7 +6,7 @@
           <div class="container">
             <div class="navbar-brand">
               <div class="navbar-item">
-                <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                <img src="~/assets/logo_light.svg" alt="Logo GoodFood" class="image is-128x128"/>
               </div>
             </div>
           </div>
