@@ -21,8 +21,7 @@
             <button class="button is-large is-primary is-inverted mt-2">
               <span>
                 Commander !
-              </span>
-              <span class="icon">
+              </span> <span class="icon">
                 <b-icon icon="arrow-right-thin-circle-outline" size="is-small"></b-icon>
               </span>
             </button>
@@ -34,7 +33,8 @@
           <div class="container">
             <ul>
               <li :class="{ 'is-active': activeTab === 'vision' }" @click="tabs('vision')"><a>Notre vision</a></li>
-              <li :class="{ 'is-active': activeTab === 'test' }" @click="tabs('test')"><a>Restaurants</a></li>
+              <li :class="{ 'is-active': activeTab === 'restaurants' }" @click="tabs('restaurants')"><a>Restaurants</a>
+              </li>
               <li :class="{ 'is-active': activeTab === 'onsitetakeaway' }" @click="tabs('onsitetakeaway')">
                 <a>Sur place ou à emporter !</a></li>
             </ul>
@@ -43,7 +43,7 @@
       </div>
     </section>
     <section class="hero">
-      <div class="hero-body py-3">
+      <div class="hero-body py-2">
         <div class="container has-text-centered">
           <span class="tag is-primary">Nouveau !</span> Notre site web vous permet de commander en ligne dans nos restaurants, sur place ou à emporter !
         </div>
@@ -51,11 +51,11 @@
     </section>
     <section>
       <div v-if="activeTab === 'vision'">
-        <section class="infos mt-2">
+        <section class="infos">
           <div class="container">
             <div class="columns">
               <div class="column is-12">
-                <div class="columns is-multiline">
+                <div class="columns">
                   <div class="column is-12 info">
                     <article class="columns">
                       <div class="column is-7 info-img">
@@ -69,8 +69,7 @@
                           <button class="button is-medium is-primary mt-2">
                             <span>
                               Commander !
-                            </span>
-                            <span class="icon">
+                            </span> <span class="icon">
                               <b-icon icon="arrow-right-thin-circle-outline" size="is-small"></b-icon>
                             </span>
                           </button>
@@ -81,7 +80,7 @@
                   </div>
                 </div>
                 <hr>
-                <div class="columns is-multiline">
+                <div class="columns">
                   <div class="column info is-4">
                     <article class="columns is-multiline">
                       <div class="column is-12">
@@ -127,10 +126,73 @@
           </div>
         </section>
       </div>
-      <div v-if="activeTab === 'test'">Test</div>
-      <div v-if="activeTab === 'onsitetakeaway'">OnsiteTakeaway</div>
+      <div v-if="activeTab === 'restaurants'">
+        <div id="map-wrap" style="height: 50vh">
+          <client-only>
+            <l-map :zoom=5 :center="[48.856614, 2.3522219]">
+              <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
+              <l-marker :lat-lng="[55.9464418, 8.1277591]"></l-marker>
+            </l-map>
+          </client-only>
+        </div>
+      </div>
+      <div v-if="activeTab === 'onsitetakeaway'">
+        <section class="infos">
+          <div class="container">
+            <div class="columns">
+              <div class="column is-12 info">
+                <article class="columns">
+                  <div class="column is-6 featured-content va">
+                    <div>
+                      <h1 class="title">Sur place</h1>
+                      <p class="info-excerpt">Déjeunez sur place dans nos restaurants en réservant dès maintenant en ligne.</p>
+                      <br>
+                      <button class="button is-medium is-primary mt-2">
+                            <span>
+                              Réservez !
+                            </span> <span class="icon">
+                              <b-icon icon="arrow-right-thin-circle-outline" size="is-small"></b-icon>
+                            </span>
+                      </button>
+                    </div>
+
+                  </div>
+                  <div class="column is-6 info-img">
+                    <img src="http://source.unsplash.com/random/750x300/?food" alt="">
+                  </div>
+                </article>
+              </div>
+            </div>
+            <hr>
+            <div class="columns">
+              <div class="column is-12 info">
+                <article class="columns">
+                  <div class="column is-6 info-img">
+                    <img src="http://source.unsplash.com/random/750x300/?food" alt="">
+                  </div>
+                  <div class="column is-6 featured-content va">
+                    <div>
+                      <h1 class="title">A emporter</h1>
+                      <p class="info-excerpt">Commandez dès maintenant en ligne et retirez en Click & Collect dans le restaurant de votre choix !</p>
+                      <br>
+                      <button class="button is-medium is-primary mt-2">
+                            <span>
+                              Commander !
+                            </span> <span class="icon">
+                              <b-icon icon="arrow-right-thin-circle-outline" size="is-small"></b-icon>
+                            </span>
+                      </button>
+                    </div>
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </section>
-    <AppFooter />
+    <AppFooter/>
   </section>
 
 </template>
@@ -161,8 +223,8 @@ export default {
 }
 
 .infos {
-  padding-top: 4rem;
-  padding-bottom: 10rem;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
 }
 
 .infos article {
