@@ -10,7 +10,7 @@
         Commander
       </b-navbar-item>
     </template>
-    <template #end>
+    <template v-if="!isAuthenticated" #end>
       <b-navbar-item tag="div">
         <div class="buttons">
           <NuxtLink to="/register" class="button is-primary"><b>Inscription</b></NuxtLink>
@@ -18,10 +18,43 @@
         </div>
       </b-navbar-item>
     </template>
+    <template v-else #end>
+      <b-navbar-item tag="div">
+        <b-dropdown aria-role="list">
+          <template #trigger="{ active }">
+            <b-button
+              :label="$auth.user.firstname + ' ' + $auth.user.lastname"
+              type="is-primary"
+              :icon-right="active ? 'menu-up' : 'menu-down'"/>
+          </template>
+          <b-dropdown-item has-link aria-role="listitem">
+            <NuxtLink to="/account">Mon compte</NuxtLink>
+          </b-dropdown-item>
+          <b-dropdown-item has-link aria-role="listitem">
+            <NuxtLink to="/orders">Mes commandes</NuxtLink>
+          </b-dropdown-item>
+          <hr class="dropdown-divider">
+          <b-dropdown-item aria-role="listitem" @click="logout">
+            <b-icon icon="logout"></b-icon>
+            Déconnexion
+          </b-dropdown-item>
+        </b-dropdown>
+      </b-navbar-item>
+    </template>
   </b-navbar>
 </template>
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'AppNavbar',
+  computed: {
+    ...mapGetters(['isAuthenticated', 'loggedInUser'])
+  },
+  methods: {
+    async logout() {
+      await this.$auth.logout();
+    },
+  }
 }
 </script>
