@@ -119,14 +119,23 @@
         </section>
       </div>
       <div v-if="activeTab === 'restaurants'">
-        <div id="map-wrap" style="height: 50vh">
+        <div id="map-wrap" style="height: 75vh">
           <client-only>
-            <l-map :zoom=5 :center="[48.856614, 2.3522219]">
+            <l-map :zoom=8 :center="center">
               <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
-              <l-marker :lat-lng="[55.9464418, 8.1277591]"></l-marker>
+              <l-marker v-for="r in restaurants" :key="r.id" :lat-lng="[r.latitude, r.longitude]">
+                <l-popup>
+                  <div>
+                    {{ r.name }} <br>
+                    {{ r.address }} <br>
+                    {{ r.phone }}
+                  </div>
+                </l-popup>
+              </l-marker>
             </l-map>
           </client-only>
         </div>
+        <a @click.prevent="addMarker">tt</a>
       </div>
       <div v-if="activeTab === 'onsitetakeaway'">
         <section class="infos">
@@ -181,8 +190,19 @@ export default {
   middleware: 'guest',
   data() {
     return {
-      activeTab: 'vision'
+      activeTab: 'vision',
+      restaurants: [],
+      center : [48.856614, 2.3522219],
     }
+  },
+  async mounted() {
+    await this.$axios.get('/api/restaurants/restaurants').then(response => {
+      this.restaurants = response.data.data
+    })
+
+    await this.$axios.get('/api/geo/json').then(response => {
+      this.center = [response.data.lat, response.data.lon]
+    })
   },
   methods: {
     tabs(tab) {

@@ -43,6 +43,8 @@ export default {
 
   proxy: {
     '/api/auth/': {target: process.env.AUTH_API_URL, pathRewrite: {'^/api/auth/': ''}},
+    '/api/restaurants/': {target: process.env.RESTAURANTS_API_URL, pathRewrite: {'^/api/restaurants/': ''}},
+    '/api/geo/': {target: 'http://ip-api.com/', pathRewrite: {'^/api/geo/': ''}},
   },
 
   auth: {
