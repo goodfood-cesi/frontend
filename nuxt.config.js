@@ -94,6 +94,9 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
+      name: 'GoodFood',
+      short_name: 'GoodFood',
+      desription: 'GoodFood - Plateforme de commande en ligne',
       lang: 'fr',
     },
   },
