@@ -21,7 +21,7 @@
                   {{ checkbox }}
                 </b-checkbox>
               </b-field>
-              <recaptcha />
+              <recaptcha/>
               <b-button type="is-primary" native-type="submit" expanded>Connexion</b-button>
             </form>
           </div>
@@ -33,7 +33,7 @@
 <script>
 export default {
   name: 'LoginPage',
-  data () {
+  data() {
     return {
       email: '',
       password: '',
@@ -41,11 +41,11 @@ export default {
     }
   },
   methods: {
-    clearEmail () {
+    clearEmail() {
       this.email = ''
     },
-    async submit () {
-      if(this.email === '' || this.password === '') {
+    async submit() {
+      if (this.email === '' || this.password === '') {
         this.$buefy.snackbar.open({
           message: 'Veuillez remplir tous les champs',
           type: 'is-danger',
@@ -55,8 +55,23 @@ export default {
         return
       }
       const token = await this.$recaptcha.getResponse()
-      console.log('ReCaptcha token:', token)
-
+      if (!token) {
+        this.$buefy.snackbar.open({
+          message: 'Veuillez valider le captcha',
+          type: 'is-danger',
+          position: 'is-bottom-right',
+          queue: false
+        })
+        return
+      }
+      await this.$auth.loginWith('laravelJWT', {
+        data: {
+          email: this.email,
+          password: this.password,
+          remember_me: this.checkbox,
+          recaptcha: token
+        }
+      })
       await this.$recaptcha.reset()
     }
   }
