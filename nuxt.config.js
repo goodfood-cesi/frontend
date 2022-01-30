@@ -78,10 +78,10 @@ export default {
       }
     },
     redirect: {
-      login: '/account/login',
-      logout: '/account/login',
-      callback: '/account/login',
-      home: '/account/'
+      login: '/login',
+      logout: '/login',
+      callback: '/login',
+      home: '/restaurants'
     }
   },
 
