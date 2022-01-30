@@ -177,8 +177,8 @@
 <script>
 export default {
   name: 'IndexPage',
-  middleware: 'guest',
   layout: 'home',
+  middleware: 'guest',
   data() {
     return {
       activeTab: 'vision'

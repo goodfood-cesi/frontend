@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    Restaurants page
+  </div>
 </template>
 <script>
 export default {
