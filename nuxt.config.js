@@ -35,7 +35,8 @@ export default {
     'nuxt-buefy',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    'nuxt-leaflet'
+    'nuxt-leaflet',
+    '@nuxtjs/recaptcha'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -66,4 +67,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  recaptcha: {
+    siteKey: process.env.RECAPTCHA_SITE_KEY,
+    hideBadge: false,
+    version: 2,
+    size: 'invisible',
+  },
 }

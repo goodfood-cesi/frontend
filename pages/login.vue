@@ -7,7 +7,7 @@
             <img src="~/assets/logo_dark.svg" alt="Logo GoodFood" width="256" class="image is-inline-block"/>
           </div>
           <div class="column is-6-tablet is-5-desktop is-4-widescreen">
-            <form action="" class="box">
+            <form class="box" @submit.prevent="submit">
               <div class="field">
                 <b-field label="Adresse e-mail">
                   <b-input v-model="email" placeholder="user@goodfood.eu" type="email" icon="email" icon-right="close-circle" icon-right-clickable @icon-right-click="clearEmail"></b-input>
@@ -21,7 +21,8 @@
                   {{ checkbox }}
                 </b-checkbox>
               </b-field>
-              <b-button type="is-primary" expanded>Connexion</b-button>
+              <recaptcha />
+              <b-button type="is-primary" native-type="submit" expanded>Connexion</b-button>
             </form>
           </div>
         </div>
@@ -42,6 +43,21 @@ export default {
   methods: {
     clearEmail () {
       this.email = ''
+    },
+    async submit () {
+      if(this.email === '' || this.password === '') {
+        this.$buefy.snackbar.open({
+          message: 'Veuillez remplir tous les champs',
+          type: 'is-danger',
+          position: 'is-bottom-right',
+          queue: false
+        })
+        return
+      }
+      const token = await this.$recaptcha.getResponse()
+      console.log('ReCaptcha token:', token)
+
+      await this.$recaptcha.reset()
     }
   }
 }
