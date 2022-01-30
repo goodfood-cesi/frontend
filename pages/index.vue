@@ -177,6 +177,7 @@
 <script>
 export default {
   name: 'IndexPage',
+  middleware: 'guest',
   layout: 'home',
   data() {
     return {

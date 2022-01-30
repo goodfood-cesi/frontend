@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'RegisterPage'
+  name: 'RegisterPage',
+  middleware: 'guest'
 }
 </script>
