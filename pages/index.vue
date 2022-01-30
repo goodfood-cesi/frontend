@@ -126,9 +126,7 @@
               <l-marker v-for="r in restaurants" :key="r.id" :lat-lng="[r.latitude, r.longitude]">
                 <l-popup>
                   <div>
-                    {{ r.name }} <br>
-                    {{ r.address }} <br>
-                    {{ r.phone }}
+                    {{ r.name }} <br> {{ r.address }} <br> {{ r.phone }}
                   </div>
                 </l-popup>
               </l-marker>
@@ -192,17 +190,25 @@ export default {
     return {
       activeTab: 'vision',
       restaurants: [],
-      center : [48.856614, 2.3522219],
+      center: [48.856614, 2.3522219],
     }
   },
   async mounted() {
-    await this.$axios.get('/api/restaurants/restaurants').then(response => {
-      this.restaurants = response.data.data
-    })
+    await this.$axios.get('/api/restaurants/restaurants')
+      .then(response => {
+        this.restaurants = response.data.data
+      })
+      .catch(() => {
+        this.$buefy.snackbar.open({message: 'Impossible de récupérer la liste des restaurants', type: 'is-danger'})
+      })
 
-    await this.$axios.get('/api/geo/json').then(response => {
-      this.center = [response.data.lat, response.data.lon]
-    })
+    await this.$axios.get('/api/geo/json')
+      .then(response => {
+        this.center = [response.data.lat, response.data.lon]
+      })
+      .catch(() => {
+        this.$buefy.snackbar.open({message: 'Impossible de récupérer votre localisation', type: 'is-danger'})
+      })
   },
   methods: {
     tabs(tab) {
