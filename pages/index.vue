@@ -64,7 +64,7 @@
                           <br>
                           <b-button class="mt-2" size="is-medium" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/restaurants">
                             Commander !
-                          </b-button >
+                          </b-button>
                         </div>
 
                       </div>
@@ -165,7 +165,7 @@
             </div>
             <b-button size="is-large" icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" to="/restaurants" expanded>
               Commandez dès maintenant !
-            </b-button >
+            </b-button>
           </div>
         </section>
       </div>

@@ -3,12 +3,12 @@ export default {
   head: {
     title: 'frontend',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: ''},
+      {name: 'format-detection', content: 'telephone=no'},
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -41,7 +41,7 @@ export default {
     '@nuxtjs/proxy'
   ],
 
-  proxy : {
+  proxy: {
     '/api/auth/': {target: process.env.AUTH_API_URL, pathRewrite: {'^/api/auth/': ''}},
   },
 
@@ -109,7 +109,7 @@ export default {
 
   loadingIndicator: {
     name: 'circle',
-    color: '#3B8070',
+    color: '#3b8070',
     background: 'white'
   },
 
