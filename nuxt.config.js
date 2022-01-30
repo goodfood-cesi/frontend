@@ -36,8 +36,54 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'nuxt-leaflet',
-    '@nuxtjs/recaptcha'
+    '@nuxtjs/recaptcha',
+    '@nuxtjs/auth-next',
+    '@nuxtjs/proxy'
   ],
+
+  proxy : {
+    '/api/auth/': {target: process.env.AUTH_API_URL, pathRewrite: {'^/api/auth/': ''}},
+  },
+
+  auth: {
+    strategies: {
+      laravelJWT: {
+        provider: 'laravel/jwt',
+        url: `/api/auth`,
+        token: {
+          property: 'token',
+          maxAge: 60 * 5
+        },
+        refreshToken: {
+          maxAge: 60 * 7200
+        },
+        user: {
+          property: 'data',
+          autoFetch: true
+        },
+        endpoints: {
+          login: {
+            url: '/login'
+          },
+          refresh: {
+            url: '/refresh'
+          },
+          logout: {
+            url: '/logout'
+          },
+          user: {
+            url: '/user',
+          }
+        }
+      }
+    },
+    redirect: {
+      login: '/account/login',
+      logout: '/account/login',
+      callback: '/account/login',
+      home: '/account/'
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -48,7 +94,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en',
+      lang: 'fr',
     },
   },
 
