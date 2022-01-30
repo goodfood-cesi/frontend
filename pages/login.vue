@@ -33,6 +33,7 @@
 <script>
 export default {
   name: 'LoginPage',
+  middleware: 'guest',
   data() {
     return {
       email: '',
