@@ -116,17 +116,11 @@ export default {
         recaptcha: token
       })
         .then(() => {
-          this.$auth.loginWith('laravelJWT', {
-            data: {
-              email: this.form.email,
-              password: this.form.password
-            }
-          }).catch(error => {
-            this.$buefy.snackbar.open({
-              message: error,
-              type: 'is-danger'
-            })
+          this.$buefy.snackbar.open({
+            message: 'Votre compte a bien été créé',
+            type: 'is-success'
           })
+          this.$router.push('/login')
         })
         .catch(error => {
           this.$buefy.snackbar.open({
