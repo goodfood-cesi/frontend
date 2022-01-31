@@ -72,6 +72,13 @@ export default {
           remember_me: this.checkbox,
           recaptcha: token
         }
+      }).catch(() => {
+        this.$buefy.snackbar.open({
+          message: 'Adresse e-mail ou mot de passe incorrect',
+          type: 'is-danger',
+          position: 'is-bottom-right',
+          queue: false
+        })
       })
       await this.$recaptcha.reset()
     }
