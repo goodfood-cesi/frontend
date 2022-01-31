@@ -36,7 +36,7 @@
                 <b-input v-model="form.password_confirmation" minLength="6" placeholder="*******" type="password" password-reveal required></b-input>
               </b-field>
               <recaptcha/>
-              <b-button type="is-primary" native-type="submit" expanded required>Connexion</b-button>
+              <b-button type="is-primary" native-type="submit" expanded required>Inscription</b-button>
             </form>
           </div>
         </div>
@@ -116,10 +116,23 @@ export default {
         recaptcha: token
       })
         .then(() => {
-          this.$router.push('/login')
+          this.$auth.loginWith('laravelJWT', {
+            data: {
+              email: this.form.email,
+              password: this.form.password
+            }
+          }).catch(error => {
+            this.$buefy.snackbar.open({
+              message: error,
+              type: 'is-danger'
+            })
+          })
         })
         .catch(error => {
-          this.$buefy.snackbar.open({message: error.response.data.message, type: 'is-danger'})
+          this.$buefy.snackbar.open({
+            message: error,
+            type: 'is-danger'
+          })
         })
       await this.$recaptcha.reset()
     }
