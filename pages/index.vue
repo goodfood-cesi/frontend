@@ -136,7 +136,6 @@
             </l-map>
           </client-only>
         </div>
-        <a @click.prevent="addMarker">tt</a>
       </div>
       <div v-if="activeTab === 'onsitetakeaway'">
         <section class="infos">
