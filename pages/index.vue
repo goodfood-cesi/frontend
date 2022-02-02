@@ -127,6 +127,9 @@
                 <l-popup>
                   <div>
                     {{ r.name }} <br> {{ r.address }} <br> {{ r.phone }}
+                    <b-button icon-right="arrow-right-thin-circle-outline" tag="router-link" type="is-primary" :to="`/restaurants/` + r.id" expanded>
+                      Commandez dès maintenant !
+                    </b-button>
                   </div>
                 </l-popup>
               </l-marker>
