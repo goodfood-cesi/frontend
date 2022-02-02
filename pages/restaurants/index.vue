@@ -13,7 +13,7 @@
               <input class="input" type="text" placeholder="Rechercher un restaurant">
             </p>
             <p class="control">
-              <b-button class="button" icon-left="magnify">
+              <b-button icon-left="magnify">
                 Rechercher
               </b-button>
             </p>
@@ -75,20 +75,19 @@
           <section>
             <div class="card">
               <div class="card-header">
-                <p class="card-header-title">
-                  <template>{{ r.name }}</template>
+                <p class="card-header-title is-justify-content-space-between">
+                  {{ r.name }}
+                  <a href="#" @click.prevent="changeMode('map')"><b-icon icon="map-search"/></a>
                 </p>
               </div>
               <div class="card-image">
                 <figure class="image is-3by1">
-                  <img src="https://bulma.io/images/placeholders/720x240.png" alt="Placeholder image">
+                  <img :src="r.image" alt="Placeholder image">
                 </figure>
               </div>
               <div class="card-content">
                 <div class="content">
-                  <template>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>#buefy</a>.
-                  </template>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>#buefy</a>.
                 </div>
               </div>
               <footer class="card-footer">
