@@ -36,7 +36,38 @@
       </div>
     </nav>
     <section v-if="mode === 'list'">
-      List mode
+      <section>
+        <b-table
+          :data="restaurants"
+          :paginated="true"
+          :current-page.sync="currentPage"
+          :pagination-simple="true"
+          :per-page="15"
+          sort-icon="chevron-up"
+          default-sort="id"
+          aria-next-label="Page suivante"
+          aria-previous-label="Previous page"
+          aria-page-label="Page"
+          aria-current-label="Current page">
+
+          <b-table-column v-slot="props" field="id" label="ID" width="40" sortable numeric>
+            {{ props.row.id }}
+          </b-table-column>
+
+          <b-table-column v-slot="props" field="name" label="Nom" sortable>
+            {{ props.row.name }}
+          </b-table-column>
+
+          <b-table-column v-slot="props" field="address" label="Adresse" sortable>
+            {{ props.row.address }}
+          </b-table-column>
+
+          <b-table-column v-slot="props" label="Commander">
+            <b-button tag="nuxt-link" :to="`/restaurants/` + props.row.id" icon-right="arrow-right-thin-circle-outline" type="is-primary is-light" native-type="submit" expanded>Commander</b-button>
+          </b-table-column>
+
+        </b-table>
+      </section>
     </section>
     <section v-if="mode === 'grid'">
       <div class="columns is-multiline">
@@ -81,7 +112,8 @@ export default {
   data() {
     return {
       restaurants: [],
-      mode: 'grid'
+      mode: 'grid',
+      currentPage: 1
     }
   },
   async mounted() {
