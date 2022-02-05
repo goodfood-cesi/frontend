@@ -3,18 +3,16 @@ export default {
   head: {
     title: 'frontend',
     meta: [
-      {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: ''},
-      {name: 'format-detection', content: 'telephone=no'},
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '~/assets/css/app'
-  ],
+  css: ['~/assets/css/app'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -38,13 +36,22 @@ export default {
     'nuxt-leaflet',
     '@nuxtjs/recaptcha',
     '@nuxtjs/auth-next',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
   ],
 
   proxy: {
-    '/api/auth/': {target: process.env.AUTH_API_URL, pathRewrite: {'^/api/auth/': ''}},
-    '/api/restaurants/': {target: process.env.RESTAURANTS_API_URL, pathRewrite: {'^/api/restaurants/': ''}},
-    '/api/geo/': {target: 'http://ip-api.com/', pathRewrite: {'^/api/geo/': ''}},
+    '/api/auth/': {
+      target: process.env.AUTH_API_URL,
+      pathRewrite: { '^/api/auth/': '' },
+    },
+    '/api/restaurants/': {
+      target: process.env.RESTAURANTS_API_URL,
+      pathRewrite: { '^/api/restaurants/': '' },
+    },
+    '/api/geo/': {
+      target: 'http://ip-api.com/',
+      pathRewrite: { '^/api/geo/': '' },
+    },
   },
 
   auth: {
@@ -54,42 +61,42 @@ export default {
         url: `/api/auth`,
         token: {
           property: 'token',
-          maxAge: 60 * 5
+          maxAge: 60 * 5,
         },
         refreshToken: {
-          maxAge: 60 * 7200
+          maxAge: 60 * 7200,
         },
         user: {
           property: 'data',
-          autoFetch: true
+          autoFetch: true,
         },
         endpoints: {
           login: {
-            url: '/login'
+            url: '/login',
           },
           refresh: {
-            url: '/refresh'
+            url: '/refresh',
           },
           logout: {
-            url: '/logout'
+            url: '/logout',
           },
           user: {
             url: '/user',
-          }
-        }
-      }
+          },
+        },
+      },
     },
     redirect: {
       login: '/login',
       logout: '/login',
       callback: '/login',
-      home: '/restaurants'
-    }
+      home: '/restaurants',
+    },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    proxy: true
+    proxy: true,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -112,7 +119,7 @@ export default {
   loadingIndicator: {
     name: 'circle',
     color: '#3b8070',
-    background: 'white'
+    background: 'white',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
