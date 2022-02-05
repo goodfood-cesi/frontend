@@ -1,10 +1,10 @@
 <template>
   <div>
-    <AppNavbar/>
+    <AppNavbar />
     <section>
-      <Nuxt/>
+      <Nuxt />
     </section>
-    <AppFooter/>
+    <AppFooter />
   </div>
 </template>
 

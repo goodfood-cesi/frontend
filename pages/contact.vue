@@ -5,21 +5,37 @@
         <div class="columns is-8 is-variable">
           <div class="column is-two-thirds has-text-left">
             <h1 class="title is-1">Contactez-nous</h1>
-            <p class="is-size-4">Chez GoodFood, la satisfaction clientèle est notre fer de lance. Nous mettons tout en oeuvre pour vous satisfaire, c'est pour cela que nous mettons à disposition ce formulaire.</p>
+            <p class="is-size-4">
+              Chez GoodFood, la satisfaction clientèle est notre fer de lance.
+              Nous mettons tout en oeuvre pour vous satisfaire, c'est pour cela
+              que nous mettons à disposition ce formulaire.
+            </p>
 
             <div class="field is-grouped mt-6">
               <p class="control">
-                <a href="https://facebook.com" target="_blank" class="button is-light is-large">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  class="button is-light is-large"
+                >
                   <b-icon icon="facebook"></b-icon>
                 </a>
               </p>
               <p class="control">
-                <a href="https://instagram.com" target="_blank" class="button is-light is-large">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  class="button is-light is-large"
+                >
                   <b-icon icon="instagram"></b-icon>
                 </a>
               </p>
               <p class="control">
-                <a href="https://twitter.com" target="_blank" class="button is-light is-large">
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  class="button is-light is-large"
+                >
                   <b-icon icon="twitter"></b-icon>
                 </a>
               </p>
@@ -29,13 +45,13 @@
             <div class="field">
               <label class="label">Nom</label>
               <div class="control">
-                <input class="input is-medium" type="text">
+                <input class="input is-medium" type="text" />
               </div>
             </div>
             <div class="field">
               <label class="label">Email</label>
               <div class="control">
-                <input class="input is-medium" type="text">
+                <input class="input is-medium" type="text" />
               </div>
             </div>
             <div class="field">
@@ -45,7 +61,12 @@
               </div>
             </div>
             <div class="control">
-              <button type="submit" class="button is-link is-fullwidth has-text-weight-medium is-medium">Envoyer le message</button>
+              <button
+                type="submit"
+                class="button is-link is-fullwidth has-text-weight-medium is-medium"
+              >
+                Envoyer le message
+              </button>
             </div>
           </div>
         </div>
@@ -55,6 +76,6 @@
 </template>
 <script>
 export default {
-  name: "ContactPage",
+  name: 'ContactPage',
 }
 </script>
