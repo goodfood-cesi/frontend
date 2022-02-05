@@ -132,22 +132,23 @@
               </div>
               <div class="card-content">
                 <div class="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris. <a>#buefy</a>.
+                  {{ r.address }}
                 </div>
               </div>
               <footer class="card-footer">
-                <a class="card-footer-item">
+                <div class='card-footer-item'>
+                  <b-icon icon="phone" />
+                  {{ r.phone }}
+                </div>
+                <div class='card-footer-item'>
                   <b-button
                     tag="nuxt-link"
                     :to="`/restaurants/` + r.id"
                     icon-right="arrow-right-thin-circle-outline"
                     type="is-primary is-light"
-                    native-type="submit"
                     expanded
-                    >Commander</b-button
-                  >
-                </a>
+                  >Commander</b-button>
+                </div>
               </footer>
             </div>
           </section>
