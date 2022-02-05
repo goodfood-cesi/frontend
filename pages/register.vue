@@ -12,14 +12,14 @@
                 <div class="column">
                   <div class="field">
                     <b-field label="Prénom">
-                      <b-input v-model="form.firstname" minLength="2" placeholder="John" type="text" icon="account" required></b-input>
+                      <b-input v-model="form.firstname" minlength="2" placeholder="John" type="text" icon="account" required></b-input>
                     </b-field>
                   </div>
                 </div>
                 <div class="column">
                   <div class="field">
                     <b-field label="Nom">
-                      <b-input v-model="form.lastname" minLength="2" placeholder="Doe" type="text" icon="account" required></b-input>
+                      <b-input v-model="form.lastname" minlength="2" placeholder="Doe" type="text" icon="account" required></b-input>
                     </b-field>
                   </div>
                 </div>
@@ -30,10 +30,10 @@
                 </b-field>
               </div>
               <b-field label="Mot de passe">
-                <b-input v-model="form.password" minLength="6" placeholder="*******" type="password" password-reveal required></b-input>
+                <b-input v-model="form.password" minlength="6" placeholder="*******" type="password" password-reveal required></b-input>
               </b-field>
               <b-field label="Confirmation du mot de passe">
-                <b-input v-model="form.password_confirmation" minLength="6" placeholder="*******" type="password" password-reveal required></b-input>
+                <b-input v-model="form.password_confirmation" minlength="6" placeholder="*******" type="password" password-reveal required></b-input>
               </b-field>
               <recaptcha/>
               <b-button type="is-primary" native-type="submit" expanded required>Inscription</b-button>
