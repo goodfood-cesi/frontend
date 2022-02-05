@@ -1,7 +1,7 @@
 <template>
   <div id="map-wrap" style="height: 75vh">
     <client-only>
-      <l-map :zoom=zoom :center="center">
+      <l-map ref="map" :zoom=zoom :center="center">
         <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
         <l-marker v-for="r in restaurants" :key="r.id" :lat-lng="[r.latitude, r.longitude]">
           <l-popup>

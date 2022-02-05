@@ -37,22 +37,7 @@
     </nav>
     <section v-if="mode === 'list'">
       <section>
-        <b-table
-          :data="restaurants"
-          :paginated="true"
-          :current-page.sync="currentPage"
-          :pagination-simple="true"
-          :per-page="15"
-          sort-icon="chevron-up"
-          default-sort="id"
-          aria-next-label="Page suivante"
-          aria-previous-label="Previous page"
-          aria-page-label="Page"
-          aria-current-label="Current page">
-
-          <b-table-column v-slot="props" field="id" label="ID" width="40" sortable numeric>
-            {{ props.row.id }}
-          </b-table-column>
+        <b-table :data="restaurants" :paginated="true" :current-page.sync="currentPage" :pagination-simple="true" :per-page="15" sort-icon="chevron-up">
 
           <b-table-column v-slot="props" field="name" label="Nom" sortable>
             {{ props.row.name }}
@@ -62,8 +47,15 @@
             {{ props.row.address }}
           </b-table-column>
 
-          <b-table-column v-slot="props" label="Commander">
-            <b-button tag="nuxt-link" :to="`/restaurants/` + props.row.id" icon-right="arrow-right-thin-circle-outline" type="is-primary is-light" native-type="submit" expanded>Commander</b-button>
+          <b-table-column v-slot="props" field="phone" label="Téléphone" sortable>
+            {{ props.row.phone }}
+          </b-table-column>
+
+          <b-table-column v-slot="props" custom-key="actions">
+            <div class="buttons has-addons">
+              <b-button icon-right="map-search" type="is-info is-light" @click.prevent="locateOnMap([props.row.latitude, props.row.longitude])">Voir sur la carte</b-button>
+              <b-button tag="nuxt-link" :to="`/restaurants/` + props.row.id" icon-right="arrow-right-thin-circle-outline" type="is-primary is-light">Commander</b-button>
+            </div>
           </b-table-column>
 
         </b-table>
@@ -77,7 +69,7 @@
               <div class="card-header">
                 <p class="card-header-title is-justify-content-space-between">
                   {{ r.name }}
-                  <a href="#" @click.prevent="changeMode('map')"><b-icon icon="map-search"/></a>
+                  <a href="#" @click.prevent="locateOnMap([r.latitude, r.longitude])"><b-icon icon="map-search"/></a>
                 </p>
               </div>
               <div class="card-image">
@@ -101,7 +93,7 @@
       </div>
     </section>
     <section v-if="mode === 'map'">
-      <RestaurantsMap zoom="8" :center="center" :restaurants="restaurants"/>
+      <RestaurantsMap :zoom="zoom" :center="center" :restaurants="restaurants"/>
     </section>
   </section>
 </template>
@@ -112,7 +104,10 @@ export default {
     return {
       restaurants: [],
       mode: 'grid',
-      currentPage: 1
+      currentPage: 1,
+      map : null,
+      center: [48.866667,  2.333333],
+      zoom: 8
     }
   },
   async mounted() {
@@ -135,6 +130,11 @@ export default {
   methods: {
     changeMode(mode) {
       this.mode = mode
+    },
+    locateOnMap(coordinates) {
+      this.center = coordinates
+      this.zoom = 13
+      this.mode = 'map'
     }
   },
 }
