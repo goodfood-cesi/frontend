@@ -10,10 +10,10 @@
         <div class="level-item">
           <div class="field has-addons">
             <p class="control">
-              <input class="input" type="text" placeholder="Rechercher un restaurant">
+              <input v-model="query" class="input" type="text" placeholder="Rechercher un restaurant" @input.prevent="search()">
             </p>
             <p class="control">
-              <b-button icon-left="magnify">
+              <b-button icon-left="magnify" @click.prevent="search()">
                 Rechercher
               </b-button>
             </p>
@@ -107,12 +107,14 @@ export default {
       currentPage: 1,
       map : null,
       center: [48.866667,  2.333333],
-      zoom: 8
+      zoom: 8,
+      query: '',
     }
   },
   async mounted() {
     await this.$axios.get('/api/restaurants/restaurants')
       .then(response => {
+        this.fullRestaurants = response.data.data
         this.restaurants = response.data.data
       })
       .catch(() => {
@@ -135,7 +137,10 @@ export default {
       this.center = coordinates
       this.zoom = 13
       this.mode = 'map'
-    }
+    },
+    search() {
+      this.restaurants = this.fullRestaurants.filter(e => e.name.toLowerCase().includes(this.query.toLowerCase()))
+    },
   },
 }
 </script>
