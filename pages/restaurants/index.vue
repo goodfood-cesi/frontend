@@ -114,7 +114,7 @@
       <div class="columns is-multiline">
         <div v-for="r in restaurants" :key="r.id" class="column is-3">
           <section>
-            <div class="card">
+            <div class="card is-fullheight">
               <div class="card-header">
                 <p class="card-header-title is-justify-content-space-between">
                   {{ r.name }}
@@ -131,7 +131,7 @@
                 </figure>
               </div>
               <div class="card-content">
-                <div class="content">
+                <div class="content is-size-7">
                   {{ r.address }}
                 </div>
               </div>
