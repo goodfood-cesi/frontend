@@ -5,7 +5,7 @@
         <div class="columns is-multiline is-centered">
           <div class="column is-12 has-text-centered">
             <img
-              src="~/assets/logo_dark.svg"
+              src="~/assets/logo_dark_simple.svg"
               alt="Logo GoodFood"
               width="256"
               class="image is-inline-block"
