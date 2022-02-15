@@ -64,6 +64,7 @@
                       placeholder="user@goodfood.eu"
                       type="email"
                       icon="email"
+                      disabled
                     ></b-input>
                   </b-field>
                 </div>
@@ -76,7 +77,6 @@
                   <b-button type="is-light" @click.prevent='cancel'>Annuler</b-button>
                 </p>
               </div>
-
             </form>
           </div>
         </div>
@@ -97,11 +97,22 @@ export default {
   },
   methods: {
     submit() {
-      console.log(this.firstname, this.lastname, this.email)
-      this.$buefy.snackbar.open({
-        message: 'Vos modifications ont été enregistrées',
-        type: 'is-success',
+      this.$axios.$post('/api/auth/user', {
+        firstname: this.firstname,
+        lastname: this.lastname,
+      }).then(() => {
+        this.$auth.fetchUser()
+        this.$buefy.snackbar.open({
+          message: 'Vos modifications ont été enregistrées',
+          type: 'is-success',
+        })
+      }).catch(() => {
+        this.$buefy.snackbar.open({
+          message: 'Une erreur est survenue',
+          type: 'is-danger',
+        })
       })
+
     },
     cancel() {
       this.firstname = this.$auth.user.firstname
