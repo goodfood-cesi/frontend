@@ -30,7 +30,54 @@
         </div>
         <div class='column'>
           <div class='box'>
-            Modifier mon compte
+            <div class='columns is-centered'>
+              <figure class='image is-128x128'>
+                <img src="~/assets/user.png" alt="user" class="is-rounded" />
+              </figure>
+            </div>
+            <form @submit.prevent="submit">
+              <div class='columns is-multiline'>
+                <div class='column is-6'>
+                  <b-field label="Prénom">
+                    <b-input
+                      v-model="firstname"
+                      type="text"
+                      placeholder="Jean-Patrick"
+                      icon="account"
+                    ></b-input>
+                  </b-field>
+                </div>
+                <div class='column is-6'>
+                  <b-field label="Nom">
+                    <b-input
+                      v-model="lastname"
+                      type="text"
+                      placeholder="Kerckhove"
+                      icon="account"
+                    ></b-input>
+                  </b-field>
+                </div>
+                <div class='column'>
+                  <b-field label="Adresse e-mail">
+                    <b-input
+                      v-model="email"
+                      placeholder="user@goodfood.eu"
+                      type="email"
+                      icon="email"
+                    ></b-input>
+                  </b-field>
+                </div>
+              </div>
+              <div class="field is-grouped is-grouped-right">
+                <p class="control">
+                  <b-button type="is-primary" native-type="submit">Sauvegarder</b-button>
+                </p>
+                <p class="control">
+                  <b-button type="is-light" @click.prevent='cancel'>Annuler</b-button>
+                </p>
+              </div>
+
+            </form>
           </div>
         </div>
       </div>
@@ -41,5 +88,29 @@
 export default {
   name: 'AccountPage',
   middleware: 'auth',
+  data() {
+    return {
+      firstname: this.$auth.user.firstname,
+      lastname: this.$auth.user.lastname,
+      email: this.$auth.user.email,
+    }
+  },
+  methods: {
+    submit() {
+      console.log(this.firstname, this.lastname, this.email)
+      this.$buefy.snackbar.open({
+        message: 'Vos modifications ont été enregistrées',
+        type: 'is-success',
+      })
+    },
+    cancel() {
+      this.firstname = this.$auth.user.firstname
+      this.lastname = this.$auth.user.lastname
+      this.email = this.$auth.user.email
+      this.$buefy.snackbar.open({
+        message: 'Vos modifications ont été annulées',
+      })
+    }
+  }
 }
 </script>
