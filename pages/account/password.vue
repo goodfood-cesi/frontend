@@ -23,7 +23,7 @@
               </p>
               <ul class="menu-list">
                 <li><NuxtLink to='/account/password' class='is-active'>Modifier mon mot de passe</NuxtLink></li>
-                <li><a>Supprimer mon compte</a></li>
+                <li><NuxtLink to='/account/delete'>Supprimer mon compte</NuxtLink></li>
               </ul>
             </aside>
           </div>
