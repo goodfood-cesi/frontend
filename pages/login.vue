@@ -13,19 +13,17 @@
           </div>
           <div class="column is-6-tablet is-5-desktop is-4-widescreen">
             <form class="box" @submit.prevent="submit">
-              <div class="field">
-                <b-field label="Adresse e-mail">
-                  <b-input
-                    v-model="email"
-                    placeholder="user@goodfood.eu"
-                    type="email"
-                    icon="email"
-                    icon-right="close-circle"
-                    icon-right-clickable
-                    @icon-right-click="clearEmail"
-                  ></b-input>
-                </b-field>
-              </div>
+              <b-field label="Adresse e-mail">
+                <b-input
+                  v-model="email"
+                  placeholder="user@goodfood.eu"
+                  type="email"
+                  icon="email"
+                  icon-right="close-circle"
+                  icon-right-clickable
+                  @icon-right-click="clearEmail"
+                ></b-input>
+              </b-field>
               <b-field label="Mot de passe">
                 <b-input
                   v-model="password"
