@@ -1,6 +1,6 @@
 <template>
   <section class="container is-fluid mt-2 mb-2">
-    <div ref='restaurants' class='box'>
+    <div class='box'>
       <nav class="level">
         <div class="level-left">
           <div class="level-item">
@@ -185,18 +185,13 @@ export default {
     }
   },
   async mounted() {
-    const loadingComponent = this.$buefy.loading.open({
-      container: this.$refs.restaurants.$el
-    })
     await this.$axios
       .get('/api/restaurants/restaurants')
       .then((response) => {
         this.fullRestaurants = response.data.data
         this.restaurants = response.data.data
-        loadingComponent.close()
       })
       .catch(() => {
-        loadingComponent.close()
         this.$router.push('/')
         this.$buefy.snackbar.open({
           message: 'Impossible de récupérer la liste des restaurants',
