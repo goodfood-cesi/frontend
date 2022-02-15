@@ -30,6 +30,7 @@
         </div>
         <div class='column'>
           <div class='box'>
+            <h3 class='is-size-3'>Mon profil</h3>
             <div class='columns is-centered'>
               <figure class='image is-128x128'>
                 <img src="~/assets/user.png" alt="user" class="is-rounded" />
@@ -41,9 +42,11 @@
                   <b-field label="Prénom">
                     <b-input
                       v-model="firstname"
+                      minlength="2"
                       type="text"
                       placeholder="Jean-Patrick"
                       icon="account"
+                      required
                     ></b-input>
                   </b-field>
                 </div>
@@ -51,9 +54,11 @@
                   <b-field label="Nom">
                     <b-input
                       v-model="lastname"
+                      minlength="2"
                       type="text"
                       placeholder="Kerckhove"
                       icon="account"
+                      required
                     ></b-input>
                   </b-field>
                 </div>
