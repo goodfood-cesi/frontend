@@ -7,11 +7,7 @@
             <aside class="menu">
               <p class="menu-label">Compte</p>
               <ul class="menu-list">
-                <li>
-                  <NuxtLink to="/account" class="is-active"
-                    >Mon profil</NuxtLink
-                  >
-                </li>
+                <li><NuxtLink to="/account">Mon profil</NuxtLink></li>
               </ul>
               <p class="menu-label">Commandes</p>
               <ul class="menu-list">
@@ -21,7 +17,7 @@
               <p class="menu-label">Sécurité</p>
               <ul class="menu-list">
                 <li>
-                  <NuxtLink to="/account/password"
+                  <NuxtLink to="/account/password" class="is-active"
                     >Modifier mon mot de passe</NuxtLink
                   >
                 </li>
@@ -34,46 +30,30 @@
         </div>
         <div class="column">
           <div class="box">
-            <h3 class="is-size-3">Mon profil</h3>
-            <div class="columns is-centered">
-              <figure class="image is-128x128">
-                <img src="~/assets/user.png" alt="user" class="is-rounded" />
-              </figure>
-            </div>
+            <h3 class="is-size-3">Modifier mon mot de passe</h3>
             <form @submit.prevent="submit">
               <div class="columns is-multiline">
                 <div class="column is-6">
-                  <b-field label="Prénom">
+                  <b-field label="Nouveau mot de passe">
                     <b-input
-                      v-model="firstname"
-                      minlength="2"
-                      type="text"
-                      placeholder="Jean-Patrick"
-                      icon="account"
+                      v-model="password"
+                      minlength="6"
+                      placeholder="*******"
+                      type="password"
+                      password-reveal
                       required
                     ></b-input>
                   </b-field>
                 </div>
                 <div class="column is-6">
-                  <b-field label="Nom">
+                  <b-field label="Confirmation">
                     <b-input
-                      v-model="lastname"
-                      minlength="2"
-                      type="text"
-                      placeholder="Kerckhove"
-                      icon="account"
+                      v-model="password_confirmation"
+                      minlength="6"
+                      placeholder="*******"
+                      type="password"
+                      password-reveal
                       required
-                    ></b-input>
-                  </b-field>
-                </div>
-                <div class="column">
-                  <b-field label="Adresse e-mail">
-                    <b-input
-                      v-model="email"
-                      placeholder="user@goodfood.eu"
-                      type="email"
-                      icon="email"
-                      disabled
                     ></b-input>
                   </b-field>
                 </div>
@@ -99,40 +79,40 @@
 </template>
 <script>
 export default {
-  name: 'AccountPage',
+  name: 'PasswordPage',
   middleware: 'auth',
   data() {
     return {
-      firstname: this.$auth.user.firstname,
-      lastname: this.$auth.user.lastname,
-      email: this.$auth.user.email,
+      password: '',
+      password_confirmation: '',
     }
   },
   methods: {
     submit() {
       this.$axios
-        .$post('/api/auth/user', {
-          firstname: this.firstname,
-          lastname: this.lastname,
+        .$post('/api/auth/password', {
+          password: this.password,
+          password_confirmation: this.password_confirmation,
         })
         .then(() => {
-          this.$auth.fetchUser()
           this.$buefy.snackbar.open({
-            message: 'Vos modifications ont été enregistrées',
+            message:
+              'Votre mot de passe a été modifié avec succès. Vous avez été déconnecté.',
             type: 'is-success',
           })
+          this.$auth.logout()
         })
         .catch(() => {
           this.$buefy.snackbar.open({
-            message: 'Une erreur est survenue',
+            message:
+              'Une erreur est survenue lors de la modification de votre mot de passe.',
             type: 'is-danger',
           })
         })
     },
     cancel() {
-      this.firstname = this.$auth.user.firstname
-      this.lastname = this.$auth.user.lastname
-      this.email = this.$auth.user.email
+      this.password = ''
+      this.password_confirmation = ''
       this.$buefy.snackbar.open({
         message: 'Vos modifications ont été annulées',
       })

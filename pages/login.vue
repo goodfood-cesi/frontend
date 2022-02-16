@@ -5,7 +5,7 @@
         <div class="columns is-multiline is-centered">
           <div class="column is-12 has-text-centered">
             <img
-              src="~/assets/logo_dark.svg"
+              src="~/assets/logo_dark_simple.svg"
               alt="Logo GoodFood"
               width="256"
               class="image is-inline-block"
@@ -13,19 +13,17 @@
           </div>
           <div class="column is-6-tablet is-5-desktop is-4-widescreen">
             <form class="box" @submit.prevent="submit">
-              <div class="field">
-                <b-field label="Adresse e-mail">
-                  <b-input
-                    v-model="email"
-                    placeholder="user@goodfood.eu"
-                    type="email"
-                    icon="email"
-                    icon-right="close-circle"
-                    icon-right-clickable
-                    @icon-right-click="clearEmail"
-                  ></b-input>
-                </b-field>
-              </div>
+              <b-field label="Adresse e-mail">
+                <b-input
+                  v-model="email"
+                  placeholder="user@goodfood.eu"
+                  type="email"
+                  icon="email"
+                  icon-right="close-circle"
+                  icon-right-clickable
+                  @icon-right-click="clearEmail"
+                ></b-input>
+              </b-field>
               <b-field label="Mot de passe">
                 <b-input
                   v-model="password"

@@ -29,7 +29,7 @@
         <b-dropdown aria-role="list">
           <template #trigger="{ active }">
             <b-button
-              :label="$auth.user.firstname + ' ' + $auth.user.lastname"
+              :label="loggedInUser.firstname + ' ' + loggedInUser.lastname"
               type="is-primary"
               :icon-right="active ? 'menu-up' : 'menu-down'"
             />
