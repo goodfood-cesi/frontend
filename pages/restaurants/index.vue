@@ -1,6 +1,6 @@
 <template>
   <section class="container is-fluid mt-2 mb-2">
-    <div class='box'>
+    <div class="box">
       <nav class="level">
         <div class="level-left">
           <div class="level-item">
@@ -95,16 +95,16 @@
                   icon-right="map-search"
                   type="is-info is-light"
                   @click.prevent="
-                  locateOnMap([props.row.latitude, props.row.longitude])
-                "
-                >Voir sur la carte</b-button
+                    locateOnMap([props.row.latitude, props.row.longitude])
+                  "
+                  >Voir sur la carte</b-button
                 >
                 <b-button
                   tag="nuxt-link"
                   :to="`/restaurants/` + props.row.id"
                   icon-right="arrow-right-thin-circle-outline"
                   type="is-primary is-light"
-                >Commander</b-button
+                  >Commander</b-button
                 >
               </div>
             </b-table-column>
@@ -124,7 +124,7 @@
                     <a
                       href="#"
                       @click.prevent="locateOnMap([r.latitude, r.longitude])"
-                    ><b-icon icon="map-search" />
+                      ><b-icon icon="map-search" />
                     </a>
                   </p>
                 </div>
@@ -181,7 +181,7 @@ export default {
       map: null,
       center: [48.866667, 2.333333],
       zoom: 8,
-      query: ''
+      query: '',
     }
   },
   async mounted() {

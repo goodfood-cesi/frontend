@@ -1,21 +1,35 @@
 <template>
   <section>
-    <div class='container is-fluid mt-2 mb-2'>
-      <div class='columns'>
-        <div class='column is-2'>
-          <div class='box'>
+    <div class="container is-fluid mt-2 mb-2">
+      <div class="columns">
+        <div class="column is-2">
+          <div class="box">
             <aside class="menu">
               <p class="menu-label">
                 {{ restaurant.name }}
               </p>
               <ul class="menu-list">
-                <li><NuxtLink :to="`/restaurants/` + restaurant.id" class='is-active'>Le restaurant</NuxtLink></li>
+                <li>
+                  <NuxtLink
+                    :to="`/restaurants/` + restaurant.id"
+                    class="is-active"
+                    >Le restaurant</NuxtLink
+                  >
+                </li>
               </ul>
               <ul class="menu-list">
-                <li><NuxtLink :to="`/restaurants/` + restaurant.id + `/menus`">Menus</NuxtLink></li>
+                <li>
+                  <NuxtLink :to="`/restaurants/` + restaurant.id + `/menus`"
+                    >Menus</NuxtLink
+                  >
+                </li>
               </ul>
               <ul class="menu-list">
-                <li><NuxtLink :to="`/restaurants/` + restaurant.id + `/products`">Produits à l'unité</NuxtLink></li>
+                <li>
+                  <NuxtLink :to="`/restaurants/` + restaurant.id + `/products`"
+                    >Produits à l'unité</NuxtLink
+                  >
+                </li>
               </ul>
               <p class="menu-label">
                 <strong>Votre panier</strong>
@@ -23,33 +37,50 @@
             </aside>
           </div>
         </div>
-        <div class='column'>
-          <div class='box'>
-            <div class='is-flex is-justify-content-space-between is-align-content-center'>
+        <div class="column">
+          <div class="box">
+            <div
+              class="is-flex is-justify-content-space-between is-align-content-center"
+            >
               <div>
-                <h1 class='title'>{{ restaurant.name }}</h1>
+                <h1 class="title">{{ restaurant.name }}</h1>
               </div>
               <div class="buttons has-addons">
-                <b-button tag="a" :href="`tel:` + restaurant.phone" icon-right="phone" type="is-primary is-light">Appeler</b-button>
+                <b-button
+                  tag="a"
+                  :href="`tel:` + restaurant.phone"
+                  icon-right="phone"
+                  type="is-primary is-light"
+                  >Appeler</b-button
+                >
               </div>
             </div>
-            <hr>
-            <img :src='restaurant.image' alt='Image du restaurant' class='image mb-3'>
-            <div class='columns'>
-              <div class='column is-6'>
-                <h2 class='title'>Accès au restaurant</h2>
-                <h2 class='subtitle'>{{ restaurant.address }}</h2>
-                <RestaurantsMap :height=50 :zoom=11 :center=center :restaurants='restaurants' />
+            <hr />
+            <img
+              :src="restaurant.image"
+              alt="Image du restaurant"
+              class="image mb-3"
+            />
+            <div class="columns">
+              <div class="column is-6">
+                <h2 class="title">Accès au restaurant</h2>
+                <h2 class="subtitle">{{ restaurant.address }}</h2>
+                <RestaurantsMap
+                  :height="50"
+                  :zoom="11"
+                  :center="center"
+                  :restaurants="restaurants"
+                />
               </div>
-              <div class='column is-6'>
-                <h2 class='title'>Horaires</h2>
-                <hr>
+              <div class="column is-6">
+                <h2 class="title">Horaires</h2>
+                <hr />
                 <table class="table is-bordered is-hoverable is-fullwidth">
                   <thead>
-                  <tr>
-                    <th>Jour</th>
-                    <th>Horaire d'ouverture</th>
-                  </tr>
+                    <tr>
+                      <th>Jour</th>
+                      <th>Horaire d'ouverture</th>
+                    </tr>
                   </thead>
                   <tbody>
                     <tr>
@@ -102,14 +133,14 @@ export default {
   },
   computed: {
     center() {
-      if(this.restaurant.latitude && this.restaurant.longitude) {
+      if (this.restaurant.latitude && this.restaurant.longitude) {
         return [this.restaurant.latitude, this.restaurant.longitude]
       } else {
         return [48.866667, 2.333333]
       }
     },
     restaurants() {
-      if(this.restaurant.latitude && this.restaurant.longitude) {
+      if (this.restaurant.latitude && this.restaurant.longitude) {
         return [this.restaurant]
       } else {
         return []
@@ -131,7 +162,11 @@ export default {
       })
 
     await this.$axios
-      .get('/api/restaurants/restaurants/' + this.$route.params.restaurant + '/menus')
+      .get(
+        '/api/restaurants/restaurants/' +
+          this.$route.params.restaurant +
+          '/menus'
+      )
       .then((response) => {
         this.menus = response.data.data
       })
@@ -144,7 +179,11 @@ export default {
       })
 
     await this.$axios
-      .get('/api/restaurants/restaurants/' + this.$route.params.restaurant + '/products')
+      .get(
+        '/api/restaurants/restaurants/' +
+          this.$route.params.restaurant +
+          '/products'
+      )
       .then((response) => {
         this.products = response.data.data
       })
@@ -155,6 +194,6 @@ export default {
           type: 'is-danger',
         })
       })
-  }
+  },
 }
 </script>

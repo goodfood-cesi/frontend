@@ -1,5 +1,5 @@
 <template>
-  <div id="map-wrap" :style="`height: `+ height + `vh`">
+  <div id="map-wrap" :style="`height: ` + height + `vh`">
     <client-only>
       <l-map ref="map" :zoom="zoom" :center="center">
         <l-tile-layer
@@ -12,7 +12,7 @@
         >
           <l-popup>
             <div>
-              <img :src=r.image alt='Image du restaurant'>
+              <img :src="r.image" alt="Image du restaurant" />
               {{ r.name }} <br />
               {{ r.address }} <br />
               {{ r.phone }}
@@ -50,8 +50,8 @@ export default {
     },
     height: {
       type: Number,
-      default: 75
-    }
-  }
+      default: 75,
+    },
+  },
 }
 </script>
