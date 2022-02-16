@@ -12,6 +12,7 @@
         >
           <l-popup>
             <div>
+              <img :src=r.image alt='Image du restaurant'>
               {{ r.name }} <br />
               {{ r.address }} <br />
               {{ r.phone }}
