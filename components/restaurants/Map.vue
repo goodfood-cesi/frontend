@@ -1,5 +1,5 @@
 <template>
-  <div id="map-wrap" style="height: 75vh">
+  <div id="map-wrap" :style="`height: `+ height + `vh`">
     <client-only>
       <l-map ref="map" :zoom="zoom" :center="center">
         <l-tile-layer
@@ -47,6 +47,10 @@ export default {
       type: Number,
       default: 8,
     },
-  },
+    height: {
+      type: Number,
+      default: 75
+    }
+  }
 }
 </script>
