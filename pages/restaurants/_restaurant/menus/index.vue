@@ -44,18 +44,29 @@
           <div class="box">
             <h2 class="title">Menus</h2>
             <div class="columns is-multiline">
-              <a v-for="menu in menus" :key="menu.id" href='#' class="column is-6">
-                <div class="box is-flex is-justify-content-space-between is-align-items-start">
-                  <div class='is-flex'>
+              <a
+                v-for="menu in menus"
+                :key="menu.id"
+                href="#"
+                class="column is-6"
+              >
+                <div
+                  class="box is-flex is-justify-content-space-between is-align-items-start"
+                >
+                  <div class="is-flex">
                     <img :src="menu.image" alt="" class="image is-96x96" />
-                    <div class='ml-2'>
+                    <div class="ml-2">
                       <h2 class="title is-4 mb-1">{{ menu.name }}</h2>
-                      <p v-for='product in menu.products' :key='product.id'>
+                      <p v-for="product in menu.products" :key="product.id">
                         1x {{ product.name }}
                       </p>
                     </div>
                   </div>
-                  <b-button type="is-primary" icon-right="cart-plus" click.prevent.stop='' />
+                  <b-button
+                    type="is-primary"
+                    icon-right="cart-plus"
+                    click.prevent.stop=""
+                  />
                 </div>
               </a>
             </div>

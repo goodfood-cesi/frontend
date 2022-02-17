@@ -11,7 +11,7 @@
               <ul class="menu-list">
                 <li>
                   <NuxtLink :to="`/restaurants/` + $route.params.restaurant"
-                  >Le restaurant</NuxtLink
+                    >Le restaurant</NuxtLink
                   >
                 </li>
               </ul>
@@ -19,7 +19,7 @@
                 <li>
                   <NuxtLink
                     :to="`/restaurants/` + $route.params.restaurant + `/menus`"
-                  >Menus</NuxtLink
+                    >Menus</NuxtLink
                   >
                 </li>
               </ul>
@@ -30,7 +30,7 @@
                       `/restaurants/` + $route.params.restaurant + `/products`
                     "
                     class="is-active"
-                  >Produits à l'unité</NuxtLink
+                    >Produits à l'unité</NuxtLink
                   >
                 </li>
               </ul>
@@ -44,13 +44,24 @@
           <div class="box">
             <h2 class="title">Produits à l'unité</h2>
             <div class="columns is-multiline">
-              <a v-for="product in products" :key="product.id" href='#' class="column is-6">
-                <div class="box is-flex is-justify-content-space-between is-align-items-start">
-                  <div class='is-flex'>
+              <a
+                v-for="product in products"
+                :key="product.id"
+                href="#"
+                class="column is-6"
+              >
+                <div
+                  class="box is-flex is-justify-content-space-between is-align-items-start"
+                >
+                  <div class="is-flex">
                     <img :src="product.image" alt="" class="image is-96x96" />
                     <h2 class="title is-4 ml-2">{{ product.name }}</h2>
                   </div>
-                  <b-button type="is-primary" icon-right="cart-plus" click.prevent.stop='' />
+                  <b-button
+                    type="is-primary"
+                    icon-right="cart-plus"
+                    click.prevent.stop=""
+                  />
                 </div>
               </a>
             </div>
@@ -84,7 +95,11 @@ export default {
       })
 
     await this.$axios
-      .get('/api/restaurants/restaurants/' + this.$route.params.restaurant + '/products')
+      .get(
+        '/api/restaurants/restaurants/' +
+          this.$route.params.restaurant +
+          '/products'
+      )
       .then((response) => {
         this.products = response.data.data
       })
