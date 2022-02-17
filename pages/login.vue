@@ -43,8 +43,8 @@
               </b-field>
               <recaptcha />
               <b-button type="is-primary" native-type="submit" expanded
-                >Connexion</b-button
-              >
+                >Connexion
+              </b-button>
             </form>
           </div>
         </div>

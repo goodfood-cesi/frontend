@@ -11,8 +11,8 @@
               <ul class="menu-list">
                 <li>
                   <NuxtLink :to="`/restaurants/` + $route.params.restaurant"
-                    >Le restaurant</NuxtLink
-                  >
+                    >Le restaurant
+                  </NuxtLink>
                 </li>
               </ul>
               <ul class="menu-list">
@@ -20,8 +20,8 @@
                   <NuxtLink
                     :to="`/restaurants/` + $route.params.restaurant + `/menus`"
                     class="is-active"
-                    >Menus</NuxtLink
-                  >
+                    >Menus
+                  </NuxtLink>
                 </li>
               </ul>
               <ul class="menu-list">
@@ -30,8 +30,8 @@
                     :to="
                       `/restaurants/` + $route.params.restaurant + `/products`
                     "
-                    >Produits à l'unité</NuxtLink
-                  >
+                    >Produits à l'unité
+                  </NuxtLink>
                 </li>
               </ul>
               <p class="menu-label">

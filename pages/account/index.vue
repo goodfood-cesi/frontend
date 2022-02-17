@@ -9,21 +9,23 @@
               <ul class="menu-list">
                 <li>
                   <NuxtLink to="/account" class="is-active"
-                    >Mon profil</NuxtLink
-                  >
+                    >Mon profil
+                  </NuxtLink>
                 </li>
               </ul>
               <p class="menu-label">Commandes</p>
               <ul class="menu-list">
-                <li><NuxtLink to="/orders">Mes commandes</NuxtLink></li>
+                <li>
+                  <NuxtLink to="/orders">Mes commandes</NuxtLink>
+                </li>
                 <li><a>Paiements</a></li>
               </ul>
               <p class="menu-label">Sécurité</p>
               <ul class="menu-list">
                 <li>
                   <NuxtLink to="/account/password"
-                    >Modifier mon mot de passe</NuxtLink
-                  >
+                    >Modifier mon mot de passe
+                  </NuxtLink>
                 </li>
                 <li>
                   <NuxtLink to="/account/delete">Supprimer mon compte</NuxtLink>
@@ -81,13 +83,13 @@
               <div class="field is-grouped is-grouped-right">
                 <p class="control">
                   <b-button type="is-primary" native-type="submit"
-                    >Sauvegarder</b-button
-                  >
+                    >Sauvegarder
+                  </b-button>
                 </p>
                 <p class="control">
                   <b-button type="is-light" @click.prevent="cancel"
-                    >Annuler</b-button
-                  >
+                    >Annuler
+                  </b-button>
                 </p>
               </div>
             </form>

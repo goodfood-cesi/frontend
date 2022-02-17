@@ -13,22 +13,22 @@
                   <NuxtLink
                     :to="`/restaurants/` + restaurant.id"
                     class="is-active"
-                    >Le restaurant</NuxtLink
-                  >
+                    >Le restaurant
+                  </NuxtLink>
                 </li>
               </ul>
               <ul class="menu-list">
                 <li>
                   <NuxtLink :to="`/restaurants/` + restaurant.id + `/menus`"
-                    >Menus</NuxtLink
-                  >
+                    >Menus
+                  </NuxtLink>
                 </li>
               </ul>
               <ul class="menu-list">
                 <li>
                   <NuxtLink :to="`/restaurants/` + restaurant.id + `/products`"
-                    >Produits à l'unité</NuxtLink
-                  >
+                    >Produits à l'unité
+                  </NuxtLink>
                 </li>
               </ul>
               <p class="menu-label">
@@ -51,8 +51,8 @@
                   :href="`tel:` + restaurant.phone"
                   icon-right="phone"
                   type="is-primary is-light"
-                  >Appeler</b-button
-                >
+                  >Appeler
+                </b-button>
               </div>
             </div>
             <hr />

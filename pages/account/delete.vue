@@ -7,24 +7,28 @@
             <aside class="menu">
               <p class="menu-label">Compte</p>
               <ul class="menu-list">
-                <li><NuxtLink to="/account">Mon profil</NuxtLink></li>
+                <li>
+                  <NuxtLink to="/account">Mon profil</NuxtLink>
+                </li>
               </ul>
               <p class="menu-label">Commandes</p>
               <ul class="menu-list">
-                <li><NuxtLink to="/orders">Mes commandes</NuxtLink></li>
+                <li>
+                  <NuxtLink to="/orders">Mes commandes</NuxtLink>
+                </li>
                 <li><a>Paiements</a></li>
               </ul>
               <p class="menu-label">Sécurité</p>
               <ul class="menu-list">
                 <li>
                   <NuxtLink to="/account/password"
-                    >Modifier mon mot de passe</NuxtLink
-                  >
+                    >Modifier mon mot de passe
+                  </NuxtLink>
                 </li>
                 <li>
                   <NuxtLink to="/account/delete" class="is-active"
-                    >Supprimer mon compte</NuxtLink
-                  >
+                    >Supprimer mon compte
+                  </NuxtLink>
                 </li>
               </ul>
             </aside>
@@ -55,15 +59,15 @@
               <div class="field is-grouped is-grouped-right">
                 <p class="control">
                   <b-button type="is-danger" native-type="submit"
-                    >Supprimer mon compte</b-button
-                  >
+                    >Supprimer mon compte
+                  </b-button>
                 </p>
                 <p class="control">
                   <b-button
                     type="is-light"
                     @click.prevent="$router.push('/account')"
-                    >Annuler</b-button
-                  >
+                    >Annuler
+                  </b-button>
                 </p>
               </div>
             </form>

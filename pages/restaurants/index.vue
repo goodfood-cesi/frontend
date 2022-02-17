@@ -97,15 +97,15 @@
                   @click.prevent="
                     locateOnMap([props.row.latitude, props.row.longitude])
                   "
-                  >Voir sur la carte</b-button
-                >
+                  >Voir sur la carte
+                </b-button>
                 <b-button
                   tag="nuxt-link"
                   :to="`/restaurants/` + props.row.id"
                   icon-right="arrow-right-thin-circle-outline"
                   type="is-primary is-light"
-                  >Commander</b-button
-                >
+                  >Commander
+                </b-button>
               </div>
             </b-table-column>
           </b-table>
