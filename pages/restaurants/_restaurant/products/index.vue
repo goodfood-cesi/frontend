@@ -44,7 +44,11 @@
           <div class="box">
             <h2 class="title">Produits à l'unité</h2>
             <div class="columns is-multiline">
-              <div v-for="product in products" :key="product.id" class="column is-6">
+              <div
+                v-for="product in products"
+                :key="product.id"
+                class="column is-6"
+              >
                 <RestaurantsItemCard :item="product" />
               </div>
             </div>

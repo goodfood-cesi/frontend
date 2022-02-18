@@ -36,19 +36,32 @@
             <div class="field">
               <label class="label">Nom</label>
               <div class="control">
-                <input v-model='name' class="input is-medium" type="text" :disabled="disabled === 1"/>
+                <input
+                  v-model="name"
+                  class="input is-medium"
+                  type="text"
+                  :disabled="disabled === 1"
+                />
               </div>
             </div>
             <div class="field">
               <label class="label">Email</label>
               <div class="control">
-                <input v-model='email' class="input is-medium" type="text" :disabled="disabled === 1"/>
+                <input
+                  v-model="email"
+                  class="input is-medium"
+                  type="text"
+                  :disabled="disabled === 1"
+                />
               </div>
             </div>
             <div class="field">
               <label class="label">Message</label>
               <div class="control">
-                <textarea v-model='message' class="textarea is-large"></textarea>
+                <textarea
+                  v-model="message"
+                  class="textarea is-large"
+                ></textarea>
               </div>
             </div>
             <div class="control">
@@ -66,7 +79,6 @@
   </section>
 </template>
 <script>
-
 export default {
   name: 'ContactPage',
   data() {
@@ -74,15 +86,15 @@ export default {
       name: '',
       email: '',
       message: '',
-      disabled: 0
+      disabled: 0,
     }
   },
   mounted() {
-    if(this.$auth.loggedIn) {
+    if (this.$auth.loggedIn) {
       this.name = this.$auth.user.firstname + ' ' + this.$auth.user.lastname
       this.email = this.$auth.user.email
       this.disabled = 1
     }
-  }
+  },
 }
 </script>

@@ -1,14 +1,14 @@
 <template>
   <div class="card is-fullheight">
     <div class="card-header">
-      <p
-        class="card-header-title is-size-5 is-justify-content-space-between"
-      >
+      <p class="card-header-title is-size-5 is-justify-content-space-between">
         {{ restaurant.name }}
         <a
           href="#"
-          @click.prevent="$emit('map', [restaurant.latitude, restaurant.longitude])"
-        ><b-icon icon="map-search" />
+          @click.prevent="
+            $emit('map', [restaurant.latitude, restaurant.longitude])
+          "
+          ><b-icon icon="map-search" />
         </a>
       </p>
     </div>
@@ -47,8 +47,8 @@ export default {
   props: {
     restaurant: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

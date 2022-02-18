@@ -114,7 +114,7 @@
       <section v-if="mode === 'grid'">
         <div class="columns is-multiline">
           <div v-for="r in restaurants" :key="r.id" class="column is-3">
-            <RestaurantsCard :restaurant=r @map='locateOnMap'/>
+            <RestaurantsCard :restaurant="r" @map="locateOnMap" />
           </div>
         </div>
       </section>

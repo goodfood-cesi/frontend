@@ -1,6 +1,7 @@
 <template>
   <div
-    class="box is-flex is-justify-content-space-between is-align-items-start">
+    class="box is-flex is-justify-content-space-between is-align-items-start"
+  >
     <div class="is-flex">
       <img :src="item.image" alt="" class="image is-96x96" />
       <div class="ml-2">
@@ -10,11 +11,7 @@
         </p>
       </div>
     </div>
-    <b-button
-      type="is-primary"
-      icon-right="cart-plus"
-      click.prevent.stop=""
-    />
+    <b-button type="is-primary" icon-right="cart-plus" click.prevent.stop="" />
   </div>
 </template>
 
@@ -23,8 +20,8 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
