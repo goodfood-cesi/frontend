@@ -172,7 +172,14 @@ export default {
   },
   methods: {
     changeMode(mode) {
+      if(this.mode === mode) {
+        return
+      }
       this.mode = mode
+      this.$buefy.snackbar.open({
+        message: 'Vous avez changé de mode d\'affichage.',
+        type: 'is-info',
+      })
     },
     locateOnMap(coordinates) {
       this.center = coordinates
