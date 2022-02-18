@@ -5,7 +5,7 @@
         <div class="level-left">
           <div class="level-item">
             <p class="subtitle is-5">
-              <strong>{{ restaurants.length }}</strong> restaurants
+              <strong>{{ filteredRestaurants.length }}</strong> restaurants
             </p>
           </div>
           <div class="level-item">
@@ -16,11 +16,10 @@
                   class="input"
                   type="text"
                   placeholder="Rechercher un restaurant"
-                  @input.prevent="search()"
                 />
               </p>
               <p class="control">
-                <b-button icon-left="magnify" @click.prevent="search()">
+                <b-button icon-left="magnify">
                   Rechercher
                 </b-button>
               </p>
@@ -61,7 +60,7 @@
       <section v-if="mode === 'list'">
         <section>
           <b-table
-            :data="restaurants"
+            :data="filteredRestaurants"
             :paginated="true"
             :current-page.sync="currentPage"
             :pagination-simple="true"
@@ -114,7 +113,7 @@
       </section>
       <section v-if="mode === 'grid'">
         <div class="columns is-multiline">
-          <div v-for="r in restaurants" :key="r.id" class="column is-3">
+          <div v-for="r in filteredRestaurants" :key="r.id" class="column is-3">
             <RestaurantsCard :restaurant="r" @map="locateOnMap" />
           </div>
         </div>
@@ -123,7 +122,7 @@
         <RestaurantsMap
           :zoom="zoom"
           :center="center"
-          :restaurants="restaurants"
+          :restaurants="filteredRestaurants"
         />
       </section>
     </div>
@@ -142,6 +141,13 @@ export default {
       zoom: 8,
       query: '',
     }
+  },
+  computed: {
+    filteredRestaurants() {
+      return this.restaurants.filter(r => {
+        return r.name.toLowerCase().includes(this.query.toLowerCase())
+      })
+    },
   },
   async mounted() {
     await this.$axios
@@ -185,11 +191,6 @@ export default {
       this.center = coordinates
       this.zoom = 13
       this.mode = 'map'
-    },
-    search() {
-      this.restaurants = this.fullRestaurants.filter((e) =>
-        e.name.toLowerCase().includes(this.query.toLowerCase())
-      )
     },
   },
 }
