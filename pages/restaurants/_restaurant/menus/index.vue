@@ -44,10 +44,9 @@
           <div class="box">
             <h2 class="title">Menus</h2>
             <div class="columns is-multiline">
-              <a
+              <div
                 v-for="menu in menus"
                 :key="menu.id"
-                href="#"
                 class="column is-6"
               >
                 <div
@@ -68,7 +67,7 @@
                     click.prevent.stop=""
                   />
                 </div>
-              </a>
+              </div>
             </div>
           </div>
         </div>
