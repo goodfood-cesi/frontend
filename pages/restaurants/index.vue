@@ -57,6 +57,7 @@
           </p>
         </div>
       </nav>
+      <hr>
       <section v-if="mode === 'list'">
         <section>
           <b-table
