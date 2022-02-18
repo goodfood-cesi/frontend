@@ -114,49 +114,7 @@
       <section v-if="mode === 'grid'">
         <div class="columns is-multiline">
           <div v-for="r in restaurants" :key="r.id" class="column is-3">
-            <section>
-              <div class="card is-fullheight">
-                <div class="card-header">
-                  <p
-                    class="card-header-title is-size-5 is-justify-content-space-between"
-                  >
-                    {{ r.name }}
-                    <a
-                      href="#"
-                      @click.prevent="locateOnMap([r.latitude, r.longitude])"
-                      ><b-icon icon="map-search" />
-                    </a>
-                  </p>
-                </div>
-                <div class="card-image">
-                  <figure class="image is-3by1">
-                    <img :src="r.image" alt="Placeholder image" />
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <div class="content is-size-7">
-                    {{ r.address }}
-                  </div>
-                </div>
-                <footer class="card-footer">
-                  <div class="card-footer-item">
-                    <b-icon icon="phone" />
-                    {{ r.phone }}
-                  </div>
-                  <div class="card-footer-item">
-                    <b-button
-                      tag="nuxt-link"
-                      :to="`/restaurants/` + r.id"
-                      icon-right="arrow-right-thin-circle-outline"
-                      type="is-primary is-light"
-                      expanded
-                    >
-                      Commander
-                    </b-button>
-                  </div>
-                </footer>
-              </div>
-            </section>
+            <RestaurantsCard :restaurant=r @map='locateOnMap'/>
           </div>
         </div>
       </section>
