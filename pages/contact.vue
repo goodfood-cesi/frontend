@@ -30,15 +30,6 @@
                   <b-icon icon="instagram"></b-icon>
                 </a>
               </p>
-              <p class="control">
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  class="button is-light is-large"
-                >
-                  <b-icon icon="twitter"></b-icon>
-                </a>
-              </p>
             </div>
           </div>
           <div class="column is-one-third has-text-left">
