@@ -3,39 +3,7 @@
     <div class="container is-fluid mt-2 mb-2">
       <div class="columns">
         <div class="column is-2">
-          <div class="box">
-            <aside class="menu">
-              <p class="menu-label">
-                {{ restaurant.name }}
-              </p>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink
-                    :to="`/restaurants/` + restaurant.id"
-                    class="is-active"
-                    >Le restaurant
-                  </NuxtLink>
-                </li>
-              </ul>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink :to="`/restaurants/` + restaurant.id + `/menus`"
-                    >Menus
-                  </NuxtLink>
-                </li>
-              </ul>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink :to="`/restaurants/` + restaurant.id + `/products`"
-                    >Produits à l'unité
-                  </NuxtLink>
-                </li>
-              </ul>
-              <p class="menu-label">
-                <strong>Votre panier</strong>
-              </p>
-            </aside>
-          </div>
+          <RestaurantsMenu :id='$route.params.restaurant' active-menu='restaurant' />
         </div>
         <div class="column">
           <div class="box">

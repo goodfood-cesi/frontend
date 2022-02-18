@@ -3,42 +3,7 @@
     <div class="container is-fluid mt-2 mb-2">
       <div class="columns">
         <div class="column is-2">
-          <div class="box">
-            <aside class="menu">
-              <p class="menu-label">
-                {{ restaurant.name }}
-              </p>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink :to="`/restaurants/` + $route.params.restaurant"
-                    >Le restaurant
-                  </NuxtLink>
-                </li>
-              </ul>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink
-                    :to="`/restaurants/` + $route.params.restaurant + `/menus`"
-                    >Menus
-                  </NuxtLink>
-                </li>
-              </ul>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink
-                    :to="
-                      `/restaurants/` + $route.params.restaurant + `/products`
-                    "
-                    class="is-active"
-                    >Produits à l'unité
-                  </NuxtLink>
-                </li>
-              </ul>
-              <p class="menu-label">
-                <strong>Votre panier</strong>
-              </p>
-            </aside>
-          </div>
+          <RestaurantsMenu :id='$route.params.restaurant' active-menu='products' />
         </div>
         <div class="column">
           <div class="box">
@@ -68,19 +33,6 @@ export default {
     }
   },
   async mounted() {
-    await this.$axios
-      .get('/api/restaurants/restaurants/' + this.$route.params.restaurant)
-      .then((response) => {
-        this.restaurant = response.data.data
-      })
-      .catch(() => {
-        this.$router.push('/')
-        this.$buefy.snackbar.open({
-          message: 'Impossible de récupérer les données du restaurant',
-          type: 'is-danger',
-        })
-      })
-
     await this.$axios
       .get(
         '/api/restaurants/restaurants/' +
