@@ -44,10 +44,9 @@
           <div class="box">
             <h2 class="title">Produits à l'unité</h2>
             <div class="columns is-multiline">
-              <a
+              <div
                 v-for="product in products"
                 :key="product.id"
-                href="#"
                 class="column is-6"
               >
                 <div
@@ -63,7 +62,7 @@
                     click.prevent.stop=""
                   />
                 </div>
-              </a>
+              </div>
             </div>
           </div>
         </div>
