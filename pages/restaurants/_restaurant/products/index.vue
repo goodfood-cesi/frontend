@@ -44,24 +44,8 @@
           <div class="box">
             <h2 class="title">Produits à l'unité</h2>
             <div class="columns is-multiline">
-              <div
-                v-for="product in products"
-                :key="product.id"
-                class="column is-6"
-              >
-                <div
-                  class="box is-flex is-justify-content-space-between is-align-items-start"
-                >
-                  <div class="is-flex">
-                    <img :src="product.image" alt="" class="image is-96x96" />
-                    <h2 class="title is-4 ml-2">{{ product.name }}</h2>
-                  </div>
-                  <b-button
-                    type="is-primary"
-                    icon-right="cart-plus"
-                    click.prevent.stop=""
-                  />
-                </div>
+              <div v-for="product in products" :key="product.id" class="column is-6">
+                <RestaurantsItemCard :item="product" />
               </div>
             </div>
           </div>
