@@ -1,42 +1,45 @@
 <template>
-  <div v-if='restaurant != null' class='box'>
-    <aside class='menu'>
-      <p class='menu-label'>
+  <div v-if="restaurant != null" class="box">
+    <aside class="menu">
+      <p class="menu-label">
         {{ restaurant.name }}
       </p>
-      <ul class='menu-list'>
+      <ul class="menu-list">
         <li>
-          <NuxtLink :to='`/restaurants/` + restaurant.id' :class='{"is-active": activeMenu === "restaurant"}'>Le restaurant
+          <NuxtLink
+            :to="`/restaurants/` + restaurant.id"
+            :class="{ 'is-active': activeMenu === 'restaurant' }"
+            >Le restaurant
           </NuxtLink>
         </li>
       </ul>
-      <ul class='menu-list'>
+      <ul class="menu-list">
         <li>
           <NuxtLink
-            :to='`/restaurants/` + restaurant.id + `/menus`'
-            :class='{ "is-active": activeMenu === "menus" }'>
+            :to="`/restaurants/` + restaurant.id + `/menus`"
+            :class="{ 'is-active': activeMenu === 'menus' }"
+          >
             Menus
           </NuxtLink>
         </li>
       </ul>
-      <ul class='menu-list'>
+      <ul class="menu-list">
         <li>
           <NuxtLink
-            :to='`/restaurants/` + restaurant.id + `/products`'
-            :class='{ "is-active": activeMenu === "products" }'>
+            :to="`/restaurants/` + restaurant.id + `/products`"
+            :class="{ 'is-active': activeMenu === 'products' }"
+          >
             Produits à l'unité
           </NuxtLink>
         </li>
       </ul>
-      <p class='menu-label'>
+      <p class="menu-label">
         <strong>Votre panier</strong>
       </p>
     </aside>
   </div>
-  <div v-else class='box'>
-    <p>
-      Chargement...
-    </p>
+  <div v-else class="box">
+    <p>Chargement...</p>
   </div>
 </template>
 
@@ -46,16 +49,16 @@ export default {
   props: {
     id: {
       type: String,
-      required: true
+      required: true,
     },
     activeMenu: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      restaurant: null
+      restaurant: null,
     }
   },
   async mounted() {
@@ -68,10 +71,9 @@ export default {
         this.$router.push('/')
         this.$buefy.snackbar.open({
           message: 'Impossible de récupérer les données du restaurant',
-          type: 'is-danger'
+          type: 'is-danger',
         })
       })
-  }
-
+  },
 }
 </script>

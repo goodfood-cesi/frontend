@@ -3,7 +3,7 @@
     <div class="container is-fluid mt-2 mb-2">
       <div class="columns">
         <div class="column is-2">
-          <RestaurantsMenu :id='$route.params.restaurant' active-menu='menus' />
+          <RestaurantsMenu :id="$route.params.restaurant" active-menu="menus" />
         </div>
         <div class="column">
           <div class="box">

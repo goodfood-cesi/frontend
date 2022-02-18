@@ -19,9 +19,7 @@
                 />
               </p>
               <p class="control">
-                <b-button icon-left="magnify">
-                  Rechercher
-                </b-button>
+                <b-button icon-left="magnify"> Rechercher </b-button>
               </p>
             </div>
           </div>
@@ -56,7 +54,7 @@
           </p>
         </div>
       </nav>
-      <hr>
+      <hr />
       <section v-if="mode === 'list'">
         <section>
           <b-table
@@ -144,7 +142,7 @@ export default {
   },
   computed: {
     filteredRestaurants() {
-      return this.restaurants.filter(r => {
+      return this.restaurants.filter((r) => {
         return r.name.toLowerCase().includes(this.query.toLowerCase())
       })
     },
@@ -178,12 +176,12 @@ export default {
   },
   methods: {
     changeMode(mode) {
-      if(this.mode === mode) {
+      if (this.mode === mode) {
         return
       }
       this.mode = mode
       this.$buefy.snackbar.open({
-        message: 'Vous avez changé de mode d\'affichage.',
+        message: "Vous avez changé de mode d'affichage.",
         type: 'is-info',
       })
     },
