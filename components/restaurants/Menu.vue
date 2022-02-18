@@ -1,6 +1,6 @@
 <template>
-  <div v-if="restaurant != null" class="box">
-    <aside class="menu">
+  <aside>
+    <div v-if="restaurant != null" class="box menu">
       <p class="menu-label">
         {{ restaurant.name }}
       </p>
@@ -9,7 +9,7 @@
           <NuxtLink
             :to="`/restaurants/` + restaurant.id"
             :class="{ 'is-active': activeMenu === 'restaurant' }"
-            >Le restaurant
+          >Le restaurant
           </NuxtLink>
         </li>
       </ul>
@@ -33,14 +33,17 @@
           </NuxtLink>
         </li>
       </ul>
+    </div>
+    <div v-else class="box">
+      <p>Chargement...</p>
+    </div>
+    <div class='box menu'>
       <p class="menu-label">
-        <strong>Votre panier</strong>
+        Votre panier (0)
       </p>
-    </aside>
-  </div>
-  <div v-else class="box">
-    <p>Chargement...</p>
-  </div>
+    </div>
+  </aside>
+
 </template>
 
 <script>
