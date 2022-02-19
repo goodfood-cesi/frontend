@@ -7,7 +7,7 @@
       <div class="ml-2">
         <h2 class="title is-4 mb-1">{{ item.name }}</h2>
         <p v-for="product in item.products" :key="item.id + `_` + product.id">
-          1x {{ product.name }}
+          {{ product.quantity }} x {{ product.name }}
         </p>
       </div>
     </div>
