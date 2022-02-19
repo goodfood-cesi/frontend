@@ -9,8 +9,8 @@
           <div class="box">
             <h2 class="title">Menus</h2>
             <div class="columns is-multiline">
-              <div v-for="menu in menus" :key="menu.id" class="column is-6">
-                <RestaurantsItemCard :item="menu" />
+              <div v-for="menu in menus" :key="`menu_` + menu.id" class="column is-6">
+                <RestaurantsItemCard :item="menu" @addItemToCart='addItemToCart' @removeItemFromCart='removeItemFromCart' />
               </div>
             </div>
           </div>
