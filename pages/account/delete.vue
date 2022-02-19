@@ -79,15 +79,15 @@
 </template>
 <script>
 export default {
-  name: 'AccountDelete',
+  name: "AccountDelete",
   data() {
     return {
-      password: '',
+      password: "",
     }
   },
   methods: {
     submit() {
-      this.$store.dispatch('account/delete', {
+      this.$store.dispatch("account/delete", {
         password: this.password,
       })
     },

@@ -1,21 +1,21 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'frontend',
+    title: "frontend",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { hid: "description", name: "description", content: "" },
+      { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['~/assets/css/app'],
+  css: ["~/assets/css/app"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~plugins/filters.js'],
+  plugins: ["~plugins/filters.js"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -23,74 +23,74 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    "@nuxtjs/eslint-module",
     // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
+    "@nuxtjs/stylelint-module",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    'nuxt-buefy',
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    'nuxt-leaflet',
-    '@nuxtjs/recaptcha',
-    '@nuxtjs/auth-next',
-    '@nuxtjs/proxy',
+    "nuxt-buefy",
+    "@nuxtjs/axios",
+    "@nuxtjs/pwa",
+    "nuxt-leaflet",
+    "@nuxtjs/recaptcha",
+    "@nuxtjs/auth-next",
+    "@nuxtjs/proxy",
   ],
 
   proxy: {
-    '/api/auth/': {
+    "/api/auth/": {
       target: process.env.AUTH_API_URL,
-      pathRewrite: { '^/api/auth/': '' },
+      pathRewrite: { "^/api/auth/": "" },
     },
-    '/api/restaurants/': {
+    "/api/restaurants/": {
       target: process.env.RESTAURANTS_API_URL,
-      pathRewrite: { '^/api/restaurants/': '' },
+      pathRewrite: { "^/api/restaurants/": "" },
     },
-    '/api/geo/': {
-      target: 'http://ip-api.com/',
-      pathRewrite: { '^/api/geo/': '' },
+    "/api/geo/": {
+      target: "http://ip-api.com/",
+      pathRewrite: { "^/api/geo/": "" },
     },
   },
 
   auth: {
     strategies: {
       laravelJWT: {
-        provider: 'laravel/jwt',
+        provider: "laravel/jwt",
         url: `/api/auth`,
         token: {
-          property: 'token',
+          property: "token",
           maxAge: 60 * 5,
         },
         refreshToken: {
           maxAge: 60 * 7200,
         },
         user: {
-          property: 'data',
+          property: "data",
           autoFetch: true,
         },
         endpoints: {
           login: {
-            url: '/login',
+            url: "/login",
           },
           refresh: {
-            url: '/refresh',
+            url: "/refresh",
           },
           logout: {
-            url: '/logout',
+            url: "/logout",
           },
           user: {
-            url: '/user',
+            url: "/user",
           },
         },
       },
     },
     redirect: {
-      login: '/login',
-      logout: '/login',
-      callback: '/login',
-      home: '/restaurants',
+      login: "/login",
+      logout: "/login",
+      callback: "/login",
+      home: "/restaurants",
     },
   },
 
@@ -102,24 +102,24 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      name: 'GoodFood',
-      short_name: 'GoodFood',
-      desription: 'GoodFood - Plateforme de commande en ligne',
-      lang: 'fr',
+      name: "GoodFood",
+      short_name: "GoodFood",
+      desription: "GoodFood - Plateforme de commande en ligne",
+      lang: "fr",
     },
   },
 
   loading: {
-    color: 'white',
-    height: '2px',
+    color: "white",
+    height: "2px",
     throttle: 0,
     duration: 2500,
   },
 
   loadingIndicator: {
-    name: 'circle',
-    color: '#3b8070',
-    background: 'white',
+    name: "circle",
+    color: "#3b8070",
+    background: "white",
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -129,6 +129,6 @@ export default {
     siteKey: process.env.RECAPTCHA_SITE_KEY,
     hideBadge: false,
     version: 2,
-    size: 'invisible',
+    size: "invisible",
   },
 }

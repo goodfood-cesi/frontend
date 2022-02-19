@@ -54,25 +54,25 @@
 </template>
 <script>
 export default {
-  name: 'LoginPage',
-  middleware: 'guest',
+  name: "LoginPage",
+  middleware: "guest",
   data() {
     return {
-      email: '',
-      password: '',
-      checkbox: 'Se souvenir de moi',
+      email: "",
+      password: "",
+      checkbox: "Se souvenir de moi",
     }
   },
   methods: {
     clearEmail() {
-      this.email = ''
+      this.email = ""
     },
     async submit() {
-      if (this.email === '' || this.password === '') {
+      if (this.email === "" || this.password === "") {
         this.$buefy.snackbar.open({
-          message: 'Veuillez remplir tous les champs',
-          type: 'is-danger',
-          position: 'is-bottom-right',
+          message: "Veuillez remplir tous les champs",
+          type: "is-danger",
+          position: "is-bottom-right",
           queue: false,
         })
         return
@@ -80,15 +80,15 @@ export default {
       const token = await this.$recaptcha.getResponse()
       if (!token) {
         this.$buefy.snackbar.open({
-          message: 'Veuillez valider le captcha',
-          type: 'is-danger',
-          position: 'is-bottom-right',
+          message: "Veuillez valider le captcha",
+          type: "is-danger",
+          position: "is-bottom-right",
           queue: false,
         })
         return
       }
       await this.$auth
-        .loginWith('laravelJWT', {
+        .loginWith("laravelJWT", {
           data: {
             email: this.email,
             password: this.password,
@@ -98,9 +98,9 @@ export default {
         })
         .catch(() => {
           this.$buefy.snackbar.open({
-            message: 'Adresse e-mail ou mot de passe incorrect',
-            type: 'is-danger',
-            position: 'is-bottom-right',
+            message: "Adresse e-mail ou mot de passe incorrect",
+            type: "is-danger",
+            position: "is-bottom-right",
             queue: false,
           })
         })

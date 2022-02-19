@@ -83,42 +83,42 @@
 </template>
 <script>
 export default {
-  name: 'PasswordPage',
-  middleware: 'auth',
+  name: "PasswordPage",
+  middleware: "auth",
   data() {
     return {
-      password: '',
-      password_confirmation: '',
+      password: "",
+      password_confirmation: "",
     }
   },
   methods: {
     submit() {
       this.$axios
-        .$post('/api/auth/password', {
+        .$post("/api/auth/password", {
           password: this.password,
           password_confirmation: this.password_confirmation,
         })
         .then(() => {
           this.$buefy.snackbar.open({
             message:
-              'Votre mot de passe a été modifié avec succès. Vous avez été déconnecté.',
-            type: 'is-success',
+              "Votre mot de passe a été modifié avec succès. Vous avez été déconnecté.",
+            type: "is-success",
           })
           this.$auth.logout()
         })
         .catch(() => {
           this.$buefy.snackbar.open({
             message:
-              'Une erreur est survenue lors de la modification de votre mot de passe.',
-            type: 'is-danger',
+              "Une erreur est survenue lors de la modification de votre mot de passe.",
+            type: "is-danger",
           })
         })
     },
     cancel() {
-      this.password = ''
-      this.password_confirmation = ''
+      this.password = ""
+      this.password_confirmation = ""
       this.$buefy.snackbar.open({
-        message: 'Vos modifications ont été annulées',
+        message: "Vos modifications ont été annulées",
       })
     },
   },

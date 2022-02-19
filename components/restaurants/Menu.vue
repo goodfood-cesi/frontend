@@ -80,7 +80,7 @@
 
 <script>
 export default {
-  name: 'RestaurantsMenu',
+  name: "RestaurantsMenu",
   props: {
     id: {
       type: String,
@@ -109,15 +109,15 @@ export default {
   },
   async mounted() {
     await this.$axios
-      .get('/api/restaurants/restaurants/' + this.id)
+      .get("/api/restaurants/restaurants/" + this.id)
       .then((response) => {
         this.restaurant = response.data.data
       })
       .catch(() => {
-        this.$router.push('/')
+        this.$router.push("/")
         this.$buefy.snackbar.open({
-          message: 'Impossible de récupérer les données du restaurant',
-          type: 'is-danger',
+          message: "Impossible de récupérer les données du restaurant",
+          type: "is-danger",
         })
       })
   },

@@ -34,7 +34,7 @@
 </template>
 <script>
 export default {
-  name: 'RestaurantsMap',
+  name: "RestaurantsMap",
   props: {
     restaurants: {
       type: Array,

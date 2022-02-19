@@ -33,7 +33,7 @@
 </template>
 <script>
 export default {
-  name: 'RestaurantProducts',
+  name: "RestaurantProducts",
   data() {
     return {
       products: [],
@@ -45,53 +45,53 @@ export default {
     this.loadCartFromLocalStorage()
     await this.$axios
       .get(
-        '/api/restaurants/restaurants/' +
+        "/api/restaurants/restaurants/" +
           this.$route.params.restaurant +
-          '/products'
+          "/products"
       )
       .then((response) => {
         this.products = response.data.data
       })
       .catch(() => {
-        this.$router.push('/')
+        this.$router.push("/")
         this.$buefy.snackbar.open({
-          message: 'Impossible de récupérer les menus du restaurant',
-          type: 'is-danger',
+          message: "Impossible de récupérer les menus du restaurant",
+          type: "is-danger",
         })
       })
   },
   methods: {
     addItemToCart(item) {
-      if(this.cart.find(cartItem => cartItem.id === item.id)) {
-        this.cart.find(cartItem => cartItem.id === item.id).quantity++
+      if (this.cart.find((cartItem) => cartItem.id === item.id)) {
+        this.cart.find((cartItem) => cartItem.id === item.id).quantity++
       } else {
-        this.cart.push({...item, quantity: 1})
+        this.cart.push({ ...item, quantity: 1 })
       }
       this.saveCartToLocalStorage()
       this.$buefy.snackbar.open({
-        message: 'Le menu a été ajouté au panier',
-        type: 'is-success',
+        message: "Le menu a été ajouté au panier",
+        type: "is-success",
       })
     },
     removeItemFromCart(item) {
-      if(item.quantity > 1) {
-        this.cart.find(cartItem => cartItem.id === item.id).quantity--
+      if (item.quantity > 1) {
+        this.cart.find((cartItem) => cartItem.id === item.id).quantity--
       } else {
         this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
       }
       this.saveCartToLocalStorage()
       this.$buefy.snackbar.open({
-        message: 'Le menu a été retiré du panier',
-        type: 'is-success',
+        message: "Le menu a été retiré du panier",
+        type: "is-success",
       })
     },
     loadCartFromLocalStorage() {
-      if (localStorage.getItem('cart')) {
-        this.cart = JSON.parse(localStorage.getItem('cart'))
+      if (localStorage.getItem("cart")) {
+        this.cart = JSON.parse(localStorage.getItem("cart"))
       }
     },
     saveCartToLocalStorage() {
-      localStorage.setItem('cart', JSON.stringify(this.cart))
+      localStorage.setItem("cart", JSON.stringify(this.cart))
     },
   },
 }

@@ -128,16 +128,16 @@
 </template>
 <script>
 export default {
-  name: 'RestaurantsPage',
+  name: "RestaurantsPage",
   data() {
     return {
       restaurants: [],
-      mode: 'grid',
+      mode: "grid",
       currentPage: 1,
       map: null,
       center: [48.866667, 2.333333],
       zoom: 8,
-      query: '',
+      query: "",
     }
   },
   computed: {
@@ -149,28 +149,28 @@ export default {
   },
   async mounted() {
     await this.$axios
-      .get('/api/restaurants/restaurants')
+      .get("/api/restaurants/restaurants")
       .then((response) => {
         this.fullRestaurants = response.data.data
         this.restaurants = response.data.data
       })
       .catch(() => {
-        this.$router.push('/')
+        this.$router.push("/")
         this.$buefy.snackbar.open({
-          message: 'Impossible de récupérer la liste des restaurants',
-          type: 'is-danger',
+          message: "Impossible de récupérer la liste des restaurants",
+          type: "is-danger",
         })
       })
 
     await this.$axios
-      .get('/api/geo/json')
+      .get("/api/geo/json")
       .then((response) => {
         this.center = [response.data.lat, response.data.lon]
       })
       .catch(() => {
         this.$buefy.snackbar.open({
-          message: 'Impossible de récupérer votre localisation',
-          type: 'is-danger',
+          message: "Impossible de récupérer votre localisation",
+          type: "is-danger",
         })
       })
   },
@@ -182,13 +182,13 @@ export default {
       this.mode = mode
       this.$buefy.snackbar.open({
         message: "Vous avez changé de mode d'affichage.",
-        type: 'is-info',
+        type: "is-info",
       })
     },
     locateOnMap(coordinates) {
       this.center = coordinates
       this.zoom = 13
-      this.mode = 'map'
+      this.mode = "map"
     },
   },
 }

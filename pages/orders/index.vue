@@ -43,7 +43,7 @@
 </template>
 <script>
 export default {
-  name: 'OrdersPage',
-  middleware: 'auth',
+  name: "OrdersPage",
+  middleware: "auth",
 }
 </script>

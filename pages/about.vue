@@ -31,6 +31,6 @@
 </template>
 <script>
 export default {
-  name: 'AboutPage',
+  name: "AboutPage",
 }
 </script>

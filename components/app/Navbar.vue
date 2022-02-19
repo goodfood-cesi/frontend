@@ -57,17 +57,17 @@
   </b-navbar>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex"
 
 export default {
-  name: 'AppNavbar',
+  name: "AppNavbar",
   computed: {
-    ...mapGetters(['isAuthenticated', 'loggedInUser']),
+    ...mapGetters(["isAuthenticated", "loggedInUser"]),
   },
   methods: {
     async logout() {
       await this.$auth.logout().then(() => {
-        this.$router.push('/')
+        this.$router.push("/")
       })
     },
   },
