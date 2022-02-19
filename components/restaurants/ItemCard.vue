@@ -15,7 +15,7 @@
       type="is-primary"
       icon-right="cart-plus"
       @click.prevent.stop="$emit('addItemToCart', item)"
-    />
+    >{{ item.amount | toCurrency }} €</b-button>
   </div>
 </template>
 
