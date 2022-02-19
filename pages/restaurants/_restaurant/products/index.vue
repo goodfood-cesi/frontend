@@ -5,6 +5,7 @@
         <div class="column is-3">
           <RestaurantsMenu
             :id="$route.params.restaurant"
+            :cart='cart'
             active-menu="products"
           />
         </div>
@@ -17,7 +18,7 @@
                 :key="`product_` + product.id"
                 class="column is-6"
               >
-                <RestaurantsItemCard :item="product" />
+                <RestaurantsItemCard :item="product" @addItemToCart='addItemToCart' @removeItemFromCart='removeItemFromCart' />
               </div>
             </div>
           </div>
