@@ -12,7 +12,7 @@
         </div>
         <div class="column">
           <div class="box">
-            <NuxtChild @addItemToCart='addItemToCart'/>
+            <NuxtChild @addItemToCart="addItemToCart" />
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
 export default {
   name: "RestaurantLayout",
   layout: "default",
-  data () {
+  data() {
     return {
       cart: [],
       restaurant: {},
@@ -34,15 +34,15 @@ export default {
   async mounted() {
     this.loadCartFromLocalStorage()
     await this.$axios
-      .get('/api/restaurants/restaurants/' + this.$route.params.restaurant)
+      .get("/api/restaurants/restaurants/" + this.$route.params.restaurant)
       .then((response) => {
         this.restaurant = response.data.data
       })
       .catch(() => {
-        this.$router.push('/')
+        this.$router.push("/")
         this.$buefy.snackbar.open({
-          message: 'Impossible de récupérer les données du restaurant',
-          type: 'is-danger'
+          message: "Impossible de récupérer les données du restaurant",
+          type: "is-danger",
         })
       })
   },
@@ -67,18 +67,18 @@ export default {
       }
       this.saveCartToLocalStorage()
       this.$buefy.snackbar.open({
-        message: 'Le menu a été retiré du panier',
-        type: 'is-success'
+        message: "Le menu a été retiré du panier",
+        type: "is-success",
       })
     },
     loadCartFromLocalStorage() {
-      if (localStorage.getItem('cart')) {
-        this.cart = JSON.parse(localStorage.getItem('cart'))
+      if (localStorage.getItem("cart")) {
+        this.cart = JSON.parse(localStorage.getItem("cart"))
       }
     },
     saveCartToLocalStorage() {
-      localStorage.setItem('cart', JSON.stringify(this.cart))
-    }
-  }
+      localStorage.setItem("cart", JSON.stringify(this.cart))
+    },
+  },
 }
 </script>

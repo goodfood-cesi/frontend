@@ -2,11 +2,7 @@
   <section>
     <h2 class="title">Menus</h2>
     <div class="columns is-multiline">
-      <div
-        v-for="menu in menus"
-        :key="`menu_` + menu.id"
-        class="column is-6"
-      >
+      <div v-for="menu in menus" :key="`menu_` + menu.id" class="column is-6">
         <RestaurantsItemCard
           :item="menu"
           @addItemToCart="$emit('addItemToCart', menu)"
@@ -42,6 +38,6 @@ export default {
           type: "is-danger",
         })
       })
-  }
+  },
 }
 </script>
