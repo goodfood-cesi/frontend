@@ -14,7 +14,7 @@
             <div class="columns is-multiline">
               <div
                 v-for="product in products"
-                :key="product.id"
+                :key="`product_` + product.id"
                 class="column is-6"
               >
                 <RestaurantsItemCard :item="product" />
