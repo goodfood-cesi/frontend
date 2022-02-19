@@ -1,34 +1,45 @@
 <template>
   <section>
-    Products
-    <div v-for="product in products" :key="product.id">
-      {{ product.name }}
+    <h2 class="title">Produits à l'unité</h2>
+    <div class="columns is-multiline">
+      <div
+        v-for="product in products"
+        :key="`product_` + product.id"
+        class="column is-6"
+      >
+        <RestaurantsItemCard
+          :item="product"
+          @addItemToCart="$emit('addItemToCart', product)"
+        />
+      </div>
     </div>
   </section>
 </template>
 <script>
 export default {
-  name: 'RestaurantProducts',
+  name: "RestaurantProducts",
+  layout: "restaurant",
   data() {
     return {
       products: [],
+      restaurant: {},
     }
   },
   async mounted() {
     await this.$axios
       .get(
-        '/api/restaurants/restaurants/' +
+        "/api/restaurants/restaurants/" +
           this.$route.params.restaurant +
-          '/products'
+          "/products"
       )
       .then((response) => {
         this.products = response.data.data
       })
       .catch(() => {
-        this.$router.push('/')
+        this.$router.push("/")
         this.$buefy.snackbar.open({
-          message: 'Impossible de récupérer les menus du restaurant',
-          type: 'is-danger',
+          message: "Impossible de récupérer les menus du restaurant",
+          type: "is-danger",
         })
       })
   },

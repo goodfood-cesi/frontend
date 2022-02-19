@@ -30,34 +30,38 @@
                   <b-icon icon="instagram"></b-icon>
                 </a>
               </p>
-              <p class="control">
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  class="button is-light is-large"
-                >
-                  <b-icon icon="twitter"></b-icon>
-                </a>
-              </p>
             </div>
           </div>
           <div class="column is-one-third has-text-left">
             <div class="field">
               <label class="label">Nom</label>
               <div class="control">
-                <input class="input is-medium" type="text" />
+                <input
+                  v-model="name"
+                  class="input is-medium"
+                  type="text"
+                  :disabled="disabled === 1"
+                />
               </div>
             </div>
             <div class="field">
               <label class="label">Email</label>
               <div class="control">
-                <input class="input is-medium" type="text" />
+                <input
+                  v-model="email"
+                  class="input is-medium"
+                  type="text"
+                  :disabled="disabled === 1"
+                />
               </div>
             </div>
             <div class="field">
               <label class="label">Message</label>
               <div class="control">
-                <textarea class="textarea is-large"></textarea>
+                <textarea
+                  v-model="message"
+                  class="textarea is-large"
+                ></textarea>
               </div>
             </div>
             <div class="control">
@@ -76,6 +80,21 @@
 </template>
 <script>
 export default {
-  name: 'ContactPage',
+  name: "ContactPage",
+  data() {
+    return {
+      name: "",
+      email: "",
+      message: "",
+      disabled: 0,
+    }
+  },
+  mounted() {
+    if (this.$auth.loggedIn) {
+      this.name = this.$auth.user.firstname + " " + this.$auth.user.lastname
+      this.email = this.$auth.user.email
+      this.disabled = 1
+    }
+  },
 }
 </script>

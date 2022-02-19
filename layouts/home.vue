@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <section>
-      <Nuxt />
-    </section>
-  </div>
+  <section>
+    <Nuxt />
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'HomeLayout',
+  name: "HomeLayout",
 }
 </script>

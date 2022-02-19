@@ -9,21 +9,23 @@
               <ul class="menu-list">
                 <li>
                   <NuxtLink to="/account" class="is-active"
-                    >Mon profil</NuxtLink
-                  >
+                    >Mon profil
+                  </NuxtLink>
                 </li>
               </ul>
               <p class="menu-label">Commandes</p>
               <ul class="menu-list">
-                <li><NuxtLink to="/orders">Mes commandes</NuxtLink></li>
+                <li>
+                  <NuxtLink to="/orders">Mes commandes</NuxtLink>
+                </li>
                 <li><a>Paiements</a></li>
               </ul>
               <p class="menu-label">Sécurité</p>
               <ul class="menu-list">
                 <li>
                   <NuxtLink to="/account/password"
-                    >Modifier mon mot de passe</NuxtLink
-                  >
+                    >Modifier mon mot de passe
+                  </NuxtLink>
                 </li>
                 <li>
                   <NuxtLink to="/account/delete">Supprimer mon compte</NuxtLink>
@@ -81,13 +83,13 @@
               <div class="field is-grouped is-grouped-right">
                 <p class="control">
                   <b-button type="is-primary" native-type="submit"
-                    >Sauvegarder</b-button
-                  >
+                    >Sauvegarder
+                  </b-button>
                 </p>
                 <p class="control">
                   <b-button type="is-light" @click.prevent="cancel"
-                    >Annuler</b-button
-                  >
+                    >Annuler
+                  </b-button>
                 </p>
               </div>
             </form>
@@ -99,8 +101,8 @@
 </template>
 <script>
 export default {
-  name: 'AccountPage',
-  middleware: 'auth',
+  name: "AccountPage",
+  middleware: "auth",
   data() {
     return {
       firstname: this.$auth.user.firstname,
@@ -111,21 +113,21 @@ export default {
   methods: {
     submit() {
       this.$axios
-        .$post('/api/auth/user', {
+        .$post("/api/auth/user", {
           firstname: this.firstname,
           lastname: this.lastname,
         })
         .then(() => {
           this.$auth.fetchUser()
           this.$buefy.snackbar.open({
-            message: 'Vos modifications ont été enregistrées',
-            type: 'is-success',
+            message: "Vos modifications ont été enregistrées",
+            type: "is-success",
           })
         })
         .catch(() => {
           this.$buefy.snackbar.open({
-            message: 'Une erreur est survenue',
-            type: 'is-danger',
+            message: "Une erreur est survenue",
+            type: "is-danger",
           })
         })
     },
@@ -134,7 +136,7 @@ export default {
       this.lastname = this.$auth.user.lastname
       this.email = this.$auth.user.email
       this.$buefy.snackbar.open({
-        message: 'Vos modifications ont été annulées',
+        message: "Vos modifications ont été annulées",
       })
     },
   },

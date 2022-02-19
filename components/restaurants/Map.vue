@@ -12,8 +12,8 @@
         >
           <l-popup>
             <div>
-              <img :src="r.image" alt="Image du restaurant" />
-              {{ r.name }} <br />
+              <img :src="r.image" alt="Image du restaurant" /> {{ r.name }}
+              <br />
               {{ r.address }} <br />
               {{ r.phone }}
               <b-button
@@ -34,7 +34,7 @@
 </template>
 <script>
 export default {
-  name: 'RestaurantsMap',
+  name: "RestaurantsMap",
   props: {
     restaurants: {
       type: Array,

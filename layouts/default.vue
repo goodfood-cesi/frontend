@@ -1,15 +1,13 @@
 <template>
-  <div>
+  <section>
     <AppNavbar />
-    <section>
-      <Nuxt />
-    </section>
+    <Nuxt />
     <AppFooter />
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'DefaultLayout',
+  name: "DefaultLayout",
 }
 </script>

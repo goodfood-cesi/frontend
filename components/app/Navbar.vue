@@ -13,6 +13,12 @@
       <b-navbar-item tag="router-link" :to="{ path: '/restaurants' }">
         Commander
       </b-navbar-item>
+      <b-navbar-item tag="router-link" :to="{ path: '/about' }">
+        A propos
+      </b-navbar-item>
+      <b-navbar-item tag="router-link" :to="{ path: '/contact' }">
+        Contact
+      </b-navbar-item>
     </template>
     <template v-if="!isAuthenticated" #end>
       <b-navbar-item tag="div">
@@ -51,16 +57,18 @@
   </b-navbar>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex"
 
 export default {
-  name: 'AppNavbar',
+  name: "AppNavbar",
   computed: {
-    ...mapGetters(['isAuthenticated', 'loggedInUser']),
+    ...mapGetters(["isAuthenticated", "loggedInUser"]),
   },
   methods: {
     async logout() {
-      await this.$auth.logout()
+      await this.$auth.logout().then(() => {
+        this.$router.push("/")
+      })
     },
   },
 }

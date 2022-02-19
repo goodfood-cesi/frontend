@@ -7,14 +7,16 @@
             <aside class="menu">
               <p class="menu-label">Compte</p>
               <ul class="menu-list">
-                <li><NuxtLink to="/account">Mon profil</NuxtLink></li>
+                <li>
+                  <NuxtLink to="/account">Mon profil</NuxtLink>
+                </li>
               </ul>
               <p class="menu-label">Commandes</p>
               <ul class="menu-list">
                 <li>
                   <NuxtLink to="/orders" class="is-active"
-                    >Mes commandes</NuxtLink
-                  >
+                    >Mes commandes
+                  </NuxtLink>
                 </li>
                 <li><a>Paiements</a></li>
               </ul>
@@ -22,8 +24,8 @@
               <ul class="menu-list">
                 <li>
                   <NuxtLink to="/account/password"
-                    >Modifier mon mot de passe</NuxtLink
-                  >
+                    >Modifier mon mot de passe
+                  </NuxtLink>
                 </li>
                 <li>
                   <NuxtLink to="/account/delete">Supprimer mon compte</NuxtLink>
@@ -41,7 +43,7 @@
 </template>
 <script>
 export default {
-  name: 'OrdersPage',
-  middleware: 'auth',
+  name: "OrdersPage",
+  middleware: "auth",
 }
 </script>
