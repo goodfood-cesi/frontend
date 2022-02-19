@@ -2,8 +2,8 @@
   <section>
     <div class="container is-fluid mt-2 mb-2">
       <div class="columns">
-        <div class="column is-2">
-          <RestaurantsMenu :id="$route.params.restaurant" active-menu="menus" />
+        <div class="column is-3">
+          <RestaurantsMenu :id="$route.params.restaurant" active-menu="menus" :cart='cart' />
         </div>
         <div class="column">
           <div class="box">

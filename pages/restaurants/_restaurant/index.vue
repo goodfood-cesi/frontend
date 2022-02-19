@@ -2,7 +2,7 @@
   <section>
     <div class="container is-fluid mt-2 mb-2">
       <div class="columns">
-        <div class="column is-2">
+        <div class="column is-3">
           <RestaurantsMenu
             :id="$route.params.restaurant"
             active-menu="restaurant"
