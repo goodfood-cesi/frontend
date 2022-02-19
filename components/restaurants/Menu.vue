@@ -12,8 +12,6 @@
           >Le restaurant
           </NuxtLink>
         </li>
-      </ul>
-      <ul class="menu-list">
         <li>
           <NuxtLink
             :to="`/restaurants/` + restaurant.id + `/menus`"
@@ -22,8 +20,6 @@
             Menus
           </NuxtLink>
         </li>
-      </ul>
-      <ul class="menu-list">
         <li>
           <NuxtLink
             :to="`/restaurants/` + restaurant.id + `/products`"
@@ -43,7 +39,6 @@
       </p>
     </div>
   </aside>
-
 </template>
 
 <script>
