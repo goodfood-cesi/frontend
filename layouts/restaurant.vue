@@ -7,9 +7,7 @@
           <RestaurantsMenu
             :restaurant="restaurant"
             :cart="cart"
-            :active-menu='activeMenu'
             @removeItemFromCart="removeItemFromCart"
-            @setActiveMenu="setActiveMenu"
           />
         </div>
         <div class="column">
@@ -31,7 +29,6 @@ export default {
     return {
       cart: [],
       restaurant: {},
-      activeMenu: '',
     }
   },
   async mounted() {
@@ -50,9 +47,6 @@ export default {
       })
   },
   methods: {
-    setActiveMenu(menu) {
-      this.activeMenu = menu
-    },
     addItemToCart(item) {
       if (this.cart.find((cartItem) => cartItem.id === item.id)) {
         this.cart.find((cartItem) => cartItem.id === item.id).quantity++
