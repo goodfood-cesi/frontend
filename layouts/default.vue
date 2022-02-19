@@ -1,9 +1,7 @@
 <template>
   <div>
     <AppNavbar />
-    <section>
-      <Nuxt />
-    </section>
+    <Nuxt />
     <AppFooter />
   </div>
 </template>
