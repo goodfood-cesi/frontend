@@ -25,6 +25,7 @@ export default {
   data() {
     return {
       menus: [],
+      cart: [],
     }
   },
   async mounted() {
@@ -44,6 +45,14 @@ export default {
           type: 'is-danger',
         })
       })
+  },
+  methods: {
+    addItemToCart(item) {
+      this.cart.push(item)
+    },
+    removeItemFromCart(item) {
+      console.log(item)
+    },
   },
 }
 </script>
