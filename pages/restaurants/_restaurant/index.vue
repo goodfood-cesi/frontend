@@ -7,7 +7,7 @@
             :id="$route.params.restaurant"
             :cart="cart"
             active-menu="restaurant"
-            @removeItemFromCart='removeItemFromCart'
+            @removeItemFromCart="removeItemFromCart"
           />
         </div>
         <div class="column">
@@ -100,7 +100,7 @@ export default {
   data() {
     return {
       restaurant: {},
-      cart: []
+      cart: [],
     }
   },
   computed: {

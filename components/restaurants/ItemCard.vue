@@ -11,7 +11,11 @@
         </p>
       </div>
     </div>
-    <b-button type="is-primary" icon-right="cart-plus" @click.prevent.stop="$emit('addItemToCart', item)" />
+    <b-button
+      type="is-primary"
+      icon-right="cart-plus"
+      @click.prevent.stop="$emit('addItemToCart', item)"
+    />
   </div>
 </template>
 
@@ -22,6 +26,6 @@ export default {
       type: Object,
       required: true,
     },
-  }
+  },
 }
 </script>

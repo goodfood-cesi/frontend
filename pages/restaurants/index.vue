@@ -19,7 +19,7 @@
                 />
               </p>
               <p class="control">
-                <b-button icon-left="magnify"> Rechercher </b-button>
+                <b-button icon-left="magnify"> Rechercher</b-button>
               </p>
             </div>
           </div>

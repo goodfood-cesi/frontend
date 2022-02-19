@@ -9,7 +9,7 @@
           <NuxtLink
             :to="`/restaurants/` + restaurant.id"
             :class="{ 'is-active': activeMenu === 'restaurant' }"
-          >Le restaurant
+            >Le restaurant
           </NuxtLink>
         </li>
         <li>
@@ -33,32 +33,35 @@
     <div v-else class="box">
       <p>Chargement...</p>
     </div>
-    <div class='box menu'>
-      <div class="menu-label">
-        Votre panier ({{ cart.length }})
-      </div>
-      <ul v-if='cart.length === 0' class="menu-list mb-3">
-        <li class='box'>
-          Votre panier est vide...
-        </li>
+    <div class="box menu">
+      <div class="menu-label">Votre panier ({{ cart.length }})</div>
+      <ul v-if="cart.length === 0" class="menu-list mb-3">
+        <li class="box">Votre panier est vide...</li>
       </ul>
-      <ul v-else class='menu-list mb-3'>
-        <li v-for='item in cart' :key='`cart_` + item.id' class='box is-flex is-justify-content-space-between mb-1'>
-          <div class='is-flex'>
+      <ul v-else class="menu-list mb-3">
+        <li
+          v-for="item in cart"
+          :key="`cart_` + item.id"
+          class="box is-flex is-justify-content-space-between mb-1"
+        >
+          <div class="is-flex">
             <img :src="item.image" alt="" class="image is-32x32" />
-            <p class='ml-1'>{{ item.name }}</p>
+            <p class="ml-1">{{ item.name }}</p>
           </div>
-          <span class='tag is-primary'>1x {{ item.amount }} €
+          <span class="tag is-primary"
+            >1x {{ item.amount }} €
             <b-button
-              class='delete'
-              type='is-primary'
+              class="delete"
+              type="is-primary"
               @click="$emit('removeItemFromCart', item)"
             />
           </span>
         </li>
-        <li class='box mt-2 is-flex is-justify-content-space-between'>
+        <li class="box mt-2 is-flex is-justify-content-space-between">
           <p>TOTAL :</p>
-          <p><strong>{{ cartTotal | toCurrency }}</strong></p>
+          <p>
+            <strong>{{ cartTotal | toCurrency }}</strong>
+          </p>
         </li>
       </ul>
       <b-button
@@ -90,7 +93,7 @@ export default {
     cart: {
       type: Array,
       required: true,
-    }
+    },
   },
   data() {
     return {
@@ -100,7 +103,7 @@ export default {
   computed: {
     cartTotal() {
       return this.cart.reduce((acc, item) => acc + Number(item.amount), 0)
-    }
+    },
   },
   async mounted() {
     await this.$axios

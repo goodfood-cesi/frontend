@@ -8,7 +8,8 @@
           @click.prevent="
             $emit('map', [restaurant.latitude, restaurant.longitude])
           "
-          ><b-icon icon="map-search" />
+        >
+          <b-icon icon="map-search" />
         </a>
       </p>
     </div>

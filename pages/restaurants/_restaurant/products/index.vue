@@ -5,9 +5,9 @@
         <div class="column is-3">
           <RestaurantsMenu
             :id="$route.params.restaurant"
-            :cart='cart'
+            :cart="cart"
             active-menu="products"
-            @removeItemFromCart='removeItemFromCart'
+            @removeItemFromCart="removeItemFromCart"
           />
         </div>
         <div class="column">
@@ -19,7 +19,10 @@
                 :key="`product_` + product.id"
                 class="column is-6"
               >
-                <RestaurantsItemCard :item="product" @addItemToCart='addItemToCart' />
+                <RestaurantsItemCard
+                  :item="product"
+                  @addItemToCart="addItemToCart"
+                />
               </div>
             </div>
           </div>
@@ -35,7 +38,7 @@ export default {
     return {
       products: [],
       restaurant: {},
-      cart: []
+      cart: [],
     }
   },
   async mounted() {

@@ -15,9 +15,7 @@ export default {
   css: ['~/assets/css/app'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~plugins/filters.js'
-  ],
+  plugins: ['~plugins/filters.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

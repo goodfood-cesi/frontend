@@ -5,16 +5,24 @@
         <div class="column is-3">
           <RestaurantsMenu
             :id="$route.params.restaurant"
-            :cart='cart'
+            :cart="cart"
             active-menu="menus"
-            @removeItemFromCart='removeItemFromCart' />
+            @removeItemFromCart="removeItemFromCart"
+          />
         </div>
         <div class="column">
           <div class="box">
             <h2 class="title">Menus</h2>
             <div class="columns is-multiline">
-              <div v-for="menu in menus" :key="`menu_` + menu.id" class="column is-6">
-                <RestaurantsItemCard :item="menu" @addItemToCart='addItemToCart' />
+              <div
+                v-for="menu in menus"
+                :key="`menu_` + menu.id"
+                class="column is-6"
+              >
+                <RestaurantsItemCard
+                  :item="menu"
+                  @addItemToCart="addItemToCart"
+                />
               </div>
             </div>
           </div>

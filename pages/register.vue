@@ -76,8 +76,8 @@
               </b-field>
               <recaptcha />
               <b-button type="is-primary" native-type="submit" expanded required
-                >Inscription</b-button
-              >
+                >Inscription
+              </b-button>
             </form>
           </div>
         </div>
