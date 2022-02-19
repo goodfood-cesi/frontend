@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <section>
-      <Nuxt />
-    </section>
-  </div>
+  <section>
+    <Nuxt />
+  </section>
 </template>
 
 <script>

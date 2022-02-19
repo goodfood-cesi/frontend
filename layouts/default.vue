@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <section>
     <AppNavbar />
     <Nuxt />
     <AppFooter />
-  </div>
+  </section>
 </template>
 
 <script>
