@@ -49,7 +49,7 @@
             <p class="ml-1">{{ item.name }}</p>
           </div>
           <span class="tag is-primary"
-            >1x {{ item.amount }} €
+            >{{ item.quantity }} x {{ item.amount }} €
             <b-button
               class="delete"
               type="is-primary"
@@ -102,7 +102,9 @@ export default {
   },
   computed: {
     cartTotal() {
-      return this.cart.reduce((acc, item) => acc + Number(item.amount), 0)
+      return this.cart.reduce((acc, item) => {
+        return acc + item.amount * item.quantity
+      }, 0)
     },
   },
   async mounted() {

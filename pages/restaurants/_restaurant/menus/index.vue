@@ -60,10 +60,26 @@ export default {
   },
   methods: {
     addItemToCart(item) {
-      this.cart.push(item)
+      if(this.cart.find(cartItem => cartItem.id === item.id)) {
+        this.cart.find(cartItem => cartItem.id === item.id).quantity++
+      } else {
+        this.cart.push({...item, quantity: 1})
+      }
+      this.$buefy.snackbar.open({
+        message: 'Le menu a été ajouté au panier',
+        type: 'is-success',
+      })
     },
     removeItemFromCart(item) {
-      this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
+      if(item.quantity > 1) {
+        this.cart.find(cartItem => cartItem.id === item.id).quantity--
+      } else {
+        this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
+      }
+      this.$buefy.snackbar.open({
+        message: 'Le menu a été retiré du panier',
+        type: 'is-success',
+      })
     },
   },
 }
