@@ -3,14 +3,18 @@
     <div class="container is-fluid mt-2 mb-2">
       <div class="columns">
         <div class="column is-3">
-          <RestaurantsMenu :id="$route.params.restaurant" active-menu="menus" :cart='cart' />
+          <RestaurantsMenu
+            :id="$route.params.restaurant"
+            :cart='cart'
+            active-menu="menus"
+            @removeItemFromCart='removeItemFromCart' />
         </div>
         <div class="column">
           <div class="box">
             <h2 class="title">Menus</h2>
             <div class="columns is-multiline">
               <div v-for="menu in menus" :key="`menu_` + menu.id" class="column is-6">
-                <RestaurantsItemCard :item="menu" @addItemToCart='addItemToCart' @removeItemFromCart='removeItemFromCart' />
+                <RestaurantsItemCard :item="menu" @addItemToCart='addItemToCart' />
               </div>
             </div>
           </div>
@@ -51,7 +55,7 @@ export default {
       this.cart.push(item)
     },
     removeItemFromCart(item) {
-      console.log(item)
+      this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
     },
   },
 }

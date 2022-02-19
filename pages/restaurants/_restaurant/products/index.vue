@@ -7,6 +7,7 @@
             :id="$route.params.restaurant"
             :cart='cart'
             active-menu="products"
+            @removeItemFromCart='removeItemFromCart'
           />
         </div>
         <div class="column">
@@ -18,7 +19,7 @@
                 :key="`product_` + product.id"
                 class="column is-6"
               >
-                <RestaurantsItemCard :item="product" @addItemToCart='addItemToCart' @removeItemFromCart='removeItemFromCart' />
+                <RestaurantsItemCard :item="product" @addItemToCart='addItemToCart' />
               </div>
             </div>
           </div>
@@ -60,7 +61,7 @@ export default {
       this.cart.push(item)
     },
     removeItemFromCart(item) {
-      console.log(item)
+      this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
     },
   },
 }
