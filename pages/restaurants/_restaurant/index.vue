@@ -5,7 +5,9 @@
         <div class="column is-3">
           <RestaurantsMenu
             :id="$route.params.restaurant"
+            :cart="cart"
             active-menu="restaurant"
+            @removeItemFromCart='removeItemFromCart'
           />
         </div>
         <div class="column">
@@ -98,8 +100,7 @@ export default {
   data() {
     return {
       restaurant: {},
-      menus: [],
-      products: [],
+      cart: []
     }
   },
   computed: {
@@ -131,40 +132,14 @@ export default {
           type: 'is-danger',
         })
       })
-
-    await this.$axios
-      .get(
-        '/api/restaurants/restaurants/' +
-          this.$route.params.restaurant +
-          '/menus'
-      )
-      .then((response) => {
-        this.menus = response.data.data
-      })
-      .catch(() => {
-        this.$router.push('/')
-        this.$buefy.snackbar.open({
-          message: 'Impossible de récupérer les menus du restaurant',
-          type: 'is-danger',
-        })
-      })
-
-    await this.$axios
-      .get(
-        '/api/restaurants/restaurants/' +
-          this.$route.params.restaurant +
-          '/products'
-      )
-      .then((response) => {
-        this.products = response.data.data
-      })
-      .catch(() => {
-        this.$router.push('/')
-        this.$buefy.snackbar.open({
-          message: 'Impossible de récupérer les produits du restaurant',
-          type: 'is-danger',
-        })
-      })
+  },
+  methods: {
+    addItemToCart(item) {
+      this.cart.push(item)
+    },
+    removeItemFromCart(item) {
+      this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
+    },
   },
 }
 </script>
