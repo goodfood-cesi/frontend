@@ -41,6 +41,7 @@ export default {
     }
   },
   async mounted() {
+    this.loadCartFromLocalStorage()
     await this.$axios
       .get(
         '/api/restaurants/restaurants/' +
@@ -65,6 +66,7 @@ export default {
       } else {
         this.cart.push({...item, quantity: 1})
       }
+      this.saveCartToLocalStorage()
       this.$buefy.snackbar.open({
         message: 'Le menu a été ajouté au panier',
         type: 'is-success',
@@ -76,10 +78,19 @@ export default {
       } else {
         this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
       }
+      this.saveCartToLocalStorage()
       this.$buefy.snackbar.open({
         message: 'Le menu a été retiré du panier',
         type: 'is-success',
       })
+    },
+    loadCartFromLocalStorage() {
+      if (localStorage.getItem('cart')) {
+        this.cart = JSON.parse(localStorage.getItem('cart'))
+      }
+    },
+    saveCartToLocalStorage() {
+      localStorage.setItem('cart', JSON.stringify(this.cart))
     },
   },
 }

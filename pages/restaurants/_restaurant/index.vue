@@ -48,7 +48,7 @@
               <div class="column is-6">
                 <h2 class="title">Horaires</h2>
                 <hr />
-                <table class="table is-bordered is-hoverable is-fullwidth">
+                <table v-if='restaurant.days' class="table is-bordered is-hoverable is-fullwidth">
                   <thead>
                     <tr>
                       <th>Jour</th>
@@ -58,31 +58,31 @@
                   <tbody>
                     <tr>
                       <td>Lundi</td>
-                      <td>11h00 - 14h00 / 18h00 - 22h00</td>
+                      <td>{{ restaurant.days.monday }}</td>
                     </tr>
                     <tr>
                       <td>Mardi</td>
-                      <td>11h00 - 14h00 / 18h00 - 22h00</td>
+                      <td>{{ restaurant.days.tuesday }}</td>
                     </tr>
                     <tr>
                       <td>Mercredi</td>
-                      <td>11h00 - 14h00 / 18h00 - 22h00</td>
+                      <td>{{ restaurant.days.wednesday }}</td>
                     </tr>
                     <tr>
                       <td>Jeudi</td>
-                      <td>11h00 - 14h00 / 18h00 - 22h00</td>
+                      <td>{{ restaurant.days.thursday }}</td>
                     </tr>
                     <tr>
                       <td>Vendredi</td>
-                      <td>11h00 - 14h00 / 18h00 - 22h00</td>
+                      <td>{{ restaurant.days.friday }}</td>
                     </tr>
                     <tr>
                       <td>Samedi</td>
-                      <td>11h00 - 14h00 / 18h00 - 22h00</td>
+                      <td>{{ restaurant.days.saturday }}</td>
                     </tr>
                     <tr>
                       <td>Dimanche</td>
-                      <td><strong>Fermé</strong></td>
+                      <td>{{ restaurant.days.sunday }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -120,6 +120,7 @@ export default {
     },
   },
   async mounted() {
+    this.loadCartFromLocalStorage()
     await this.$axios
       .get('/api/restaurants/restaurants/' + this.$route.params.restaurant)
       .then((response) => {
@@ -140,10 +141,19 @@ export default {
       } else {
         this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
       }
+      this.saveCartToLocalStorage()
       this.$buefy.snackbar.open({
         message: 'Le menu a été retiré du panier',
         type: 'is-success',
       })
+    },
+    loadCartFromLocalStorage() {
+      if (localStorage.getItem('cart')) {
+        this.cart = JSON.parse(localStorage.getItem('cart'))
+      }
+    },
+    saveCartToLocalStorage() {
+      localStorage.setItem('cart', JSON.stringify(this.cart))
     },
   },
 }
