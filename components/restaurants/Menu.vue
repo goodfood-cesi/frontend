@@ -1,5 +1,5 @@
 <template>
-  <aside>
+  <aside style='position: sticky; top: 10px; z-index: 100;'>
     <div v-if="restaurant != null" class="card">
       <div class="card-header">
         <p class="card-header-title">
