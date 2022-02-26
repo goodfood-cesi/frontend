@@ -108,7 +108,7 @@
         <div class="card-footer-item">
           <b-button
             tag="nuxt-link"
-            :to="`/pay`"
+            :to="`/restaurants/` + restaurant.id + `/checkout`"
             icon-right="arrow-right-thin-circle-outline"
             type="is-primary is-light"
             :disabled="itemsInCart === 0"
