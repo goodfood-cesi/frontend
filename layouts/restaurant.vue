@@ -49,28 +49,47 @@ export default {
   },
   methods: {
     addItemToCart(item) {
-      if (this.cart.find((cartItem) => cartItem.id === item.id)) {
-        this.cart.find((cartItem) => cartItem.id === item.id).quantity++
+      let type = "product"
+      if(item.products) {
+        type = "menu"
+      }
+
+      if (this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === type)) {
+        this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === type).quantity++
       } else {
-        this.cart.push({ ...item, quantity: 1 })
+        this.cart.push({ ...item, quantity: 1, type: type })
       }
       this.saveCartToLocalStorage()
-      this.$buefy.snackbar.open({
-        message: "Le menu a été ajouté au panier",
-        type: "is-success",
-      })
+      if(type === "menu") {
+        this.$buefy.snackbar.open({
+          message: "Le menu a bien été ajouté au panier",
+          type: "is-success",
+        })
+      } else {
+        this.$buefy.snackbar.open({
+          message: "Le produit a bien été ajouté au panier",
+          type: "is-success",
+        })
+      }
     },
     removeItemFromCart(item) {
       if (item.quantity > 1) {
-        this.cart.find((cartItem) => cartItem.id === item.id).quantity--
+        this.cart.find((cartItem) => cartItem === item).quantity--
       } else {
-        this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
+        this.cart = this.cart.filter((cartItem) => cartItem !== item)
       }
       this.saveCartToLocalStorage()
-      this.$buefy.snackbar.open({
-        message: "Le menu a été retiré du panier",
-        type: "is-success",
-      })
+      if(item.type === "menu") {
+        this.$buefy.snackbar.open({
+          message: "Le menu a bien été retiré au panier",
+          type: "is-success",
+        })
+      } else {
+        this.$buefy.snackbar.open({
+          message: "Le produit a bien été retiré au panier",
+          type: "is-success",
+        })
+      }
     },
     loadCartFromLocalStorage() {
       if (localStorage.getItem("cart")) {
