@@ -69,9 +69,21 @@
                 <p class="ml-1">{{ item.name }}</p>
               </div>
               <div class="buttons has-addons">
-                <b-button type='is-danger is-light' size='is-small' @click.prevent.stop="$emit('minusItemInCart', item)">-</b-button>
-                <b-button type='is-primary is-light' size='is-small'>{{ item.quantity }} x {{ item.amount }} €</b-button>
-                <b-button type='is-info is-light' size='is-small' @click.prevent.stop="$emit('plusItemInCart', item)">+</b-button>
+                <b-button
+                  type="is-danger is-light"
+                  size="is-small"
+                  @click.prevent.stop="$emit('minusItemInCart', item)"
+                  >-</b-button
+                >
+                <b-button type="is-primary is-light" size="is-small"
+                  >{{ item.quantity }} x {{ item.amount }} €</b-button
+                >
+                <b-button
+                  type="is-info is-light"
+                  size="is-small"
+                  @click.prevent.stop="$emit('plusItemInCart', item)"
+                  >+</b-button
+                >
               </div>
             </div>
           </ul>

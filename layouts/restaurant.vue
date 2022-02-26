@@ -7,8 +7,8 @@
           <RestaurantsMenu
             :restaurant="restaurant"
             :cart="cart"
-            @plusItemInCart='plusItemInCart'
-            @minusItemInCart='minusItemInCart'
+            @plusItemInCart="plusItemInCart"
+            @minusItemInCart="minusItemInCart"
             @clearCart="clearCart"
           />
         </div>
@@ -80,15 +80,23 @@ export default {
       }
     },
     plusItemInCart(item) {
-      this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === item.type).quantity++
+      this.cart.find(
+        (cartItem) => cartItem.id === item.id && cartItem.type === item.type
+      ).quantity++
       this.saveCartToLocalStorage()
     },
     minusItemInCart(item) {
-      if (this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === item.type).quantity > 1) {
-        this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === item.type).quantity--
+      if (
+        this.cart.find(
+          (cartItem) => cartItem.id === item.id && cartItem.type === item.type
+        ).quantity > 1
+      ) {
+        this.cart.find(
+          (cartItem) => cartItem.id === item.id && cartItem.type === item.type
+        ).quantity--
       } else {
         this.cart = this.cart.filter((cartItem) => cartItem !== item)
-        if(item.type === "menu") {
+        if (item.type === "menu") {
           this.$buefy.snackbar.open({
             message: "Le menu a bien été supprimé du panier",
             type: "is-success",
