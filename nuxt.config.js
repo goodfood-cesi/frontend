@@ -48,6 +48,10 @@ export default {
       target: process.env.RESTAURANTS_API_URL,
       pathRewrite: { "^/api/restaurants/": "" },
     },
+    "/api/orders/": {
+      target: process.env.ORDERS_API_URL,
+      pathRewrite: { "^/api/orders/": "" },
+    },
     "/api/geo/": {
       target: "http://ip-api.com/",
       pathRewrite: { "^/api/geo/": "" },
