@@ -3,27 +3,30 @@
     <div v-if="restaurant != null" class="card">
       <div class="card-header">
         <p class="card-header-title">
-          <NuxtLink :to='`/restaurants/` + restaurant.id'>{{ restaurant.name }}</NuxtLink>
+          <NuxtLink :to="`/restaurants/` + restaurant.id">{{
+            restaurant.name
+          }}</NuxtLink>
         </p>
       </div>
-      <div class='card-content'>
-        <div class='menu'>
+      <div class="card-content">
+        <div class="menu">
           <ul class="menu-list">
             <li>
               <NuxtLink
                 :to="`/restaurants/` + restaurant.id"
                 :class="{
-              'is-active': currentPageName === 'restaurants-restaurant',
-            }"
-              >Le restaurant
+                  'is-active': currentPageName === 'restaurants-restaurant',
+                }"
+                >Le restaurant
               </NuxtLink>
             </li>
             <li>
               <NuxtLink
                 :to="`/restaurants/` + restaurant.id + `/menus`"
                 :class="{
-              'is-active': currentPageName === 'restaurants-restaurant-menus',
-            }"
+                  'is-active':
+                    currentPageName === 'restaurants-restaurant-menus',
+                }"
               >
                 Menus
               </NuxtLink>
@@ -32,9 +35,9 @@
               <NuxtLink
                 :to="`/restaurants/` + restaurant.id + `/products`"
                 :class="{
-              'is-active':
-                currentPageName === 'restaurants-restaurant-products',
-            }"
+                  'is-active':
+                    currentPageName === 'restaurants-restaurant-products',
+                }"
               >
                 Produits à l'unité
               </NuxtLink>
@@ -46,11 +49,11 @@
     <div v-else class="card">
       <p>Chargement...</p>
     </div>
-    <div class='card mt-2'>
-      <div class='card-header'>
+    <div class="card mt-2">
+      <div class="card-header">
         <div class="card-header-title">Votre panier ({{ itemsInCart }})</div>
       </div>
-      <div class='card-content'>
+      <div class="card-content">
         <div class="menu">
           <ul v-if="itemsInCart === 0" class="menu-list mb-3">
             <li>Votre panier est vide...</li>
@@ -66,13 +69,13 @@
                 <p class="ml-1">{{ item.name }}</p>
               </div>
               <span class="tag is-primary"
-              >{{ item.quantity }} x {{ item.amount }} €
-            <b-button
-              class="delete"
-              type="is-primary"
-              @click="$emit('removeItemFromCart', item)"
-            />
-          </span>
+                >{{ item.quantity }} x {{ item.amount }} €
+                <b-button
+                  class="delete"
+                  type="is-primary"
+                  @click="$emit('removeItemFromCart', item)"
+                />
+              </span>
             </li>
           </ul>
         </div>
@@ -132,7 +135,7 @@ export default {
       return this.cart.reduce((acc, item) => {
         return acc + item.quantity
       }, 0)
-    }
+    },
   },
 }
 </script>

@@ -50,17 +50,23 @@ export default {
   methods: {
     addItemToCart(item) {
       let type = "product"
-      if(item.products) {
+      if (item.products) {
         type = "menu"
       }
 
-      if (this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === type)) {
-        this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === type).quantity++
+      if (
+        this.cart.find(
+          (cartItem) => cartItem.id === item.id && cartItem.type === type
+        )
+      ) {
+        this.cart.find(
+          (cartItem) => cartItem.id === item.id && cartItem.type === type
+        ).quantity++
       } else {
         this.cart.push({ ...item, quantity: 1, type: type })
       }
       this.saveCartToLocalStorage()
-      if(type === "menu") {
+      if (type === "menu") {
         this.$buefy.snackbar.open({
           message: "Le menu a bien été ajouté au panier",
           type: "is-success",
@@ -79,7 +85,7 @@ export default {
         this.cart = this.cart.filter((cartItem) => cartItem !== item)
       }
       this.saveCartToLocalStorage()
-      if(item.type === "menu") {
+      if (item.type === "menu") {
         this.$buefy.snackbar.open({
           message: "Le menu a bien été retiré au panier",
           type: "is-success",
