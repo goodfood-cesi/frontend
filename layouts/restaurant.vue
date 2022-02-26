@@ -96,6 +96,7 @@ export default {
         ).quantity--
       } else {
         this.cart = this.cart.filter((cartItem) => cartItem !== item)
+        this.saveCartToLocalStorage()
         if (item.type === "menu") {
           this.$buefy.snackbar.open({
             message: "Le menu a bien été supprimé du panier",
@@ -108,15 +109,14 @@ export default {
           })
         }
       }
-      this.saveCartToLocalStorage()
     },
     loadCartFromLocalStorage() {
-      if (localStorage.getItem("cart")) {
-        this.cart = JSON.parse(localStorage.getItem("cart"))
+      if (localStorage.getItem("cart_" + this.$route.params.restaurant)) {
+        this.cart = JSON.parse(localStorage.getItem("cart_" + this.$route.params.restaurant))
       }
     },
     saveCartToLocalStorage() {
-      localStorage.setItem("cart", JSON.stringify(this.cart))
+      localStorage.setItem("cart_" + this.$route.params.restaurant, JSON.stringify(this.cart))
     },
     clearCart() {
       this.cart = []
