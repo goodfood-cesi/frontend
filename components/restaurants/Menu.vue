@@ -71,16 +71,31 @@
           </p>
         </li>
       </ul>
-      <b-button
-        tag="nuxt-link"
-        :to="`/cart`"
-        icon-right="arrow-right-thin-circle-outline"
-        type="is-primary is-light"
-        :disabled="cart.length === 0"
-        expanded
-      >
-        Commander
-      </b-button>
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          <b-button
+            icon-right="cart-remove"
+            type="is-danger is-light"
+            :disabled="cart.length === 0"
+            expanded
+            @click="$emit('clearCart')"
+          >
+            Vider le panier
+          </b-button>
+        </div>
+        <div class="card-footer-item">
+          <b-button
+            tag="nuxt-link"
+            :to="`/pay`"
+            icon-right="arrow-right-thin-circle-outline"
+            type="is-primary is-light"
+            :disabled="cart.length === 0"
+            expanded
+          >
+            Commander
+          </b-button>
+        </div>
+      </footer>
     </div>
   </aside>
 </template>
