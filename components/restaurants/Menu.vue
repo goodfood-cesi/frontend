@@ -48,7 +48,7 @@
       <ul v-else class="menu-list mb-3">
         <li
           v-for="item in cart"
-          :key="`cart_` + item.id"
+          :key="`cart_` + item.type + '_' + item.id"
           class="box is-flex is-justify-content-space-between mb-1"
         >
           <div class="is-flex">
