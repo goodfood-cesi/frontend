@@ -58,8 +58,8 @@
           <ul v-if="itemsInCart === 0" class="menu-list mb-3">
             <li>Votre panier est vide...</li>
           </ul>
-          <ul v-else class="menu-list mb-3">
-            <li
+          <ul v-else class="menu-list">
+            <div
               v-for="item in cart"
               :key="`cart_` + item.type + '_' + item.id"
               class="is-flex is-justify-content-space-between mb-1"
@@ -68,15 +68,12 @@
                 <img :src="item.image" alt="" class="image is-32x32" />
                 <p class="ml-1">{{ item.name }}</p>
               </div>
-              <span class="tag is-primary"
-                >{{ item.quantity }} x {{ item.amount }} €
-                <b-button
-                  class="delete"
-                  type="is-primary"
-                  @click="$emit('removeItemFromCart', item)"
-                />
-              </span>
-            </li>
+              <div class="buttons has-addons">
+                <b-button type='is-danger is-light' size='is-small' @click.prevent.stop="$emit('minusItemInCart', item)">-</b-button>
+                <b-button type='is-primary is-light' size='is-small'>{{ item.quantity }} x {{ item.amount }} €</b-button>
+                <b-button type='is-info is-light' size='is-small' @click.prevent.stop="$emit('plusItemInCart', item)">+</b-button>
+              </div>
+            </div>
           </ul>
         </div>
       </div>

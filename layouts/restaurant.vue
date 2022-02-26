@@ -7,7 +7,8 @@
           <RestaurantsMenu
             :restaurant="restaurant"
             :cart="cart"
-            @removeItemFromCart="removeItemFromCart"
+            @plusItemInCart='plusItemInCart'
+            @minusItemInCart='minusItemInCart'
             @clearCart="clearCart"
           />
         </div>
@@ -78,24 +79,28 @@ export default {
         })
       }
     },
-    removeItemFromCart(item) {
-      if (item.quantity > 1) {
-        this.cart.find((cartItem) => cartItem === item).quantity--
+    plusItemInCart(item) {
+      this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === item.type).quantity++
+      this.saveCartToLocalStorage()
+    },
+    minusItemInCart(item) {
+      if (this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === item.type).quantity > 1) {
+        this.cart.find((cartItem) => cartItem.id === item.id && cartItem.type === item.type).quantity--
       } else {
         this.cart = this.cart.filter((cartItem) => cartItem !== item)
+        if(item.type === "menu") {
+          this.$buefy.snackbar.open({
+            message: "Le menu a bien été supprimé du panier",
+            type: "is-success",
+          })
+        } else {
+          this.$buefy.snackbar.open({
+            message: "Le produit a bien été supprimé du panier",
+            type: "is-success",
+          })
+        }
       }
       this.saveCartToLocalStorage()
-      if (item.type === "menu") {
-        this.$buefy.snackbar.open({
-          message: "Le menu a bien été retiré au panier",
-          type: "is-success",
-        })
-      } else {
-        this.$buefy.snackbar.open({
-          message: "Le produit a bien été retiré au panier",
-          type: "is-success",
-        })
-      }
     },
     loadCartFromLocalStorage() {
       if (localStorage.getItem("cart")) {
