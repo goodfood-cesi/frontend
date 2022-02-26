@@ -112,11 +112,16 @@ export default {
     },
     loadCartFromLocalStorage() {
       if (localStorage.getItem("cart_" + this.$route.params.restaurant)) {
-        this.cart = JSON.parse(localStorage.getItem("cart_" + this.$route.params.restaurant))
+        this.cart = JSON.parse(
+          localStorage.getItem("cart_" + this.$route.params.restaurant)
+        )
       }
     },
     saveCartToLocalStorage() {
-      localStorage.setItem("cart_" + this.$route.params.restaurant, JSON.stringify(this.cart))
+      localStorage.setItem(
+        "cart_" + this.$route.params.restaurant,
+        JSON.stringify(this.cart)
+      )
     },
     clearCart() {
       this.cart = []

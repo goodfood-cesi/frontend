@@ -63,30 +63,32 @@
               v-for="(item, i) in cart"
               :key="`cart_` + item.type + '_' + item.id"
             >
-              <div class='is-flex is-justify-content-space-between'>
+              <div class="is-flex is-justify-content-space-between">
                 <div class="is-flex">
                   <img :src="item.image" alt="" class="image is-48x48" />
-                  <h3 class="subtitle is-6 ml-1 is-align-self-center">{{ item.name }}</h3>
+                  <h3 class="subtitle is-6 ml-1 is-align-self-center">
+                    {{ item.name }}
+                  </h3>
                 </div>
                 <div class="buttons has-addons">
                   <b-button
                     type="is-danger is-light"
                     size="is-small"
                     @click.prevent.stop="$emit('minusItemInCart', item)"
-                  >-</b-button
+                    >-</b-button
                   >
                   <b-button type="is-primary is-light" size="is-small"
-                  >{{ item.quantity }} x {{ item.amount }} €</b-button
+                    >{{ item.quantity }} x {{ item.amount }} €</b-button
                   >
                   <b-button
                     type="is-info is-light"
                     size="is-small"
                     @click.prevent.stop="$emit('plusItemInCart', item)"
-                  >+</b-button
+                    >+</b-button
                   >
                 </div>
               </div>
-              <hr v-if='i+1 !== cart.length'>
+              <hr v-if="i + 1 !== cart.length" />
             </div>
           </ul>
         </div>
