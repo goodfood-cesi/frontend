@@ -55,36 +55,38 @@
       </div>
       <div class="card-content">
         <div class="menu">
-          <ul v-if="itemsInCart === 0" class="menu-list mb-3">
+          <ul v-if="itemsInCart === 0" class="menu-list">
             <li>Votre panier est vide...</li>
           </ul>
           <ul v-else class="menu-list">
             <div
-              v-for="item in cart"
+              v-for="(item, i) in cart"
               :key="`cart_` + item.type + '_' + item.id"
-              class="is-flex is-justify-content-space-between mb-1"
             >
-              <div class="is-flex">
-                <img :src="item.image" alt="" class="image is-32x32" />
-                <p class="ml-1">{{ item.name }}</p>
-              </div>
-              <div class="buttons has-addons">
-                <b-button
-                  type="is-danger is-light"
-                  size="is-small"
-                  @click.prevent.stop="$emit('minusItemInCart', item)"
+              <div class='is-flex is-justify-content-space-between'>
+                <div class="is-flex">
+                  <img :src="item.image" alt="" class="image is-48x48" />
+                  <h3 class="subtitle is-6 ml-1 is-align-self-center">{{ item.name }}</h3>
+                </div>
+                <div class="buttons has-addons">
+                  <b-button
+                    type="is-danger is-light"
+                    size="is-small"
+                    @click.prevent.stop="$emit('minusItemInCart', item)"
                   >-</b-button
-                >
-                <b-button type="is-primary is-light" size="is-small"
+                  >
+                  <b-button type="is-primary is-light" size="is-small"
                   >{{ item.quantity }} x {{ item.amount }} €</b-button
-                >
-                <b-button
-                  type="is-info is-light"
-                  size="is-small"
-                  @click.prevent.stop="$emit('plusItemInCart', item)"
+                  >
+                  <b-button
+                    type="is-info is-light"
+                    size="is-small"
+                    @click.prevent.stop="$emit('plusItemInCart', item)"
                   >+</b-button
-                >
+                  >
+                </div>
               </div>
+              <hr v-if='i+1 !== cart.length'>
             </div>
           </ul>
         </div>
