@@ -8,6 +8,7 @@
             :restaurant="restaurant"
             :cart="cart"
             @removeItemFromCart="removeItemFromCart"
+            @clearCart="clearCart"
           />
         </div>
         <div class="column">
@@ -78,6 +79,14 @@ export default {
     },
     saveCartToLocalStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart))
+    },
+    clearCart() {
+      this.cart = []
+      this.saveCartToLocalStorage()
+      this.$buefy.snackbar.open({
+        message: "Le panier a bien été vidé",
+        type: "is-success",
+      })
     },
   },
 }
