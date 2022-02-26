@@ -135,4 +135,7 @@ export default {
     version: 2,
     size: "invisible",
   },
+  publicRuntimeConfig: {
+    PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID,
+  },
 }
