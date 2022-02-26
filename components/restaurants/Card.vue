@@ -2,7 +2,9 @@
   <div class="card is-fullheight">
     <div class="card-header">
       <p class="card-header-title is-size-5 is-justify-content-space-between">
-        {{ restaurant.name }}
+        <NuxtLink :to="`/restaurants/` + restaurant.id">{{
+          restaurant.name
+        }}</NuxtLink>
         <a
           href="#"
           @click.prevent="

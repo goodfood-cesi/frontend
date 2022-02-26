@@ -7,7 +7,9 @@
           <RestaurantsMenu
             :restaurant="restaurant"
             :cart="cart"
-            @removeItemFromCart="removeItemFromCart"
+            @plusItemInCart="plusItemInCart"
+            @minusItemInCart="minusItemInCart"
+            @clearCart="clearCart"
           />
         </div>
         <div class="column">
@@ -48,28 +50,65 @@ export default {
   },
   methods: {
     addItemToCart(item) {
-      if (this.cart.find((cartItem) => cartItem.id === item.id)) {
-        this.cart.find((cartItem) => cartItem.id === item.id).quantity++
+      let type = "product"
+      if (item.products) {
+        type = "menu"
+      }
+
+      if (
+        this.cart.find(
+          (cartItem) => cartItem.id === item.id && cartItem.type === type
+        )
+      ) {
+        this.cart.find(
+          (cartItem) => cartItem.id === item.id && cartItem.type === type
+        ).quantity++
       } else {
-        this.cart.push({ ...item, quantity: 1 })
+        this.cart.push({ ...item, quantity: 1, type: type })
       }
       this.saveCartToLocalStorage()
-      this.$buefy.snackbar.open({
-        message: "Le menu a été ajouté au panier",
-        type: "is-success",
-      })
+      if (type === "menu") {
+        this.$buefy.snackbar.open({
+          message: "Le menu a bien été ajouté au panier",
+          type: "is-success",
+        })
+      } else {
+        this.$buefy.snackbar.open({
+          message: "Le produit a bien été ajouté au panier",
+          type: "is-success",
+        })
+      }
     },
-    removeItemFromCart(item) {
-      if (item.quantity > 1) {
-        this.cart.find((cartItem) => cartItem.id === item.id).quantity--
+    plusItemInCart(item) {
+      this.cart.find(
+        (cartItem) => cartItem.id === item.id && cartItem.type === item.type
+      ).quantity++
+      this.saveCartToLocalStorage()
+    },
+    minusItemInCart(item) {
+      if (
+        this.cart.find(
+          (cartItem) => cartItem.id === item.id && cartItem.type === item.type
+        ).quantity > 1
+      ) {
+        this.cart.find(
+          (cartItem) => cartItem.id === item.id && cartItem.type === item.type
+        ).quantity--
       } else {
-        this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id)
+        this.cart = this.cart.filter((cartItem) => cartItem !== item)
+        if (item.type === "menu") {
+          this.$buefy.snackbar.open({
+            message: "Le menu a bien été supprimé du panier",
+            type: "is-success",
+          })
+        } else {
+          this.$buefy.snackbar.open({
+            message: "Le produit a bien été supprimé du panier",
+            type: "is-success",
+          })
+        }
       }
       this.saveCartToLocalStorage()
-      this.$buefy.snackbar.open({
-        message: "Le menu a été retiré du panier",
-        type: "is-success",
-      })
     },
     loadCartFromLocalStorage() {
       if (localStorage.getItem("cart")) {
@@ -78,6 +117,14 @@ export default {
     },
     saveCartToLocalStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart))
+    },
+    clearCart() {
+      this.cart = []
+      this.saveCartToLocalStorage()
+      this.$buefy.snackbar.open({
+        message: "Le panier a bien été vidé",
+        type: "is-success",
+      })
     },
   },
 }
