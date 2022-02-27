@@ -134,6 +134,11 @@ export default {
       restaurants: [],
     }
   },
+  head() {
+    return {
+      title: "Good Food - Mes commandes",
+    }
+  },
   mounted() {
     this.getRestaurants()
     this.getOrders()

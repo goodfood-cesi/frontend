@@ -56,6 +56,11 @@ export default {
       password_confirmation: "",
     }
   },
+  head() {
+    return {
+      title: "Good Food - Modifier mon mot de passe"
+    }
+  },
   methods: {
     submit() {
       this.$axios

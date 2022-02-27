@@ -63,6 +63,11 @@ export default {
       checkbox: "Se souvenir de moi",
     }
   },
+  head() {
+    return {
+      title: "Good Food - Connexion",
+    }
+  },
   methods: {
     clearEmail() {
       this.email = ""

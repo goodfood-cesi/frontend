@@ -25,6 +25,11 @@ export default {
       restaurant: {},
     }
   },
+  head() {
+    return {
+      title: "Good Food - Produits à l'unité",
+    }
+  },
   async mounted() {
     await this.$axios
       .get(

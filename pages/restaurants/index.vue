@@ -144,6 +144,11 @@ export default {
       query: "",
     }
   },
+  head() {
+    return {
+      title: "Good Food - Restaurants",
+    }
+  },
   computed: {
     filteredRestaurants() {
       return this.restaurants.filter((r) => {

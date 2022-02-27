@@ -32,5 +32,10 @@
 <script>
 export default {
   name: "AboutPage",
+  head() {
+    return {
+      title: "Good Food - A propos",
+    }
+  },
 }
 </script>

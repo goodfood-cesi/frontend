@@ -73,6 +73,11 @@ export default {
       email: this.$auth.user.email,
     }
   },
+  head() {
+    return {
+      title: "Good Food - Mon compte",
+    }
+  },
   methods: {
     submit() {
       this.$axios
