@@ -86,6 +86,11 @@ export default {
       restaurant: {},
     }
   },
+  head() {
+    return {
+      title: "Good Food - Restaurant",
+    }
+  },
   computed: {
     center() {
       if (this.restaurant.latitude && this.restaurant.longitude) {

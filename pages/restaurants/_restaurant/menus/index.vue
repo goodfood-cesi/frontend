@@ -21,6 +21,11 @@ export default {
       cart: [],
     }
   },
+  head() {
+    return {
+      title: "Good Food - Menus",
+    }
+  },
   async mounted() {
     await this.$axios
       .get(

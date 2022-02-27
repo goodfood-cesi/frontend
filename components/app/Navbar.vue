@@ -44,7 +44,7 @@
             <NuxtLink to="/account">Mon compte</NuxtLink>
           </b-dropdown-item>
           <b-dropdown-item has-link aria-role="listitem">
-            <NuxtLink to="/orders">Mes commandes</NuxtLink>
+            <NuxtLink to="/account/orders">Mes commandes</NuxtLink>
           </b-dropdown-item>
           <hr class="dropdown-divider" />
           <b-dropdown-item aria-role="listitem" @click="logout">

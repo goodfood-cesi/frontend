@@ -100,6 +100,11 @@ export default {
       },
     }
   },
+  head() {
+    return {
+      title: "Good Food - inscription",
+    }
+  },
   methods: {
     async submit() {
       const token = await this.$recaptcha.getResponse()

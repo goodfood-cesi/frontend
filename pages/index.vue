@@ -244,6 +244,11 @@ export default {
       center: [48.856614, 2.3522219],
     }
   },
+  head() {
+    return {
+      title: "Good Food - Accueil",
+    }
+  },
   async mounted() {
     await this.$axios
       .get("/api/restaurants/restaurants")

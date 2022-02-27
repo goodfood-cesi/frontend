@@ -89,6 +89,11 @@ export default {
       disabled: 0,
     }
   },
+  head() {
+    return {
+      title: "Good Food - Contact",
+    }
+  },
   mounted() {
     if (this.$auth.loggedIn) {
       this.name = this.$auth.user.firstname + " " + this.$auth.user.lastname

@@ -55,6 +55,7 @@
           <RestaurantsMenu
             :restaurant="restaurant"
             :cart="cart"
+            style="position: sticky; top: 10px; z-index: 1"
             @plusItemInCart="plusItemInCart"
             @minusItemInCart="minusItemInCart"
             @clearCart="clearCart"
@@ -257,7 +258,7 @@ export default {
                         type: "is-success",
                       })
                       setTimeout(() => {
-                        $this.$router.push("/orders")
+                        $this.$router.push("/account/orders")
                       }, 3000)
                     } else {
                       $this.$buefy.snackbar.open({
