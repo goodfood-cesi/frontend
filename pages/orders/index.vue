@@ -61,7 +61,7 @@
                   </b-table-column>
 
                   <b-table-column v-slot="props" field="restaurant_id" label="Restaurant" sortable>
-                      {{ props.row.restaurant_id }}
+                      {{ restaurants.find(restaurant => restaurant.id === props.row.restaurant_id) ? restaurants.find(restaurant => restaurant.id === props.row.restaurant_id).name : 'Restaurant Inconnu' }}
                   </b-table-column>
 
                   <b-table-column v-slot="props" field="date" label="Date" sortable centered>
@@ -123,15 +123,22 @@ export default {
     return {
       orders: [],
       currentPage: 1,
+      restaurants: [],
     }
   },
   mounted() {
+    this.getRestaurants()
     this.getOrders()
   },
   methods: {
     getOrders() {
       this.$axios.get('/api/orders/orders').then(response => {
         this.orders = response.data.data
+      })
+    },
+    getRestaurants() {
+      this.$axios.get('/api/restaurants/restaurants').then(response => {
+        this.restaurants = response.data.data
       })
     },
     fetchOrderDetails(row) {
