@@ -68,7 +68,7 @@
                     {{ new Date(props.row.created_at).toLocaleString() }}
                   </b-table-column>
 
-                  <b-table-column v-slot="props" field="date" label="Total € (HT)" sortable>
+                  <b-table-column v-slot="props" field="date" label="Total (HT) €" sortable>
                     {{ props.row.total_untaxed | toCurrency }}
                   </b-table-column>
 
@@ -89,22 +89,25 @@
                   </template>
 
                   <template #detail="props">
-                    <div v-if="props.row.detailed_products">
-                      <div
-                        v-for="(item, i) in props.row.detailed_products"
-                        :key="`orders_`+ props.row.id + `product_` + item.id"
-                      >
-                        <div class="is-flex is-justify-content-space-between">
-                          <div class="is-flex">
-                            <img :src="item.image" alt="" class="image is-48x48" />
-                            <h3 class="subtitle is-6 ml-1 is-align-self-center">
-                              {{ item.name }}
-                            </h3>
-                          </div>
-                        </div>
-                        <hr v-if="i + 1 !== props.row.detailed_products.length" />
-                      </div>
-                    </div>
+                    <b-table
+                      :data="[...props.row.detailed_products, ...props.row.detailed_menus]"
+                      sort-icon="chevron-up">
+                      <b-table-column v-slot="r" field="id" label="Image" sortable>
+                        <img :src=r.row.image class='image is-48x48'>
+                      </b-table-column>
+                      <b-table-column v-slot="r" field="id" label="Nom du produit" sortable>
+                        {{ r.row.name }}
+                      </b-table-column>
+                      <b-table-column v-slot="r" field="id" label="Quantité" sortable>
+                        {{ r.row.quantity }}
+                      </b-table-column>
+                      <b-table-column v-slot="r" field="id" label="Prix unitaire" sortable>
+                        {{ r.row.amount | toCurrency }}
+                      </b-table-column>
+                      <b-table-column v-slot="r" field="id" label="Prix total" sortable>
+                        {{ r.row.quantity * r.row.amount | toCurrency }}
+                      </b-table-column>
+                    </b-table>
                   </template>
                 </b-table>
               </div>
@@ -134,6 +137,10 @@ export default {
     getOrders() {
       this.$axios.get('/api/orders/orders').then(response => {
         this.orders = response.data.data
+        this.orders.forEach(order => {
+          order.detailed_products = []
+          order.detailed_menus = []
+        })
       })
     },
     getRestaurants() {
@@ -142,13 +149,30 @@ export default {
       })
     },
     fetchOrderDetails(row) {
-      if(!row.detailed_products) {
+      if(row.detailed_products.length === 0 && row.detailed_menus.length === 0) {
         this.$axios.$get('/api/restaurants/restaurants/' + row.restaurant_id + '/products').then(response => {
-          this.orders.find(order => order.id === row.id).detailed_products = response.data.filter(product => {
+          const filteredProducts = response.data.filter(product => {
             return row.products.find(orderProduct => orderProduct.product_id === product.id)
           })
-          this.$nextTick(() => {
-            this.$refs.table.toggleDetails(row)
+          filteredProducts.forEach(product => {
+            product.amount = row.products.find(orderProduct => orderProduct.product_id === product.id).amount_untaxed
+            product.quantity = row.products.find(orderProduct => orderProduct.product_id === product.id).quantity
+          })
+          this.orders.find(order => order.id === row.id).detailed_products = filteredProducts
+        }).then(() => {
+          this.$axios.$get('/api/restaurants/restaurants/' + row.restaurant_id + '/menus').then(response => {
+            const filteredMenus = response.data.filter(menu => {
+              return row.menus.find(orderMenu => orderMenu.menu_id === menu.id)
+            })
+            filteredMenus.forEach(menu => {
+              menu.amount = row.menus.find(orderMenu => orderMenu.menu_id === menu.id).amount_untaxed
+              menu.quantity = row.menus.find(orderMenu => orderMenu.menu_id === menu.id).quantity
+            })
+            this.orders.find(order => order.id === row.id).detailed_menus = filteredMenus
+          }).then(() => {
+            this.$nextTick(() => {
+              this.$refs.table.toggleDetails(row)
+            })
           })
         })
       } else {
