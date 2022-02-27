@@ -48,7 +48,6 @@
                   :data="orders"
                   paginated
                   per-page="15"
-                  :current-page.sync="currentPage"
                   :pagination-simple="true"
                   detail-transition="fade"
                   :show-detail-icon=false
@@ -72,7 +71,7 @@
                     {{ props.row.total_untaxed | toCurrency }}
                   </b-table-column>
 
-                  <b-table-column v-slot="props" field="date" label="Status" sortable>
+                  <b-table-column v-slot="props" field="date" label="Statut" sortable>
                     <p v-if='props.row.status === 1'>
                       <span class='tag is-primary is-light'>En attente</span>
                     </p>
@@ -91,6 +90,9 @@
                   <template #detail="props">
                     <b-table
                       :data="[...props.row.detailed_products, ...props.row.detailed_menus]"
+                      paginated
+                      per-page="5"
+                      :pagination-simple="true"
                       sort-icon="chevron-up">
                       <b-table-column v-slot="r" field="id" label="Image" sortable>
                         <img :src=r.row.image class='image is-48x48'>
@@ -125,7 +127,6 @@ export default {
   data() {
     return {
       orders: [],
-      currentPage: 1,
       restaurants: [],
     }
   },
