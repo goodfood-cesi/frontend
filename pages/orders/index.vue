@@ -64,15 +64,15 @@
                       {{ restaurants.find(restaurant => restaurant.id === props.row.restaurant_id) ? restaurants.find(restaurant => restaurant.id === props.row.restaurant_id).name : 'Restaurant Inconnu' }}
                   </b-table-column>
 
-                  <b-table-column v-slot="props" field="date" label="Date" sortable centered>
+                  <b-table-column v-slot="props" field="date" label="Date" sortable>
                     {{ new Date(props.row.created_at).toLocaleString() }}
                   </b-table-column>
 
-                  <b-table-column v-slot="props" field="date" label="Total € (HT)" sortable centered>
+                  <b-table-column v-slot="props" field="date" label="Total € (HT)" sortable>
                     {{ props.row.total_untaxed | toCurrency }}
                   </b-table-column>
 
-                  <b-table-column v-slot="props" field="date" label="Status" sortable centered>
+                  <b-table-column v-slot="props" field="date" label="Status" sortable>
                     <p v-if='props.row.status === 1'>
                       <span class='tag is-primary is-light'>En attente</span>
                     </p>
