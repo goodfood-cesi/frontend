@@ -109,7 +109,7 @@
           <b-button
             icon-right="arrow-right-thin-circle-outline"
             type="is-primary is-light"
-            :disabled='!isAuthenticated || itemsInCart === 0'
+            :disabled="!isAuthenticated || itemsInCart === 0"
             expanded
             @click="$emit('payModal')"
           >
@@ -122,7 +122,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex"
 
 export default {
   name: "RestaurantsMenu",
@@ -151,6 +151,6 @@ export default {
         return acc + item.quantity
       }, 0)
     },
-  }
+  },
 }
 </script>

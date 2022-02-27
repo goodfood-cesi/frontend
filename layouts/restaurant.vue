@@ -1,22 +1,23 @@
 <template>
   <section>
-    <b-modal v-model="isPayModalActive" style='z-index: 9999'>
-      <div class='card'>
+    <b-modal v-model="isPayModalActive" style="z-index: 9999">
+      <div class="card">
         <header class="card-header">
           <p class="card-header-title">
-            Votre commande de {{ cartTotal | toCurrency }} dans le restaurant {{ restaurant.name }}
+            Votre commande de {{ cartTotal | toCurrency }} dans le restaurant
+            {{ restaurant.name }}
           </p>
-          <div class='card-header-icon' @click="closePayModal()">
+          <div class="card-header-icon" @click="closePayModal()">
             <button class="delete"></button>
           </div>
         </header>
-        <div class='card-content'>
-          <div class='content'>
+        <div class="card-content">
+          <div class="content">
             <div
               v-for="item in cart"
               :key="`cart_` + item.type + '_' + item.id"
             >
-              <div class='box'>
+              <div class="box">
                 <div class="is-flex is-justify-content-space-between">
                   <div class="is-flex">
                     <img :src="item.image" alt="" class="image is-48x48" />
@@ -31,17 +32,17 @@
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
             </div>
           </div>
-          <div class='box is-flex is-justify-content-space-between'>
+          <div class="box is-flex is-justify-content-space-between">
             <strong>TOTAL :</strong>
             {{ cartTotal | toCurrency }}
           </div>
-          <div id='paypal-buttons' class='has-text-centered'></div>
+          <div id="paypal-buttons" class="has-text-centered"></div>
         </div>
         <footer class="card-footer">
-          <div class='card-footer-item'>
+          <div class="card-footer-item">
             Paiement Sécurisé via Paypal &copy;
           </div>
         </footer>
@@ -57,7 +58,7 @@
             @plusItemInCart="plusItemInCart"
             @minusItemInCart="minusItemInCart"
             @clearCart="clearCart"
-            @payModal='payModal'
+            @payModal="payModal"
           />
         </div>
         <div class="column">
@@ -72,7 +73,7 @@
 </template>
 
 <script>
-import { loadScript } from '@paypal/paypal-js'
+import { loadScript } from "@paypal/paypal-js"
 
 export default {
   name: "RestaurantLayout",
@@ -81,7 +82,7 @@ export default {
     return {
       cart: [],
       restaurant: {},
-      isPayModalActive: false
+      isPayModalActive: false,
     }
   },
   computed: {
@@ -192,79 +193,100 @@ export default {
     payModal() {
       this.isPayModalActive = true
       loadScript({
-        'client-id': this.$config.PAYPAL_CLIENT_ID || '',
-        'currency': 'EUR',
-        'enable-funding': ['card', 'credit', 'paylater'],
-        'components': ['buttons']
-      }).then((paypal, $this = this) => {
-        paypal.Buttons({
-          style: {
-            label: 'checkout',
-            tagline: true,
-            layout: 'horizontal',
-            color: 'blue',
-            shape: 'rect'
-          },
-          createOrder() {
-            return $this.$axios.$post('/api/orders/init', {
-              cart: $this.cart,
-              restaurant: $this.restaurant.id
-            }, {
-              headers: {
-                'content-type': 'application/json',
-                'Authorization': $this.$auth.strategy.token.get()
-              }
-            }).then((data) => {
-              return data.data.result.id
-            }).catch((err) => {
-              $this.$buefy.snackbar.open({
-                message: "Un erreur est survenue : " + err.message,
-                type: "is-warning",
-              })
-            })
-          },
-          onApprove(data) {
-            return $this.$axios.$post('/api/orders/capture', {
-              order: data.orderID
-            }, {
-              headers: {
-                'content-type': 'application/json',
-                'Authorization': $this.$auth.strategy.token.get()
-              }
-            }).then((data) => {
-              if (data.meta.success === true) {
-                $this.clearCart()
-                $this.closePayModal()
-                $this.$buefy.snackbar.open({
-                  message: "Votre commande a été validée. Vous allez être redirigé vers votre commande.",
-                  type: "is-success",
-                })
-                setTimeout(() => {
-                  $this.$router.push('/orders')
-                }, 3000)
-              } else {
-                $this.$buefy.snackbar.open({
-                  message: "Une erreur est survenue : " + data.meta.message,
-                  type: "is-warning",
-                })
-              }
-            })
-          },
-          onError() {
-            return (err) => {
-              $this.$buefy.snackbar.open({
-                message: "Une erreur est survenue lors de la commande : " + err.message,
-                type: "is-danger",
-              })
-            }
-          }
-        }).render(document.getElementById('paypal-buttons'))
-      }).catch(() => {
-        this.$buefy.snackbar.open({
-          message: "Une erreur est survenue lors du chargement de Paypal",
-          type: "is-danger",
-        })
+        "client-id": this.$config.PAYPAL_CLIENT_ID || "",
+        currency: "EUR",
+        "enable-funding": ["card", "credit", "paylater"],
+        components: ["buttons"],
       })
+        .then((paypal, $this = this) => {
+          paypal
+            .Buttons({
+              style: {
+                label: "checkout",
+                tagline: true,
+                layout: "horizontal",
+                color: "blue",
+                shape: "rect",
+              },
+              createOrder() {
+                return $this.$axios
+                  .$post(
+                    "/api/orders/init",
+                    {
+                      cart: $this.cart,
+                      restaurant: $this.restaurant.id,
+                    },
+                    {
+                      headers: {
+                        "content-type": "application/json",
+                        Authorization: $this.$auth.strategy.token.get(),
+                      },
+                    }
+                  )
+                  .then((data) => {
+                    return data.data.result.id
+                  })
+                  .catch((err) => {
+                    $this.$buefy.snackbar.open({
+                      message: "Un erreur est survenue : " + err.message,
+                      type: "is-warning",
+                    })
+                  })
+              },
+              onApprove(data) {
+                return $this.$axios
+                  .$post(
+                    "/api/orders/capture",
+                    {
+                      order: data.orderID,
+                    },
+                    {
+                      headers: {
+                        "content-type": "application/json",
+                        Authorization: $this.$auth.strategy.token.get(),
+                      },
+                    }
+                  )
+                  .then((data) => {
+                    if (data.meta.success === true) {
+                      $this.clearCart()
+                      $this.closePayModal()
+                      $this.$buefy.snackbar.open({
+                        message:
+                          "Votre commande a été validée. Vous allez être redirigé vers votre commande.",
+                        type: "is-success",
+                      })
+                      setTimeout(() => {
+                        $this.$router.push("/orders")
+                      }, 3000)
+                    } else {
+                      $this.$buefy.snackbar.open({
+                        message:
+                          "Une erreur est survenue : " + data.meta.message,
+                        type: "is-warning",
+                      })
+                    }
+                  })
+              },
+              onError() {
+                return (err) => {
+                  $this.$buefy.snackbar.open({
+                    message:
+                      "Une erreur est survenue lors de la commande : " +
+                      err.message,
+                    type: "is-danger",
+                  })
+                }
+              },
+            })
+            .render(document.getElementById("paypal-buttons"))
+        })
+        .catch(() => {
+          this.$buefy.snackbar.open({
+            message: "Une erreur est survenue lors du chargement de Paypal",
+            type: "is-danger",
+          })
+        })
     },
     closePayModal() {
       this.isPayModalActive = false
