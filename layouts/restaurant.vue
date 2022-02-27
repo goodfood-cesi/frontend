@@ -258,7 +258,7 @@ export default {
                         type: "is-success",
                       })
                       setTimeout(() => {
-                        $this.$router.push("/orders")
+                        $this.$router.push("/account/orders")
                       }, 3000)
                     } else {
                       $this.$buefy.snackbar.open({
