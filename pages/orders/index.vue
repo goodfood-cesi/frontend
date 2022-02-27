@@ -74,13 +74,13 @@
 
                   <b-table-column v-slot="props" field="date" label="Status" sortable centered>
                     <p v-if='props.row.status === 1'>
-                      En attente
+                      <span class='tag is-primary is-light'>En attente</span>
                     </p>
                     <p v-else-if='props.row.status === 2'>
-                      Payé
+                      <span class='tag is-info is-light'>Payé</span>
                     </p>
                     <p v-else-if='props.row.status === 3'>
-                      Livré
+                      <span class='tag is-success is-light'>Livré</span>
                     </p>
 
                   </b-table-column>
