@@ -26,7 +26,9 @@
           <NuxtLink to="/account/register" class="button is-primary"
             ><b>Inscription</b></NuxtLink
           >
-          <NuxtLink to="/account/login" class="button is-light">Connexion</NuxtLink>
+          <NuxtLink to="/account/login" class="button is-light"
+            >Connexion</NuxtLink
+          >
         </div>
       </b-navbar-item>
     </template>
