@@ -76,6 +76,13 @@ export default {
       restaurant: {},
     }
   },
+  computed: {
+    cartTotal() {
+      return this.cart.reduce((acc, item) => {
+        return acc + item.amount * item.quantity
+      }, 0)
+    },
+  },
   async mounted() {
     this.loadCartFromLocalStorage()
     await this.$axios
