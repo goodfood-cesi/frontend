@@ -48,6 +48,10 @@ export default {
       target: process.env.RESTAURANTS_API_URL,
       pathRewrite: { "^/api/restaurants/": "" },
     },
+    "/api/orders/": {
+      target: process.env.ORDERS_API_URL,
+      pathRewrite: { "^/api/orders/": "" },
+    },
     "/api/geo/": {
       target: "http://ip-api.com/",
       pathRewrite: { "^/api/geo/": "" },
@@ -130,5 +134,8 @@ export default {
     hideBadge: false,
     version: 2,
     size: "invisible",
+  },
+  publicRuntimeConfig: {
+    PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID,
   },
 }

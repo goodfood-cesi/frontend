@@ -38,7 +38,7 @@ export default {
       .catch(() => {
         this.$router.push("/")
         this.$buefy.snackbar.open({
-          message: "Impossible de récupérer les menus du restaurant",
+          message: "Impossible de récupérer les produits du restaurant",
           type: "is-danger",
         })
       })
