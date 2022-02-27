@@ -174,7 +174,7 @@ export default {
             message: "Votre compte a bien été créé",
             type: "is-success",
           })
-          this.$router.push("/login")
+          this.$router.push("/account/login")
         })
         .catch((error) => {
           this.$buefy.snackbar.open({
