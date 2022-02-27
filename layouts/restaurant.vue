@@ -55,6 +55,7 @@
           <RestaurantsMenu
             :restaurant="restaurant"
             :cart="cart"
+            style="position: sticky; top: 10px; z-index: 1"
             @plusItemInCart="plusItemInCart"
             @minusItemInCart="minusItemInCart"
             @clearCart="clearCart"

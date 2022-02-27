@@ -3,7 +3,7 @@
     <div class="container is-fluid mt-2 mb-2">
       <div class="columns">
         <div class="column is-2">
-          <div class="box">
+          <div class="box" style="position: sticky; top: 10px; z-index: 1">
             <aside class="menu">
               <p class="menu-label">Compte</p>
               <ul class="menu-list">
