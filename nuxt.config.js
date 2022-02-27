@@ -91,9 +91,9 @@ export default {
       },
     },
     redirect: {
-      login: "/login",
-      logout: "/login",
-      callback: "/login",
+      login: "/account/login",
+      logout: "/account/login",
+      callback: "/account/login",
       home: "/restaurants",
     },
   },

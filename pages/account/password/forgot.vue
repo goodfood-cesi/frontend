@@ -13,7 +13,7 @@
           </div>
           <div class="column is-6-tablet is-5-desktop is-4-widescreen">
             <form class="box" @submit.prevent="submit">
-              <p class='subtitle has-text-centered'>Mot de passe oublié</p>
+              <p class="subtitle has-text-centered">Mot de passe oublié</p>
               <b-field label="Adresse e-mail">
                 <b-input
                   v-model="email"
@@ -27,7 +27,7 @@
               </b-field>
               <recaptcha />
               <b-button type="is-primary" native-type="submit" expanded
-              >Connexion
+                >Connexion
               </b-button>
             </form>
           </div>
@@ -42,7 +42,7 @@ export default {
   middleware: "guest",
   data() {
     return {
-      email: ""
+      email: "",
     }
   },
   head() {

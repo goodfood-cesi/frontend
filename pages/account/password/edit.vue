@@ -47,7 +47,7 @@
 </template>
 <script>
 export default {
-  name: "PasswordPage",
+  name: "EditPasswordPage",
   layout: "account",
   middleware: "auth",
   data() {
