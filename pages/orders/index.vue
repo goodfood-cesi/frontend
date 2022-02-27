@@ -50,6 +50,8 @@
                   per-page="15"
                   :current-page.sync="currentPage"
                   :pagination-simple="true"
+                  detail-transition="fade"
+                  :show-detail-icon=false
                   detailed
                   detail-key="id"
                   sort-icon="chevron-up">
