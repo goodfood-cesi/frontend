@@ -105,24 +105,23 @@
             Vider le panier
           </b-button>
         </div>
-        <div v-if='!isAuthenticated || itemsInCart === 0' class="card-footer-item">
+        <div class="card-footer-item">
           <b-button
             icon-right="arrow-right-thin-circle-outline"
             type="is-primary is-light"
-            disabled
+            :disabled='!isAuthenticated || itemsInCart === 0'
             expanded
+            @click="$emit('payModal')"
           >
             Commander ({{ cartTotal | toCurrency }})
           </b-button>
         </div>
-        <div v-else id='paypal-buttons' class='card-footer-item'></div>
       </footer>
     </div>
   </aside>
 </template>
 
 <script>
-import { loadScript } from '@paypal/paypal-js'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -152,57 +151,6 @@ export default {
         return acc + item.quantity
       }, 0)
     },
-  },
-  mounted() {
-    loadScript({
-      'client-id': this.$config.PAYPAL_CLIENT_ID || '',
-      'currency': 'EUR',
-      'enable-funding': ['card', 'credit', 'paylater'],
-      'components': ['buttons']
-    }).then((paypal, $this = this) => {
-      paypal.Buttons({
-        style: {
-          label: 'pay',
-          tagline: 'false',
-          layout: 'horizontal',
-          shape: 'rect'
-        },
-        createOrder() {
-          return $this.$axios.$post('/api/orders/init', {
-            cart: $this.cart,
-            restaurant: $this.restaurant.id
-          }, {
-            headers: {
-              'content-type': 'application/json',
-              'Authorization': $this.$auth.strategy.token.get()
-            }
-          }).then((data) => {
-            return data.data.result.id
-          }).catch((err) => {
-            $this.$buefy.snackbar.open({
-              message: "Un erreur est survenue : " + err.message,
-              type: "is-warning",
-            })
-          })
-        },
-        onApprove(data) {
-          // @todo
-        },
-        onError() {
-          return (err) => {
-            $this.$buefy.snackbar.open({
-              message: "Une erreur est survenue lors de la commande : " + err.message,
-              type: "is-danger",
-            })
-          }
-        }
-      }).render(document.getElementById('paypal-buttons'))
-    }).catch(() => {
-      this.$buefy.snackbar.open({
-        message: "Une erreur est survenue lors du chargement de Paypal",
-        type: "is-danger",
-      })
-    })
   }
 }
 </script>
