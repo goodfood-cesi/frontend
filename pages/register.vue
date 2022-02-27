@@ -13,6 +13,7 @@
           </div>
           <div class="column is-6-tablet is-5-desktop is-4-widescreen">
             <form class="box" @submit.prevent="submit">
+              <p class='subtitle has-text-centered'>Inscription</p>
               <div class="columns">
                 <div class="column">
                   <div class="field">

@@ -13,6 +13,7 @@
           </div>
           <div class="column is-6-tablet is-5-desktop is-4-widescreen">
             <form class="box" @submit.prevent="submit">
+              <p class='subtitle has-text-centered'>Connexion</p>
               <b-field label="Adresse e-mail">
                 <b-input
                   v-model="email"
@@ -42,9 +43,12 @@
                 </b-checkbox>
               </b-field>
               <recaptcha />
-              <b-button type="is-primary" native-type="submit" expanded
+              <b-button type="is-primary" native-type="submit" class='mb-2' expanded
                 >Connexion
               </b-button>
+              <NuxtLink to='/forgot' class="has-text-primary">
+                Mot de passe oublié 😕
+              </NuxtLink>
             </form>
           </div>
         </div>
