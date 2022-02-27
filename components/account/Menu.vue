@@ -32,7 +32,7 @@
           <NuxtLink
             to="/account/password/edit"
             :class="{
-              'is-active': currentPageName === 'account-password',
+              'is-active': currentPageName === 'account-password-edit',
             }"
             >Modifier mon mot de passe
           </NuxtLink>
