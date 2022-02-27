@@ -40,6 +40,11 @@
           </div>
           <div id='paypal-buttons' class='has-text-centered'></div>
         </div>
+        <footer class="card-footer">
+          <div class='card-footer-item'>
+            Paiement Sécurisé via Paypal &copy;
+          </div>
+        </footer>
       </div>
     </b-modal>
     <AppNavbar />
@@ -195,7 +200,7 @@ export default {
         paypal.Buttons({
           style: {
             label: 'checkout',
-            tagline: 'false',
+            tagline: true,
             layout: 'horizontal',
             color: 'blue',
             shape: 'rect'
