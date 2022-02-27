@@ -58,7 +58,7 @@ export default {
   },
   head() {
     return {
-      title: "Good Food - Modifier mon mot de passe"
+      title: "Good Food - Modifier mon mot de passe",
     }
   },
   methods: {
