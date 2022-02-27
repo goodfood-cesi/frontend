@@ -1,41 +1,6 @@
 <template>
   <section>
-    <div class="container is-fluid mt-2 mb-2">
-      <div class="columns">
-        <div class="column is-2">
-          <div class="box">
-            <aside class="menu">
-              <p class="menu-label">Compte</p>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink to="/account">Mon profil</NuxtLink>
-                </li>
-              </ul>
-              <p class="menu-label">Commandes</p>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink to="/orders">Mes commandes</NuxtLink>
-                </li>
-                <li><a>Paiements</a></li>
-              </ul>
-              <p class="menu-label">Sécurité</p>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink to="/account/password"
-                    >Modifier mon mot de passe
-                  </NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/account/delete" class="is-active"
-                    >Supprimer mon compte
-                  </NuxtLink>
-                </li>
-              </ul>
-            </aside>
-          </div>
-        </div>
-        <div class="column">
-          <div class="box">
+    <div class="box">
             <h3 class="is-size-3">Supprimer mon compte</h3>
             <p class="mb-2">
               Vous êtes sur le point de supprimer votre compte. Cette action est
@@ -72,14 +37,13 @@
               </div>
             </form>
           </div>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 <script>
 export default {
   name: "AccountDelete",
+  layout: "account",
+  middleware: "auth",
   data() {
     return {
       password: "",

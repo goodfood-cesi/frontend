@@ -1,41 +1,6 @@
 <template>
   <section>
-    <div class="container is-fluid mt-2 mb-2">
-      <div class="columns">
-        <div class="column is-2">
-          <div class="box" style="position: sticky; top: 10px; z-index: 1">
-            <aside class="menu">
-              <p class="menu-label">Compte</p>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink to="/account">Mon profil</NuxtLink>
-                </li>
-              </ul>
-              <p class="menu-label">Commandes</p>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink to="/orders" class="is-active"
-                    >Mes commandes
-                  </NuxtLink>
-                </li>
-                <li><a>Paiements</a></li>
-              </ul>
-              <p class="menu-label">Sécurité</p>
-              <ul class="menu-list">
-                <li>
-                  <NuxtLink to="/account/password"
-                    >Modifier mon mot de passe
-                  </NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/account/delete">Supprimer mon compte</NuxtLink>
-                </li>
-              </ul>
-            </aside>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
+    <div class="card">
             <header class="card-header">
               <p class="card-header-title">Mes commandes</p>
             </header>
@@ -178,14 +143,12 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 <script>
 export default {
   name: "OrdersPage",
+  layout: "account",
   middleware: "auth",
   data() {
     return {
