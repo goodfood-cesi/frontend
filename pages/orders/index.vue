@@ -44,7 +44,6 @@
             <div class='card-content'>
               <div class='content'>
                 <b-table
-                  :key='tableDataKey'
                   ref='table'
                   :data="orders"
                   paginated
@@ -122,7 +121,6 @@ export default {
     return {
       orders: [],
       currentPage: 1,
-      tableDataKey: 1,
     }
   },
   mounted() {
