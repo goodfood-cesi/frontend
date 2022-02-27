@@ -59,10 +59,10 @@
         <section>
           <b-table
             :data="filteredRestaurants"
-            :paginated="true"
+            paginated
             :current-page.sync="currentPage"
             :pagination-simple="true"
-            :per-page="15"
+            per-page="15"
             sort-icon="chevron-up"
           >
             <b-table-column v-slot="props" field="name" label="Nom" sortable>
@@ -106,6 +106,10 @@
                 </b-button>
               </div>
             </b-table-column>
+
+            <template #empty>
+              <div class="has-text-centered">Pas de restaurants</div>
+            </template>
           </b-table>
         </section>
       </section>
