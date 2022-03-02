@@ -1,6 +1,7 @@
 <template>
   <section>
     <Nuxt />
+    <AppFooter />
   </section>
 </template>
 

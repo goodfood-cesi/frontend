@@ -13,6 +13,7 @@
           </div>
           <div class="column is-6-tablet is-5-desktop is-4-widescreen">
             <form class="box" @submit.prevent="submit">
+              <p class="subtitle has-text-centered">Mot de passe oublié</p>
               <b-field label="Adresse e-mail">
                 <b-input
                   v-model="email"
@@ -23,23 +24,6 @@
                   icon-right-clickable
                   @icon-right-click="clearEmail"
                 ></b-input>
-              </b-field>
-              <b-field label="Mot de passe">
-                <b-input
-                  v-model="password"
-                  placeholder="*******"
-                  type="password"
-                  password-reveal
-                ></b-input>
-              </b-field>
-              <b-field>
-                <b-checkbox
-                  v-model="checkbox"
-                  true-value="Se souvenir de moi"
-                  false-value="Ne pas se souvenir de moi"
-                >
-                  {{ checkbox }}
-                </b-checkbox>
               </b-field>
               <recaptcha />
               <b-button type="is-primary" native-type="submit" expanded
@@ -54,18 +38,16 @@
 </template>
 <script>
 export default {
-  name: "LoginPage",
+  name: "ForgotPage",
   middleware: "guest",
   data() {
     return {
       email: "",
-      password: "",
-      checkbox: "Se souvenir de moi",
     }
   },
   head() {
     return {
-      title: "Good Food - Connexion",
+      title: "Good Food - Mot de pass oublié",
     }
   },
   methods: {
@@ -73,7 +55,7 @@ export default {
       this.email = ""
     },
     async submit() {
-      if (this.email === "" || this.password === "") {
+      if (this.email === "") {
         this.$buefy.snackbar.open({
           message: "Veuillez remplir tous les champs",
           type: "is-danger",
@@ -92,23 +74,7 @@ export default {
         })
         return
       }
-      await this.$auth
-        .loginWith("laravelJWT", {
-          data: {
-            email: this.email,
-            password: this.password,
-            remember_me: this.checkbox,
-            recaptcha: token,
-          },
-        })
-        .catch(() => {
-          this.$buefy.snackbar.open({
-            message: "Adresse e-mail ou mot de passe incorrect",
-            type: "is-danger",
-            position: "is-bottom-right",
-            queue: false,
-          })
-        })
+      // @todo call forgot password route
       await this.$recaptcha.reset()
     },
   },

@@ -229,7 +229,6 @@
         </section>
       </div>
     </section>
-    <AppFooter />
   </section>
 </template>
 <script>

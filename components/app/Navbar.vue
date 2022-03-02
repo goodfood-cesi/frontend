@@ -23,10 +23,12 @@
     <template v-if="!isAuthenticated" #end>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <NuxtLink to="/register" class="button is-primary"
+          <NuxtLink to="/account/register" class="button is-primary"
             ><b>Inscription</b></NuxtLink
           >
-          <NuxtLink to="/login" class="button is-light">Connexion</NuxtLink>
+          <NuxtLink to="/account/login" class="button is-light"
+            >Connexion</NuxtLink
+          >
         </div>
       </b-navbar-item>
     </template>
