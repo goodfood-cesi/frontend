@@ -136,6 +136,7 @@ export default {
     size: "invisible",
   },
   publicRuntimeConfig: {
-    PAYPAL_CLIENT_ID: "AWCN7QeLEn14137jaS4iX2h5Q0zXGHJn_my-7-xZ_3V2nM0mQv9sbjdPdogD7hTHGltR5FxhNn3ojKRA",
+    PAYPAL_CLIENT_ID:
+      "AWCN7QeLEn14137jaS4iX2h5Q0zXGHJn_my-7-xZ_3V2nM0mQv9sbjdPdogD7hTHGltR5FxhNn3ojKRA",
   },
 }
