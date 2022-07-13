@@ -124,7 +124,7 @@ export default {
           (cartItem) => cartItem.id === item.id && cartItem.type === type
         ).quantity++
       } else {
-        this.cart.push({ ...item, quantity: 1, type: type })
+        this.cart.push({ ...item, quantity: 1, type })
       }
       this.saveCartToLocalStorage()
       if (type === "menu") {
