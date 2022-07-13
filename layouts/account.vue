@@ -16,7 +16,7 @@
 </template>
 <script>
 export default {
-  name: "AccountLayout",
-  layout: "default",
+  name: 'AccountLayout',
+  layout: 'default',
 }
 </script>

@@ -154,10 +154,10 @@
 </template>
 <script>
 export default {
-  name: "AboutPage",
+  name: 'AboutPage',
   head() {
     return {
-      title: "Good Food - A propos",
+      title: 'Good Food - A propos',
     }
   },
 }

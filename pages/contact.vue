@@ -80,23 +80,23 @@
 </template>
 <script>
 export default {
-  name: "ContactPage",
+  name: 'ContactPage',
   data() {
     return {
-      name: "",
-      email: "",
-      message: "",
+      name: '',
+      email: '',
+      message: '',
       disabled: 0,
     }
   },
   head() {
     return {
-      title: "Good Food - Contact",
+      title: 'Good Food - Contact',
     }
   },
   mounted() {
     if (this.$auth.loggedIn) {
-      this.name = this.$auth.user.firstname + " " + this.$auth.user.lastname
+      this.name = this.$auth.user.firstname + ' ' + this.$auth.user.lastname
       this.email = this.$auth.user.email
       this.disabled = 1
     }

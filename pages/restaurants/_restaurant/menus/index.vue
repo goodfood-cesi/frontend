@@ -13,8 +13,8 @@
 </template>
 <script>
 export default {
-  name: "RestaurantMenus",
-  layout: "restaurant",
+  name: 'RestaurantMenus',
+  layout: 'restaurant',
   data() {
     return {
       menus: [],
@@ -23,24 +23,24 @@ export default {
   },
   head() {
     return {
-      title: "Good Food - Menus",
+      title: 'Good Food - Menus',
     }
   },
   async mounted() {
     await this.$axios
       .get(
-        "/api/restaurants/restaurants/" +
+        '/api/restaurants/restaurants/' +
           this.$route.params.restaurant +
-          "/menus"
+          '/menus'
       )
       .then((response) => {
         this.menus = response.data.data
       })
       .catch(() => {
-        this.$router.push("/")
+        this.$router.push('/')
         this.$buefy.snackbar.open({
-          message: "Impossible de récupérer les menus du restaurant",
-          type: "is-danger",
+          message: 'Impossible de récupérer les menus du restaurant',
+          type: 'is-danger',
         })
       })
   },

@@ -63,9 +63,9 @@
 </template>
 <script>
 export default {
-  name: "AccountPage",
-  layout: "account",
-  middleware: "auth",
+  name: 'AccountPage',
+  layout: 'account',
+  middleware: 'auth',
   data() {
     return {
       firstname: this.$auth.user.firstname,
@@ -75,27 +75,27 @@ export default {
   },
   head() {
     return {
-      title: "Good Food - Mon compte",
+      title: 'Good Food - Mon compte',
     }
   },
   methods: {
     submit() {
       this.$axios
-        .$post("/api/auth/user", {
+        .$post('/api/auth/user', {
           firstname: this.firstname,
           lastname: this.lastname,
         })
         .then(() => {
           this.$auth.fetchUser()
           this.$buefy.snackbar.open({
-            message: "Vos modifications ont été enregistrées",
-            type: "is-success",
+            message: 'Vos modifications ont été enregistrées',
+            type: 'is-success',
           })
         })
         .catch(() => {
           this.$buefy.snackbar.open({
-            message: "Une erreur est survenue",
-            type: "is-danger",
+            message: 'Une erreur est survenue',
+            type: 'is-danger',
           })
         })
     },
@@ -104,7 +104,7 @@ export default {
       this.lastname = this.$auth.user.lastname
       this.email = this.$auth.user.email
       this.$buefy.snackbar.open({
-        message: "Vos modifications ont été annulées",
+        message: 'Vos modifications ont été annulées',
       })
     },
   },

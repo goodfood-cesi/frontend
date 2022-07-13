@@ -74,11 +74,11 @@
 </template>
 
 <script>
-import { loadScript } from "@paypal/paypal-js"
+import { loadScript } from '@paypal/paypal-js'
 
 export default {
-  name: "RestaurantLayout",
-  layout: "default",
+  name: 'RestaurantLayout',
+  layout: 'default',
   data() {
     return {
       cart: [],
@@ -96,23 +96,23 @@ export default {
   async mounted() {
     this.loadCartFromLocalStorage()
     await this.$axios
-      .get("/api/restaurants/restaurants/" + this.$route.params.restaurant)
+      .get('/api/restaurants/restaurants/' + this.$route.params.restaurant)
       .then((response) => {
         this.restaurant = response.data.data
       })
       .catch(() => {
-        this.$router.push("/")
+        this.$router.push('/')
         this.$buefy.snackbar.open({
-          message: "Impossible de récupérer les données du restaurant",
-          type: "is-danger",
+          message: 'Impossible de récupérer les données du restaurant',
+          type: 'is-danger',
         })
       })
   },
   methods: {
     addItemToCart(item) {
-      let type = "product"
+      let type = 'product'
       if (item.products) {
-        type = "menu"
+        type = 'menu'
       }
 
       if (
@@ -127,15 +127,15 @@ export default {
         this.cart.push({ ...item, quantity: 1, type })
       }
       this.saveCartToLocalStorage()
-      if (type === "menu") {
+      if (type === 'menu') {
         this.$buefy.snackbar.open({
-          message: "Le menu a bien été ajouté au panier",
-          type: "is-success",
+          message: 'Le menu a bien été ajouté au panier',
+          type: 'is-success',
         })
       } else {
         this.$buefy.snackbar.open({
-          message: "Le produit a bien été ajouté au panier",
-          type: "is-success",
+          message: 'Le produit a bien été ajouté au panier',
+          type: 'is-success',
         })
       }
     },
@@ -157,29 +157,29 @@ export default {
       } else {
         this.cart = this.cart.filter((cartItem) => cartItem !== item)
         this.saveCartToLocalStorage()
-        if (item.type === "menu") {
+        if (item.type === 'menu') {
           this.$buefy.snackbar.open({
-            message: "Le menu a bien été supprimé du panier",
-            type: "is-success",
+            message: 'Le menu a bien été supprimé du panier',
+            type: 'is-success',
           })
         } else {
           this.$buefy.snackbar.open({
-            message: "Le produit a bien été supprimé du panier",
-            type: "is-success",
+            message: 'Le produit a bien été supprimé du panier',
+            type: 'is-success',
           })
         }
       }
     },
     loadCartFromLocalStorage() {
-      if (localStorage.getItem("cart_" + this.$route.params.restaurant)) {
+      if (localStorage.getItem('cart_' + this.$route.params.restaurant)) {
         this.cart = JSON.parse(
-          localStorage.getItem("cart_" + this.$route.params.restaurant)
+          localStorage.getItem('cart_' + this.$route.params.restaurant)
         )
       }
     },
     saveCartToLocalStorage() {
       localStorage.setItem(
-        "cart_" + this.$route.params.restaurant,
+        'cart_' + this.$route.params.restaurant,
         JSON.stringify(this.cart)
       )
     },
@@ -187,39 +187,39 @@ export default {
       this.cart = []
       this.saveCartToLocalStorage()
       this.$buefy.snackbar.open({
-        message: "Le panier a bien été vidé",
-        type: "is-success",
+        message: 'Le panier a bien été vidé',
+        type: 'is-success',
       })
     },
     payModal() {
       this.isPayModalActive = true
       loadScript({
-        "client-id": this.$config.PAYPAL_CLIENT_ID || "",
-        currency: "EUR",
-        "enable-funding": ["card", "credit", "paylater"],
-        components: ["buttons"],
+        'client-id': this.$config.PAYPAL_CLIENT_ID || '',
+        currency: 'EUR',
+        'enable-funding': ['card', 'credit', 'paylater'],
+        components: ['buttons'],
       })
         .then((paypal, $this = this) => {
           paypal
             .Buttons({
               style: {
-                label: "checkout",
+                label: 'checkout',
                 tagline: true,
-                layout: "horizontal",
-                color: "blue",
-                shape: "rect",
+                layout: 'horizontal',
+                color: 'blue',
+                shape: 'rect',
               },
               createOrder() {
                 return $this.$axios
                   .$post(
-                    "/api/orders/init",
+                    '/api/orders/init',
                     {
                       cart: $this.cart,
                       restaurant: $this.restaurant.id,
                     },
                     {
                       headers: {
-                        "content-type": "application/json",
+                        'content-type': 'application/json',
                         Authorization: $this.$auth.strategy.token.get(),
                       },
                     }
@@ -229,21 +229,21 @@ export default {
                   })
                   .catch((err) => {
                     $this.$buefy.snackbar.open({
-                      message: "Un erreur est survenue : " + err.message,
-                      type: "is-warning",
+                      message: 'Un erreur est survenue : ' + err.message,
+                      type: 'is-warning',
                     })
                   })
               },
               onApprove(data) {
                 return $this.$axios
                   .$post(
-                    "/api/orders/capture",
+                    '/api/orders/capture',
                     {
                       order: data.orderID,
                     },
                     {
                       headers: {
-                        "content-type": "application/json",
+                        'content-type': 'application/json',
                         Authorization: $this.$auth.strategy.token.get(),
                       },
                     }
@@ -254,17 +254,17 @@ export default {
                       $this.closePayModal()
                       $this.$buefy.snackbar.open({
                         message:
-                          "Votre commande a été validée. Vous allez être redirigé vers votre commande.",
-                        type: "is-success",
+                          'Votre commande a été validée. Vous allez être redirigé vers votre commande.',
+                        type: 'is-success',
                       })
                       setTimeout(() => {
-                        $this.$router.push("/account/orders")
+                        $this.$router.push('/account/orders')
                       }, 3000)
                     } else {
                       $this.$buefy.snackbar.open({
                         message:
-                          "Une erreur est survenue : " + data.meta.message,
-                        type: "is-warning",
+                          'Une erreur est survenue : ' + data.meta.message,
+                        type: 'is-warning',
                       })
                     }
                   })
@@ -273,19 +273,19 @@ export default {
                 return (err) => {
                   $this.$buefy.snackbar.open({
                     message:
-                      "Une erreur est survenue lors de la commande : " +
+                      'Une erreur est survenue lors de la commande : ' +
                       err.message,
-                    type: "is-danger",
+                    type: 'is-danger',
                   })
                 }
               },
             })
-            .render(document.getElementById("paypal-buttons"))
+            .render(document.getElementById('paypal-buttons'))
         })
         .catch(() => {
           this.$buefy.snackbar.open({
-            message: "Une erreur est survenue lors du chargement de Paypal",
-            type: "is-danger",
+            message: 'Une erreur est survenue lors du chargement de Paypal',
+            type: 'is-danger',
           })
         })
     },
