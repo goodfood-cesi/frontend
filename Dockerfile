@@ -4,7 +4,7 @@ ENV HOST=0.0.0.0
 
 WORKDIR /app
 
-RUN apk add python3 g++ make
+RUN apk add python3 g++ make nano
 
 ADD . /app
 RUN : \
