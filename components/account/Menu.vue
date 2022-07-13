@@ -52,8 +52,8 @@
 </template>
 <script>
 export default {
-  name: "AccountMenu",
-  layout: "account",
+  name: 'AccountMenu',
+  layout: 'account',
   computed: {
     currentPageName() {
       return this.$route.name

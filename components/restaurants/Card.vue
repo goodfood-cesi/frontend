@@ -46,7 +46,7 @@
 </template>
 <script>
 export default {
-  name: "RestaurantCard",
+  name: 'RestaurantCard',
   props: {
     restaurant: {
       type: Object,

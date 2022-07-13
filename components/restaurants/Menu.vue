@@ -122,10 +122,10 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters } from 'vuex'
 
 export default {
-  name: "RestaurantsMenu",
+  name: 'RestaurantsMenu',
   props: {
     restaurant: {
       type: Object,
@@ -142,7 +142,7 @@ export default {
         return acc + item.amount * item.quantity
       }, 0)
     },
-    ...mapGetters(["isAuthenticated", "loggedInUser"]),
+    ...mapGetters(['isAuthenticated', 'loggedInUser']),
     currentPageName() {
       return this.$route.name
     },

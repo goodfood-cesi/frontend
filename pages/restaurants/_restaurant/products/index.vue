@@ -17,8 +17,8 @@
 </template>
 <script>
 export default {
-  name: "RestaurantProducts",
-  layout: "restaurant",
+  name: 'RestaurantProducts',
+  layout: 'restaurant',
   data() {
     return {
       products: [],
@@ -33,18 +33,18 @@ export default {
   async mounted() {
     await this.$axios
       .get(
-        "/api/restaurants/restaurants/" +
+        '/api/restaurants/restaurants/' +
           this.$route.params.restaurant +
-          "/products"
+          '/products'
       )
       .then((response) => {
         this.products = response.data.data
       })
       .catch(() => {
-        this.$router.push("/")
+        this.$router.push('/')
         this.$buefy.snackbar.open({
-          message: "Impossible de récupérer les produits du restaurant",
-          type: "is-danger",
+          message: 'Impossible de récupérer les produits du restaurant',
+          type: 'is-danger',
         })
       })
   },

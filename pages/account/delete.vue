@@ -47,22 +47,22 @@
 </template>
 <script>
 export default {
-  name: "AccountDelete",
-  layout: "account",
-  middleware: "auth",
+  name: 'AccountDelete',
+  layout: 'account',
+  middleware: 'auth',
   data() {
     return {
-      password: "",
+      password: '',
     }
   },
   head() {
     return {
-      title: "Good Food - Supprimer mon compte",
+      title: 'Good Food - Supprimer mon compte',
     }
   },
   methods: {
     submit() {
-      this.$store.dispatch("account/delete", {
+      this.$store.dispatch('account/delete', {
         password: this.password,
       })
     },

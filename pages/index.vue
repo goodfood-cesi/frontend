@@ -233,43 +233,43 @@
 </template>
 <script>
 export default {
-  name: "IndexPage",
-  layout: "home",
-  middleware: "guest",
+  name: 'IndexPage',
+  layout: 'home',
+  middleware: 'guest',
   data() {
     return {
-      activeTab: "vision",
+      activeTab: 'vision',
       restaurants: [],
       center: [48.856614, 2.3522219],
     }
   },
   head() {
     return {
-      title: "Good Food - Accueil",
+      title: 'Good Food - Accueil',
     }
   },
   async mounted() {
     await this.$axios
-      .get("/api/restaurants/restaurants")
+      .get('/api/restaurants/restaurants')
       .then((response) => {
         this.restaurants = response.data.data
       })
       .catch(() => {
         this.$buefy.snackbar.open({
-          message: "Impossible de récupérer la liste des restaurants",
-          type: "is-danger",
+          message: 'Impossible de récupérer la liste des restaurants',
+          type: 'is-danger',
         })
       })
 
     await this.$axios
-      .get("/api/geo/json")
+      .get('/api/geo/json')
       .then((response) => {
         this.center = [response.data.lat, response.data.lon]
       })
       .catch(() => {
         this.$buefy.snackbar.open({
-          message: "Impossible de récupérer votre localisation",
-          type: "is-danger",
+          message: 'Impossible de récupérer votre localisation',
+          type: 'is-danger',
         })
       })
   },

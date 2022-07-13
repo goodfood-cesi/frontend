@@ -88,22 +88,22 @@
 </template>
 <script>
 export default {
-  name: "RegisterPage",
-  middleware: "guest",
+  name: 'RegisterPage',
+  middleware: 'guest',
   data() {
     return {
       form: {
-        firstname: "",
-        lastname: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
       },
     }
   },
   head() {
     return {
-      title: "Good Food - inscription",
+      title: 'Good Food - inscription',
     }
   },
   methods: {
@@ -111,57 +111,57 @@ export default {
       const token = await this.$recaptcha.getResponse()
       if (!token) {
         this.$buefy.snackbar.open({
-          message: "Veuillez valider le captcha",
-          type: "is-danger",
-          position: "is-bottom-right",
+          message: 'Veuillez valider le captcha',
+          type: 'is-danger',
+          position: 'is-bottom-right',
           queue: false,
         })
         return
       }
       if (
-        this.form.firstname === "" ||
-        this.form.lastname === "" ||
-        this.form.email === "" ||
-        this.form.password === "" ||
-        this.form.password_confirmation === ""
+        this.form.firstname === '' ||
+        this.form.lastname === '' ||
+        this.form.email === '' ||
+        this.form.password === '' ||
+        this.form.password_confirmation === ''
       ) {
         this.$buefy.snackbar.open({
-          message: "Veuillez remplir tous les champs",
-          type: "is-danger",
+          message: 'Veuillez remplir tous les champs',
+          type: 'is-danger',
         })
         return
       }
       if (this.form.password !== this.form.password_confirmation) {
         this.$buefy.snackbar.open({
-          message: "Les mots de passe ne correspondent pas",
-          type: "is-danger",
+          message: 'Les mots de passe ne correspondent pas',
+          type: 'is-danger',
         })
         return
       }
       if (this.form.password.length < 6) {
         this.$buefy.snackbar.open({
-          message: "Le mot de passe doit contenir au moins 6 caractères",
-          type: "is-danger",
+          message: 'Le mot de passe doit contenir au moins 6 caractères',
+          type: 'is-danger',
         })
         return
       }
       if (this.form.firstname.length < 2) {
         this.$buefy.snackbar.open({
-          message: "Le prénom doit contenir au moins 2 caractères",
-          type: "is-danger",
+          message: 'Le prénom doit contenir au moins 2 caractères',
+          type: 'is-danger',
         })
         return
       }
       if (this.form.lastname.length < 2) {
         this.$buefy.snackbar.open({
-          message: "Le nom doit contenir au moins 2 caractères",
-          type: "is-danger",
+          message: 'Le nom doit contenir au moins 2 caractères',
+          type: 'is-danger',
         })
         return
       }
 
       await this.$axios
-        .post("/api/auth/register", {
+        .post('/api/auth/register', {
           firstname: this.form.firstname,
           lastname: this.form.lastname,
           email: this.form.email,
@@ -171,15 +171,15 @@ export default {
         })
         .then(() => {
           this.$buefy.snackbar.open({
-            message: "Votre compte a bien été créé",
-            type: "is-success",
+            message: 'Votre compte a bien été créé',
+            type: 'is-success',
           })
-          this.$router.push("/account/login")
+          this.$router.push('/account/login')
         })
         .catch((error) => {
           this.$buefy.snackbar.open({
             message: error,
-            type: "is-danger",
+            type: 'is-danger',
           })
         })
       await this.$recaptcha.reset()

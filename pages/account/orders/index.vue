@@ -42,7 +42,7 @@
                   ? restaurants.find(
                       (restaurant) => restaurant.id === props.row.restaurant_id
                     ).name
-                  : "Restaurant Inconnu"
+                  : 'Restaurant Inconnu'
               }}
             </b-table-column>
 
@@ -125,9 +125,9 @@
 </template>
 <script>
 export default {
-  name: "OrdersPage",
-  layout: "account",
-  middleware: "auth",
+  name: 'OrdersPage',
+  layout: 'account',
+  middleware: 'auth',
   data() {
     return {
       orders: [],
@@ -136,7 +136,7 @@ export default {
   },
   head() {
     return {
-      title: "Good Food - Mes commandes",
+      title: 'Good Food - Mes commandes',
     }
   },
   mounted() {
@@ -145,7 +145,7 @@ export default {
   },
   methods: {
     getOrders() {
-      this.$axios.get("/api/orders/orders").then((response) => {
+      this.$axios.get('/api/orders/orders').then((response) => {
         this.orders = response.data.data
         this.orders.forEach((order) => {
           order.detailed_products = []
@@ -154,7 +154,7 @@ export default {
       })
     },
     getRestaurants() {
-      this.$axios.get("/api/restaurants/restaurants").then((response) => {
+      this.$axios.get('/api/restaurants/restaurants').then((response) => {
         this.restaurants = response.data.data
       })
     },
@@ -165,7 +165,7 @@ export default {
       ) {
         this.$axios
           .$get(
-            "/api/restaurants/restaurants/" + row.restaurant_id + "/products"
+            '/api/restaurants/restaurants/' + row.restaurant_id + '/products'
           )
           .then((response) => {
             const filteredProducts = response.data.filter((product) => {
@@ -187,7 +187,7 @@ export default {
           .then(() => {
             this.$axios
               .$get(
-                "/api/restaurants/restaurants/" + row.restaurant_id + "/menus"
+                '/api/restaurants/restaurants/' + row.restaurant_id + '/menus'
               )
               .then((response) => {
                 const filteredMenus = response.data.filter((menu) => {

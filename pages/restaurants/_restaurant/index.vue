@@ -79,8 +79,8 @@
 </template>
 <script>
 export default {
-  name: "RestaurantPage",
-  layout: "restaurant",
+  name: 'RestaurantPage',
+  layout: 'restaurant',
   data() {
     return {
       restaurant: {},
@@ -88,7 +88,7 @@ export default {
   },
   head() {
     return {
-      title: "Good Food - Restaurant",
+      title: 'Good Food - Restaurant',
     }
   },
   computed: {
@@ -109,15 +109,15 @@ export default {
   },
   async mounted() {
     await this.$axios
-      .get("/api/restaurants/restaurants/" + this.$route.params.restaurant)
+      .get('/api/restaurants/restaurants/' + this.$route.params.restaurant)
       .then((response) => {
         this.restaurant = response.data.data
       })
       .catch(() => {
-        this.$router.push("/")
+        this.$router.push('/')
         this.$buefy.snackbar.open({
-          message: "Impossible de récupérer les données du restaurant",
-          type: "is-danger",
+          message: 'Impossible de récupérer les données du restaurant',
+          type: 'is-danger',
         })
       })
   },

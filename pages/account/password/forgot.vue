@@ -38,28 +38,28 @@
 </template>
 <script>
 export default {
-  name: "ForgotPage",
-  middleware: "guest",
+  name: 'ForgotPage',
+  middleware: 'guest',
   data() {
     return {
-      email: "",
+      email: '',
     }
   },
   head() {
     return {
-      title: "Good Food - Mot de pass oublié",
+      title: 'Good Food - Mot de pass oublié',
     }
   },
   methods: {
     clearEmail() {
-      this.email = ""
+      this.email = ''
     },
     async submit() {
-      if (this.email === "") {
+      if (this.email === '') {
         this.$buefy.snackbar.open({
-          message: "Veuillez remplir tous les champs",
-          type: "is-danger",
-          position: "is-bottom-right",
+          message: 'Veuillez remplir tous les champs',
+          type: 'is-danger',
+          position: 'is-bottom-right',
           queue: false,
         })
         return
@@ -67,9 +67,9 @@ export default {
       const token = await this.$recaptcha.getResponse()
       if (!token) {
         this.$buefy.snackbar.open({
-          message: "Veuillez valider le captcha",
-          type: "is-danger",
-          position: "is-bottom-right",
+          message: 'Veuillez valider le captcha',
+          type: 'is-danger',
+          position: 'is-bottom-right',
           queue: false,
         })
         return
