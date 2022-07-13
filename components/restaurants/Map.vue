@@ -3,7 +3,7 @@
     <client-only>
       <l-map ref="map" :zoom="zoom" :center="center">
         <l-tile-layer
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
         <l-marker
           v-for="r in restaurants"
