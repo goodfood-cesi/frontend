@@ -13,7 +13,9 @@
           </div>
           <div class="column is-6-tablet is-5-desktop is-4-widescreen">
             <form class="box" @submit.prevent="submit">
-              <p class="subtitle has-text-centered">Modifier mon mot de passe</p>
+              <p class="subtitle has-text-centered">
+                Modifier mon mot de passe
+              </p>
               <b-field label="Nouveau mot de passe">
                 <b-input
                   v-model="password"
@@ -35,11 +37,8 @@
                 ></b-input>
               </b-field>
               <recaptcha />
-              <b-button
-                type="is-primary"
-                native-type="submit"
-                expanded
-              >Modifier mon mot de passe
+              <b-button type="is-primary" native-type="submit" expanded
+                >Modifier mon mot de passe
               </b-button>
             </form>
           </div>
@@ -78,7 +77,8 @@ export default {
       .catch(() => {
         this.$router.push('/account/password/forgot')
         this.$buefy.snackbar.open({
-          message: 'Ce lien de réinitialisation de mot de passe n\'est pas valide.',
+          message:
+            "Ce lien de réinitialisation de mot de passe n'est pas valide.",
           type: 'is-danger',
         })
       })
@@ -93,7 +93,8 @@ export default {
         })
         .then(() => {
           this.$buefy.snackbar.open({
-            message: 'Votre mot de passe a été modifié avec succès. Vous pouvez maintenant vous connecter.',
+            message:
+              'Votre mot de passe a été modifié avec succès. Vous pouvez maintenant vous connecter.',
             type: 'is-success',
           })
           this.$auth.logout()
@@ -106,7 +107,7 @@ export default {
             type: 'is-danger',
           })
         })
-    }
-  }
+    },
+  },
 }
 </script>

@@ -71,11 +71,12 @@
               </p>
             </b-table-column>
 
-            <b-table-column
-              v-slot='props'
-              label='QR Code'
-              >
-              <qrcode-vue v-if='props.row.status === 2' :value="props.row.id" level="H"/>
+            <b-table-column v-slot="props" label="QR Code">
+              <qrcode-vue
+                v-if="props.row.status === 2"
+                :value="props.row.id"
+                level="H"
+              />
             </b-table-column>
 
             <template #empty>
@@ -132,7 +133,7 @@
   </section>
 </template>
 <script>
-import QrcodeVue from 'qrcode.vue';
+import QrcodeVue from 'qrcode.vue'
 export default {
   name: 'OrdersPage',
   components: {

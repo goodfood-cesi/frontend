@@ -82,7 +82,8 @@ export default {
         })
         .then(() => {
           this.$buefy.snackbar.open({
-            message: 'Un e-mail vous a été envoyé pour réinitialiser votre mot de passe',
+            message:
+              'Un e-mail vous a été envoyé pour réinitialiser votre mot de passe',
             type: 'is-success',
             position: 'is-bottom-right',
             queue: false,

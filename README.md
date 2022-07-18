@@ -6,9 +6,10 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=goodfood-cesi_frontend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=goodfood-cesi_frontend)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=goodfood-cesi_frontend&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=goodfood-cesi_frontend)
 
-Frontend App for Good Food 
+Frontend App for Good Food
 
 ## Technologies
+
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=flat&logo=css3&logoColor=white)
 ![Buefy](https://img.shields.io/badge/Buefy-7957D5?style=flat&logo=buefy&logoColor=48289E)
@@ -19,6 +20,7 @@ Frontend App for Good Food
 ![Docker](https://img.shields.io/badge/docker-05122A.svg?style=flat&logo=docker&logoColor=white)
 
 ## Requirements:
+
 Yarn, APIs URL, ReCaptcha Site Key, Paypal Site Key
 
 ## Build Setup
@@ -39,6 +41,7 @@ $ yarn generate
 ```
 
 Copy and complete .env :
+
 ```
 ## CONFIG ##
 RECAPTCHA_SITE_KEY=
