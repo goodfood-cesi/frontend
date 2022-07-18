@@ -20,7 +20,7 @@
         Contact
       </b-navbar-item>
     </template>
-    <template v-if="!isAuthenticated" #end>
+    <template v-if="!$auth.loggedIn" #end>
       <b-navbar-item tag="div">
         <div class="buttons">
           <NuxtLink to="/account/register" class="button is-primary"
@@ -37,7 +37,7 @@
         <b-dropdown aria-role="list">
           <template #trigger="{ active }">
             <b-button
-              :label="loggedInUser.firstname + ' ' + loggedInUser.lastname"
+              :label="$auth.user.firstname + ' ' + $auth.user.lastname"
               type="is-primary"
               :icon-right="active ? 'menu-up' : 'menu-down'"
             />
@@ -59,13 +59,8 @@
   </b-navbar>
 </template>
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'AppNavbar',
-  computed: {
-    ...mapGetters(['isAuthenticated', 'loggedInUser']),
-  },
   methods: {
     async logout() {
       await this.$auth.logout().then(() => {

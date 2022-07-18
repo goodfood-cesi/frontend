@@ -89,7 +89,8 @@
 <script>
 export default {
   name: 'RegisterPage',
-  middleware: 'guest',
+  middleware: 'auth',
+  auth: 'guest',
   data() {
     return {
       form: {
