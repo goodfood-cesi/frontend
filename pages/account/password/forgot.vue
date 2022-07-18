@@ -74,7 +74,32 @@ export default {
         })
         return
       }
-      // @todo call forgot password route
+
+      this.$axios
+        .$post('/api/auth/forgot', {
+          email: this.email,
+          recaptcha: token,
+        })
+        .then(() => {
+          this.$buefy.snackbar.open({
+            message:
+              'Un e-mail vous a été envoyé pour réinitialiser votre mot de passe',
+            type: 'is-success',
+            position: 'is-bottom-right',
+            queue: false,
+          })
+        })
+        .catch(() => {
+          this.$buefy.snackbar.open({
+            message: 'Une erreur est survenue',
+            type: 'is-danger',
+            position: 'is-bottom-right',
+            queue: false,
+          })
+        })
+
+      this.email = ''
+
       await this.$recaptcha.reset()
     },
   },
