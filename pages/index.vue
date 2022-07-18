@@ -235,7 +235,6 @@
 export default {
   name: 'IndexPage',
   layout: 'home',
-  middleware: 'guest',
   data() {
     return {
       activeTab: 'vision',
