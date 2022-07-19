@@ -37,6 +37,7 @@
         <b-dropdown aria-role="list">
           <template #trigger="{ active }">
             <b-button
+              v-if="$auth.loggedIn"
               :label="$auth.user.firstname + ' ' + $auth.user.lastname"
               type="is-primary"
               :icon-right="active ? 'menu-up' : 'menu-down'"
