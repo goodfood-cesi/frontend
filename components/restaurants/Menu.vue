@@ -122,7 +122,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'RestaurantsMenu',
   props: {
